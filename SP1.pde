@@ -1,27 +1,16 @@
 Bots bot;
 int amountBots = 10;
-int totalTickets = 1000;
+int totalTickets = 100;
 
 void setup(){
-  size(600, 600);
+  size(60, 60);
+  
+  Tickets oneTicket = new Tickets(5);
+  Tickets fiveTickets = new Tickets(20);
+  
   
   Bots bot1 = new Bots(randomNameGenerator());
   println("Bot Name: " + bot1.fullName);
-  println("Bought tickets: " + bot1.tickets);
-  
-  
-  
-  
-  
-  
-  
-  //for (int i = 1; i < amountBots; i ++){
-  //  String fullName = randomNmaeGenerator();
-   
-  //  Bots bot+i = new Bots(fullName);
-  //  println(bot.fullName);
-    
-  //}
-  
+  println("Bought tickets: " + bot1.tickets);  
 
 }
