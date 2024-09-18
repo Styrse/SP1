@@ -1,4 +1,4 @@
-String randomNmaeGenerator(){
+String randomNameGenerator(){
   String fullName = "John Doe";
   
   //Takes the lenght of the two arrays and use them as "max" number in random. Random number is then used to pick a position in the list to get a firstname and a lastname.
