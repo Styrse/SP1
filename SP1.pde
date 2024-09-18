@@ -11,6 +11,9 @@ void setup(){
   
   Bots bot1 = new Bots(randomNameGenerator());
   println("Bot Name: " + bot1.fullName);
-  println("Bought tickets: " + bot1.tickets);  
+  println("Bought tickets: " + bot1.tickets);
+  
+  fillTicketArray();
+  println(ticketsID[50]);
 
 }
