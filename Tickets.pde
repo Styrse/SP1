@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 
 //Make a loop which will fill an Array with numbers from 1 to 100.
+//Start with one type of ticket and add more when it works and I got extra time
 
-  int[] ticketsID = new int [totalTickets];
+int[] ticketsID = new int [totalTickets];
 
 class Tickets {
 
@@ -15,10 +16,7 @@ class Tickets {
   }
 }
 
-
-
 void fillTicketArray() {
-
   for (int i = 0; i < totalTickets; i++) {
     ticketsID[i] = i+1;
   }

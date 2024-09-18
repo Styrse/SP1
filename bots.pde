@@ -9,12 +9,11 @@ class Bots {
   Bots(String fullName) {
     this.fullName = fullName;
     this.tickets = ((int) random(totalTickets/10));
-    
-    
-    //Make if/else statements to decide which type of tickets to buy
-    //this.tickets = ((int) random(totalTickets/10)); //See if I can return or reuse this number to make a loop in tickets(Needs to go through x amount of times
   }
+  
 }
 
 
-//
+//Make a loop that buy x amount of tickets. Connect ticketID to bot
+//Make if/else statements to decide which type of tickets to buy
+//this.tickets = ((int) random(totalTickets/10)); //See if I can return or reuse this number to make a loop in tickets(Needs to go through x amount of times
