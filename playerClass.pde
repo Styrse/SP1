@@ -19,6 +19,7 @@ class Player {
   for (int i = 0; i < tickets; i++) {
     int randomNumber = (int) random(remainingTickets);
     //Take random number from ticketID[randomNumber} and add it to playerTickets;          How do I add an int to a specific index of an Array in Java?
+    this.tickets++;
     playerTickets[i] = ticketsID.get(randomNumber);
     //Remove randomNumber from ticketID[randomNumber];
     

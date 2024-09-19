@@ -14,29 +14,36 @@ void setup() {
 
 
   Player player = new Player(playerName);
+
+
+  player.ticket(3);
+
   println("Name: " + player.fullName);
   println("Wallet: " + player.wallet);
   println("Tickets: " + player.tickets);
 
-  println(playerTickets.length);
-  
-  player.ticket(3);
-  
-  println(player.wallet);
-  println(ticketsID);
 
-  //for (int i = 0; i < playerTickets.length; i++){
-  //  println(playerTickets[i]);
-  //}
 
-  println(" ");
+
+
+  println("");
 
   println("Bank");
   println("Saldo: " + bank);
+  println("");
+
+
+  //This prints a list of the tickets the player has bought
+println("Player tickets:");
+  for (int i = 0; i < playerTickets.length; i++) {
+    if (playerTickets[i] > 0) {
+      println("Ticket: " + playerTickets[i]);
+    }
+  }
 
   //Print list of tickets ID
   //for (int i = 0; i < totalTickets; i++){
-  //  println(ticketsID[i]);
+  //  println(ticketsID.get(i));
   //}
 
   //Print list of bots
@@ -44,6 +51,7 @@ void setup() {
   //  println("Name: " + bots[i].fullName);
   //  println("Wallet: " + bots[i].wallet);
   //  println("Tickets: " + bots[i].tickets);
+  //  println("");
   //}
 }
 
