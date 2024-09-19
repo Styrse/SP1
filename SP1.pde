@@ -3,7 +3,8 @@ int amountBots = 10;
 int totalTickets = 100;
 
 void setup() {
-  size(60, 60);
+  size(600, 600);
+  backgroundFunction();
 
 //Creates an object of the class Bots. Uses the function/method to assign a random name to the bot.
   Bots bot1 = new Bots(randomNameGenerator());
@@ -24,4 +25,8 @@ void setup() {
   //  println(bots[i].tickets);
   //}
   
+}
+
+void draw(){
+  image(img, width/2, height/2, width, height);
 }
