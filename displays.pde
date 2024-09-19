@@ -21,10 +21,14 @@ void boxes() {
   rect(tileX*23, tileY*23.25, tileX*3.25, tileY*3);
   fill(255, 100);
   rect(tileX*23, tileY*25, tileX*6, tileY*3);
+  
+  //Walkable area
+  rectMode(CORNERS);
+  fill(100, 50, 150, 50);
+  rect(tileX, tileY*23.5, width-tileX, height-tileX);
 }
 
 void menu() {
-
   fill(255, 127, 50, 100);
   rectMode(CENTER);
   rect(width/2, tileY*2, width-tileX*2, tileY*2, 50);

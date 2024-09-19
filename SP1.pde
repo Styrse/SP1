@@ -20,9 +20,26 @@ void setup() {
   println("Name: " + player.fullName);
   println("Wallet: " + player.wallet);
   println("Tickets: " + player.tickets);
-
-
-
+  
+  println(playerTickets.length);
+  
+  //for (int i = 0; i < playerTickets.length; i++){
+  //  println(playerTickets[i]);
+  //}
+  
+  println(" ");
+  
+  println("Bank");
+  println("Saldo: " + bank);
+  
+  ticket(10);
+  
+  //Print list of tickets ID
+  //for (int i = 0; i < totalTickets; i++){
+  //  println(ticketsID[i]);
+  //}
+  
+  //Print list of bots
   //for (int i = 0; i <amountBots; i++){
   //  println("Name: " + bots[i].fullName);
   //  println("Wallet: " + bots[i].wallet);
