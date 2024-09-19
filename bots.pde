@@ -1,7 +1,7 @@
 String[] botFirstNames = {"Mette", "Lars", "Helle", "Anders", "Poul", "Anker", "Jens"};
 String[] botLastNames = {"Krag", "Jørgensen", "Hartling", "Schlüter", "Rasmussen", "Thorning-Schmidt", "Frederiksen", "Fogh", "Nyrup", "Løkke"};
+Bots[] bots = new Bots[amountBots];
 
-char[] botID = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}; //Maybe I can format the counter so I can concatenate an nit to a String
 
 class Bots {
 
@@ -13,6 +13,14 @@ class Bots {
     this.tickets = ((int) random(totalTickets/10));
   }
 }
+
+void makeBots() { //Can I make the bots here
+  for (int i = 0; i < amountBots; i++) {
+    bots[i] = new Bots(randomNameGenerator());
+  }
+}
+
+
 
 //Make map to see how many tickets one bot has bought
 //Make a loop that buy x amount of tickets. Connect ticketID to bot

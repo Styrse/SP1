@@ -11,6 +11,17 @@ void setup() {
   println("Bought tickets: " + bot1.tickets);
 
   fillTicketArray();
-  println(ticketsID[50]);
-
+  makeBots();
+  
+  
+  
+  
+  
+  
+  
+  //for (int i = 0; i <amountBots; i++){
+  //  println(bots[i].fullName);
+  //  println(bots[i].tickets);
+  //}
+  
 }
