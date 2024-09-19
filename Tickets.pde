@@ -9,10 +9,8 @@ int[] playerTickets = new int [remainingTickets];
 void ticket(int tickets) {
   for (int i = 0; i < tickets; i++) {
     int randomNumber = (int) random(remainingTickets);
-    println("Random number: " + randomNumber);
-    println("Ticket ID: " + ticketsID[randomNumber]);
-    //Take random number from ticketID[randomNumber} and add it to playerTickets;
-    
+    //Take random number from ticketID[randomNumber} and add it to playerTickets;          How do I add an int to a specific index of an Array in Java?
+    playerTickets[i] = ticketsID[randomNumber];
     //Remove randomNumber from ticketID[randomNumber];
     
     remainingTickets --;
