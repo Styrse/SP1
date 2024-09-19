@@ -1,22 +1,24 @@
 String[] botFirstNames = {"Mette", "Lars", "Helle", "Anders", "Poul", "Anker", "Jens"};
 String[] botLastNames = {"Krag", "Jørgensen", "Hartling", "Schlüter", "Rasmussen", "Thorning-Schmidt", "Frederiksen", "Fogh", "Nyrup", "Løkke"};
-Bots[] bots = new Bots[amountBots];
+Player[] bots = new Player[amountBots];
 
 
-class Bots {
+class Player {
 
   String fullName;
+  float wallet;
   int tickets;
 
-  Bots(String fullName) {
+  Player(String fullName) {
     this.fullName = fullName;
-    this.tickets = ((int) random(totalTickets/10));
+    wallet = 100;
+    this.tickets = tickets;
   }
 }
 
 void makeBots() { //Can I make the bots here
   for (int i = 0; i < amountBots; i++) {
-    bots[i] = new Bots(randomNameGenerator());
+    bots[i] = new Player(randomNameGenerator());      //(int) random(totalTickets/10);
   }
 }
 
