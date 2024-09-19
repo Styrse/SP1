@@ -1,27 +1,18 @@
 import java.util.ArrayList;
 int remainingTickets = totalTickets;
 
-int[] ticketsID = new int [totalTickets];
+ArrayList<Integer> ticketsID = new ArrayList<Integer>(totalTickets);
 int[] playerTickets = new int [remainingTickets];
 
 
 
-void ticket(int tickets) {
-  for (int i = 0; i < tickets; i++) {
-    int randomNumber = (int) random(remainingTickets);
-    //Take random number from ticketID[randomNumber} and add it to playerTickets;          How do I add an int to a specific index of an Array in Java?
-    playerTickets[i] = ticketsID[randomNumber];
-    //Remove randomNumber from ticketID[randomNumber];
-    
-    remainingTickets --;
-  }
-}
+
 
 void fillTicketArray() {
-  int startTicketID = (int) random (999);      //Creates a random sequenze number for the ticket id to start at
+  int startTicketID = ((int) random (10)*100);      //This will start the ID at a "round number"
 
   for (int i = 0; i < totalTickets; i++) {
-    ticketsID[i] = startTicketID + i;
+    ticketsID.add(startTicketID + i);
   }
 }
 
