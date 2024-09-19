@@ -14,23 +14,23 @@ class Player {
     wallet = 100;
     this.tickets = tickets;
   }
-  
+
   void ticket(int tickets) {
-  for (int i = 0; i < tickets; i++) {
-    int randomNumber = (int) random(remainingTickets);
-    //Take random number from ticketID[randomNumber} and add it to playerTickets;          How do I add an int to a specific index of an Array in Java?
-    this.tickets++;
-    playerTickets[i] = ticketsID.get(randomNumber);
-    //Remove randomNumber from ticketID[randomNumber];
-    
-    //Remove money from player
-    wallet -= 5;
-    //Add money to bank
-    bank += 5;
-    
-    remainingTickets --;
+    for (int i = 0; i < tickets; i++) {
+      int randomNumber = (int) random(remainingTickets);
+      //Take random number from ticketID[randomNumber} and add it to playerTickets;          How do I add an int to a specific index of an Array in Java?
+      this.tickets++;
+      playerTickets[i] = ticketsID.get(randomNumber);
+      //Remove randomNumber from ticketID[randomNumber];
+      ticketsID.remove(randomNumber);
+      //Remove money from player
+      wallet -= 5;
+      //Add money to bank
+      bank += 5;
+
+      remainingTickets --;
+    }
   }
-}
 }
 
 void makeBots() {
