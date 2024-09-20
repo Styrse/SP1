@@ -22,10 +22,6 @@ void setup() {
   println("Wallet: " + player.wallet);
   println("Tickets: " + player.tickets);
 
-
-
-
-
   println("");
 
   println("Bank");
@@ -42,7 +38,7 @@ println("Player tickets:");
   }
 
   //Print list of tickets ID
-  //for (int i = 0; i < totalTickets; i++){
+  //for (int i = 0; i < remainingTickets; i++){
   //  println(ticketsID.get(i));
   //}
 
