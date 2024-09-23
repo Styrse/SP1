@@ -1,5 +1,6 @@
 Player bot;
 int amountBots = 10;
+int players = 1;
 int totalTickets = 100;
 float tileX;
 float tileY;
@@ -10,7 +11,7 @@ void setup() {
 
   fillTicketArray();
   makeBots();
-  Player player = new Player(playerName);
+  Player player = new Player(playerName, true);
   player.ticket(3);
 
   println("Name: " + player.fullName);
@@ -21,9 +22,27 @@ void setup() {
 
   println("Bank");
   println("Saldo: " + bank);
-  
+
   println("");
 
+  println("Tickets sold: " + (totalTickets-remainingTickets));
+  println("Remaining tickets: " + remainingTickets);
+
+  println("");
+
+  //Only prints the lines with information greater than 0
+  for (int i = 0; i < amountBots+players; i++) {
+    for (int j = 0; j < totalTickets; j++) {
+      if (boughtTickets[i][j] > 0) {
+        println(boughtTickets[i][j]);
+      }
+    }
+    println("");
+  }
+
+  println("");
+  
+  println(boughtTickets[2]);
 
   //This prints a list of the tickets the player has bought
   //println("Player tickets:");
@@ -34,7 +53,7 @@ void setup() {
   //}
 
   //Print list of tickets ID
-  //for (int i = 0; i < remainingTickets; i++){
+  //for (int i = 0; i < remainingTickets; i++) {
   //  println(ticketsID.get(i));
   //}
 

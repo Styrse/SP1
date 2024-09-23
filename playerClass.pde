@@ -2,24 +2,37 @@ String[] botFirstNames = {"Mette", "Lars", "Helle", "Anders", "Poul", "Anker", "
 String[] botLastNames = {"Krag", "Jørgensen", "Hartling", "Schlüter", "Rasmussen", "Thorning-Schmidt", "Frederiksen", "Fogh", "Nyrup", "Løkke"};
 Player[] bots = new Player[amountBots];
 
+int[][] boughtTickets = new int [amountBots+players][totalTickets];
 
 class Player {
 
   String fullName;
   float wallet;
   int tickets;
+  boolean isPlayer;
 
-  Player(String fullName) {
+  Player(String fullName, boolean isPlayer) {
     this.fullName = fullName;
+    this.isPlayer = isPlayer;
     wallet = 100;
   }
 
-  void ticket(int tickets) {
-    for (int i = 0; i < tickets; i++) {
+  void ticket(int amountTickets) {
+    for (int i = 0; i < amountTickets; i++) {
+      //Saves the random number to use it multiple times
       int randomNumber = (int) random(remainingTickets);
-      //Take random number from ticketID[randomNumber} and add it to playerTickets;
-      this.tickets++;
-      playerTickets[i] = ticketsID.get(randomNumber);
+
+      if (isPlayer == true) {
+        boughtTickets[0][i] = ticketsID.get(randomNumber);
+      } else {
+        for (int j = 1; j < boughtTickets.length; j++) {
+          boughtTickets[j][i] = ticketsID.get(randomNumber);
+        }
+      }
+      tickets++;
+
+
+
       //Remove randomNumber from ticketID[randomNumber];
       ticketsID.remove(randomNumber);
       //Remove money from player
@@ -34,14 +47,8 @@ class Player {
 
 void makeBots() {
   for (int i = 0; i < amountBots; i++) {
-    bots[i] = new Player(randomNameGenerator());      //(int) random(totalTickets/10);
+    bots[i] = new Player(randomNameGenerator(), false);
+
     bots[i].ticket((int) random(totalTickets/10));
   }
 }
-
-
-
-//Make map to see how many tickets one bot has bought
-//Make a loop that buy x amount of tickets. Connect ticketID to bot
-//Make if/else statements to decide which type of tickets to buy
-//this.tickets = ((int) random(totalTickets/10)); //See if I can return or reuse this number to make a loop in tickets(Needs to go through x amount of times
