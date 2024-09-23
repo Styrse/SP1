@@ -5,6 +5,7 @@ void backgroundFunction() {
   img = loadImage("carnival_background.jpg");
 }
 
+//Make boxes to visualize areas. Should not be called when code is done.
 void boxes() {
   tileX = width/30;
   tileY = height/30;

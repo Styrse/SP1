@@ -10,12 +10,7 @@ void setup() {
 
   fillTicketArray();
   makeBots();
-
-
-
   Player player = new Player(playerName);
-
-
   player.ticket(3);
 
   println("Name: " + player.fullName);
@@ -26,16 +21,17 @@ void setup() {
 
   println("Bank");
   println("Saldo: " + bank);
+  
   println("");
 
 
   //This prints a list of the tickets the player has bought
-println("Player tickets:");
-  for (int i = 0; i < playerTickets.length; i++) {
-    if (playerTickets[i] > 0) {
-      println("Ticket: " + playerTickets[i]);
-    }
-  }
+  //println("Player tickets:");
+  //for (int i = 0; i < playerTickets.length; i++) {
+  //  if (playerTickets[i] > 0) {
+  //    println("Ticket: " + playerTickets[i]);
+  //  }
+  //}
 
   //Print list of tickets ID
   //for (int i = 0; i < remainingTickets; i++){

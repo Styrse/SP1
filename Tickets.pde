@@ -9,7 +9,8 @@ int[] playerTickets = new int [remainingTickets];
 
 
 void fillTicketArray() {
-  int startTicketID = ((int) random (10)*100);      //This will start the ID at a "round number"
+  //This will start the ID at a "round number"
+  int startTicketID = ((int) random (10)*100);
 
   for (int i = 0; i < totalTickets; i++) {
     ticketsID.add(startTicketID + i);
