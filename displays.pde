@@ -3,8 +3,11 @@ PImage wallet;
 PImage tickets;
 PImage coffee;
 
-int playerXPosition;
-int playerYPosition;
+float playerXPosition;
+float playerYPosition;
+
+
+boolean moving= false;
 
 void backgroundFunction() {
   imageMode(CENTER);
@@ -32,7 +35,7 @@ void boxes() {
   //Walkable area
   rectMode(CORNERS);
   fill(100, 50, 150, 50);
-  rect(leftWalkableEdge, rightWalkableEdge, topWalkableEdge, bottomWalkableEdge);
+  rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge);
 }
 
 void menu() {
@@ -54,9 +57,34 @@ void menu() {
   text(player.tickets, tileX*11, tileY*2);
 }
 
-void makePlayer(){
+void makePlayer() {
   coffee = loadImage("coffee.png");
-  image(coffee, width/2, 700, tileX*4, tileY*5);
+  image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
 }
 
 //Make movement for player
+void keyPressed() {
+  if (key == CODED) {
+    if (keyCode == LEFT && !moving) {
+      playerXPosition-= tileX*0.5;
+    } else if (keyCode == RIGHT && !moving) {
+      playerXPosition+= tileX*0.5;
+    } else if (keyCode == UP && !moving) {
+      playerYPosition-= tileY*0.5;
+    } else if (keyCode == DOWN && !moving) {
+      playerYPosition+= tileY*0.5;
+    }
+  }
+
+  playerXPosition = constrain(playerXPosition, leftWalkableEdge, rightWalkableEdge);
+  playerYPosition = constrain(playerYPosition,topWalkableEdge,bottomWalkableEdge);
+}
+
+void keyReleased() {
+  moving = false;
+}
+
+
+
+//playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
+//playerYPosition = random(topWalkableEdge, bottomWalkableEdge);

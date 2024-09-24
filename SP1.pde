@@ -14,10 +14,13 @@ void setup() {
   tileX = width/30;
   tileY = height/30;
   leftWalkableEdge = tileX;
-  rightWalkableEdge = tileY*23.5;
-  topWalkableEdge = width-tileX;
+  rightWalkableEdge = width-tileX;
+  topWalkableEdge = tileY*23.5;
   bottomWalkableEdge = height-tileX;
-  
+
+  playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
+  playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
+
   backgroundFunction();
 
   fillTicketArray();
