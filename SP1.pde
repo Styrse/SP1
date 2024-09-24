@@ -34,6 +34,12 @@ void setup() {
   rightAccessBoxTent = tileX*26;
   topAccessBoxTent = tileY*23.5;
   bottomAccessBoxTent = tileY*26;
+  
+  //Enter click area tent
+  leftClickAreaTent = tileX*21.25;
+  rightClickAreaTent = tileX*24.65;
+  topClickAreaTent = tileY*21.5;
+  bottomClickAreaTent = tileY*24.75;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);

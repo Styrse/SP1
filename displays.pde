@@ -29,6 +29,12 @@ float rightAccessBoxTent;
 float topAccessBoxTent;
 float bottomAccessBoxTent;
 
+//Enter tent area
+float leftClickAreaTent;
+float rightClickAreaTent;
+float topClickAreaTent;
+float bottomClickAreaTent;
+
 
 boolean moving= false;
 
@@ -52,8 +58,8 @@ void boxes() {
   //Tent
   fill(0, 100);
   rect(leftAccessBoxTent, topAccessBoxTent, rightAccessBoxTent, bottomAccessBoxTent);
-  //fill(255, 100);
-  //rect(tileX*23, tileY*25, tileX*6, tileY*3);
+  fill(255, 100);
+  rect(leftClickAreaTent, topClickAreaTent, rightClickAreaTent, bottomClickAreaTent);
 
   //Walkable area
   rectMode(CORNERS);
