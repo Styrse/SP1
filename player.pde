@@ -1,1 +1,1 @@
-String playerName = "Carl Gullacksen";
+String playerName = "Styrbjørn Gullacksen";

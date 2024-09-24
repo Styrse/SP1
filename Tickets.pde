@@ -2,7 +2,6 @@ import java.util.ArrayList;
 int remainingTickets = totalTickets;
 
 ArrayList<Integer> ticketsID = new ArrayList<Integer>(totalTickets);
-int[] playerTickets = new int [remainingTickets];
 
 
 

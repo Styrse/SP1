@@ -11,7 +11,7 @@ void setup() {
 
   fillTicketArray();
   makeBots();
-  Player player = new Player(playerName, true);
+  Player player = new Player(playerName);
   player.ticket(3);
 
   println("Name: " + player.fullName);
@@ -29,28 +29,16 @@ void setup() {
   println("Remaining tickets: " + remainingTickets);
 
   println("");
-
-  //Only prints the lines with information greater than 0
-  for (int i = 0; i < amountBots+players; i++) {
-    for (int j = 0; j < totalTickets; j++) {
-      if (boughtTickets[i][j] > 0) {
-        println(boughtTickets[i][j]);
-      }
-    }
-    println("");
-  }
-
-  println("");
   
-  println(boughtTickets[2]);
+  
+  for (int i = 0; i < player.boughtTickets[i]; i++){
+    println(player.boughtTickets[i]);
+  }
+  
 
-  //This prints a list of the tickets the player has bought
-  //println("Player tickets:");
-  //for (int i = 0; i < playerTickets.length; i++) {
-  //  if (playerTickets[i] > 0) {
-  //    println("Ticket: " + playerTickets[i]);
-  //  }
-  //}
+//for (int i = 0; i < bots.length; i++){
+//  println(bots[i].fullName);
+//}
 
   //Print list of tickets ID
   //for (int i = 0; i < remainingTickets; i++) {
