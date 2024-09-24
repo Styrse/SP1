@@ -79,7 +79,10 @@ void menu() {
   rectMode(CENTER);
   rect(width/2, tileY*2, width-tileX*2, tileY*2, 25);
   rectMode(CORNERS);
+  //Sub menus
   rect(tileX, tileY, tileX*12, tileY*3, 25);
+  rect(tileX*12, tileY, tileX*23, tileY*3, 25);
+  rect(tileX*23, tileY, tileX*29, tileY*3, 25);
 
   //Wallet
   wallet = loadImage("wallet.png");
