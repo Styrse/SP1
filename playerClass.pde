@@ -8,6 +8,7 @@ class Player {
   int wallet;
   int tickets;
   int[] boughtTickets = new int[totalTickets];
+  int ticketCount = 0;
 
   Player(String fullName) {
     this.fullName = fullName;
@@ -16,19 +17,23 @@ class Player {
 
   void ticket(int amountTickets) {
     for (int i = 0; i < amountTickets; i++) {
-      int randomNumber = (int) random(remainingTickets);
-      boughtTickets[i] = ticketsID.get(randomNumber);
+      if (ticketCount < boughtTickets.length) {
+        int randomNumber = (int) random(remainingTickets);
+        boughtTickets[ticketCount] = ticketsID.get(randomNumber);
 
-      tickets++;
+        ticketCount++;
+        tickets++;
 
-      //Remove randomNumber from ticketID[randomNumber];
-      ticketsID.remove(randomNumber);
-      //Remove money from player
-      wallet -= 5;
-      //Add money to bank
-      bank += 5;
+        // Remove the randomNumber from ticketsID to prevent duplicate tickets
+        ticketsID.remove(randomNumber);
 
-      remainingTickets --;
+        // Remove money from player
+        wallet -= 5;
+        // Add money to bank
+        bank += 5;
+
+        remainingTickets--;
+      }
     }
   }
 }

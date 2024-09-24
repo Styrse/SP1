@@ -20,7 +20,7 @@ void bankInfo(){
   println("Remaining tickets: " + remainingTickets);
 }
 
-void printBotNames(){
+void printBotInfo(){
   //Print list of bots
   for (int i = 0; i <amountBots; i++){
     println("Name: " + bots[i].fullName);

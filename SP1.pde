@@ -49,7 +49,6 @@ void setup() {
   fillTicketArray();
   makeBots();
   player = new Player(playerName);
-  //player.ticket(3);
 }
 
 void draw() {
