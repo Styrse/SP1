@@ -5,7 +5,7 @@ Player[] bots = new Player[amountBots];
 class Player {
 
   String fullName;
-  float wallet;
+  int wallet;
   int tickets;
   int[] boughtTickets = new int[totalTickets];
 
@@ -18,9 +18,9 @@ class Player {
     for (int i = 0; i < amountTickets; i++) {
       int randomNumber = (int) random(remainingTickets);
       boughtTickets[i] = ticketsID.get(randomNumber);
-      
+
       tickets++;
-      
+
       //Remove randomNumber from ticketID[randomNumber];
       ticketsID.remove(randomNumber);
       //Remove money from player
@@ -32,7 +32,6 @@ class Player {
     }
   }
 }
-
 
 void makeBots() {
   for (int i = 0; i < amountBots; i++) {

@@ -1,4 +1,6 @@
 PImage img;
+PImage wallet;
+PImage tickets;
 
 void backgroundFunction() {
   imageMode(CENTER);
@@ -26,11 +28,25 @@ void boxes() {
   //Walkable area
   rectMode(CORNERS);
   fill(100, 50, 150, 50);
-  rect(tileX, tileY*23.5, width-tileX, height-tileX);
+  rect(leftWalkableEdge, rightWalkableEdge, topWalkableEdge, bottomWalkableEdge);
 }
 
 void menu() {
   fill(255, 127, 50, 100);
   rectMode(CENTER);
   rect(width/2, tileY*2, width-tileX*2, tileY*2, 50);
+  
+  //Wallet
+  wallet = loadImage("wallet.png");
+  image(wallet, tileX*2.25, tileY*2, tileX*1.25, tileY*1.25);
+  fill(0);
+  textSize(tileY);
+  textAlign(LEFT, CENTER);
+  text(player.wallet, tileX*3.25, tileY*2);
+  
+  //Tickets
+  tickets = loadImage("tickets.png");
+  image(tickets, tileX*10, tileY*2, tileX*1.25, tileY*1.25);
+  text(player.tickets, tileX*11, tileY*2);
+  
 }
