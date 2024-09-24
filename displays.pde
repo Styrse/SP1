@@ -6,6 +6,23 @@ PImage coffee;
 float playerXPosition;
 float playerYPosition;
 
+float leftWalkableEdge;
+float rightWalkableEdge;
+float topWalkableEdge;
+float bottomWalkableEdge;
+
+//Access area ticket booth
+float leftAccesBoxTicketBooth;
+float rightAccessBoxTicketBooth;
+float topAccessBoxTicketBooth;
+float bottomAccessBoxTicketBooth;
+
+//Enter ticket booth area
+float leftClickAreaTicketBooth;
+float rightClickAreaTicketBooth;
+float topClickAreaTicketBooth;
+float bottomClickAreaTicketBooth;
+
 
 boolean moving= false;
 
@@ -19,18 +36,18 @@ void boxes() {
   tileX = width/30;
   tileY = height/30;
 
-  rectMode(CENTER);
+  rectMode(CORNERS);
   strokeWeight(3);
   //Ticket booth
   fill(0, 100);
-  rect(tileX*4.5, tileY*22.5, tileX*3, tileY*4);
+  rect(leftAccesBoxTicketBooth, topAccessBoxTicketBooth, rightAccessBoxTicketBooth, bottomAccessBoxTicketBooth);
   fill(255, 100);
-  rect(tileX*4.5, tileY*25, tileX*5, tileY*3);
-  //Tent
-  fill(0, 100);
-  rect(tileX*23, tileY*23.25, tileX*3.25, tileY*3);
-  fill(255, 100);
-  rect(tileX*23, tileY*25, tileX*6, tileY*3);
+  rect(leftClickAreaTicketBooth, topClickAreaTicketBooth, rightClickAreaTicketBooth, bottomClickAreaTicketBooth);
+  ////Tent
+  //fill(0, 100);
+  //rect(tileX*23, tileY*23.25, tileX*3.25, tileY*3);
+  //fill(255, 100);
+  //rect(tileX*23, tileY*25, tileX*6, tileY*3);
 
   //Walkable area
   rectMode(CORNERS);
@@ -41,7 +58,7 @@ void boxes() {
 void menu() {
   fill(255, 127, 50, 100);
   rectMode(CENTER);
-  rect(width/2, tileY*2, width-tileX*2, tileY*2, 50);
+  rect(width/2, tileY*2, width-tileX*2, tileY*2, 25);
 
   //Wallet
   wallet = loadImage("wallet.png");
@@ -55,6 +72,16 @@ void menu() {
   tickets = loadImage("tickets.png");
   image(tickets, tileX*10, tileY*2, tileX*1.25, tileY*1.25);
   text(player.tickets, tileX*11, tileY*2);
+}
+
+void infoBox() {
+  fill(127, 99);
+  rectMode(CORNER);
+  rect(tileX*24, tileY*5, tileX*5, tileY*10, 25);
+
+  textSize(tileX);
+  fill(0);
+  text("Use arrows to move", tileX*26.5, tileY*12);
 }
 
 void makePlayer() {
@@ -77,9 +104,13 @@ void keyPressed() {
   }
 
   playerXPosition = constrain(playerXPosition, leftWalkableEdge, rightWalkableEdge);
-  playerYPosition = constrain(playerYPosition,topWalkableEdge,bottomWalkableEdge);
+  playerYPosition = constrain(playerYPosition, topWalkableEdge, bottomWalkableEdge);
 }
 
 void keyReleased() {
   moving = false;
 }
+
+//void ticketBooth(){
+//  if (playerXPosition
+//}

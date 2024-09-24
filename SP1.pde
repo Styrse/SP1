@@ -4,19 +4,30 @@ int totalTickets = 100;
 float tileX;
 float tileY;
 Player player;
-float leftWalkableEdge;
-float rightWalkableEdge;
-float topWalkableEdge;
-float bottomWalkableEdge;
+
 
 void setup() {
   size(900, 900);
   tileX = width/30;
   tileY = height/30;
+  
+  //Walkable area
   leftWalkableEdge = tileX;
   rightWalkableEdge = width-tileX;
   topWalkableEdge = tileY*23.5;
   bottomWalkableEdge = height-tileX;
+  
+  //Access area ticket booth
+  leftAccesBoxTicketBooth = tileX*2;
+  rightAccessBoxTicketBooth = tileX*7;
+  topAccessBoxTicketBooth = tileY*23.5;
+  bottomAccessBoxTicketBooth = tileY*26;
+  
+  //Enter click area ticket booth
+  leftClickAreaTicketBooth = tileX*3;
+  rightClickAreaTicketBooth = tileX*6;
+  topClickAreaTicketBooth = tileY*20.5;
+  bottomClickAreaTicketBooth = tileY*24.5;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
