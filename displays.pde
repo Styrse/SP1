@@ -111,6 +111,18 @@ void keyReleased() {
   moving = false;
 }
 
-//void ticketBooth(){
-//  if (playerXPosition
+//void ticketBooth() {
+//  if (playerXPosition > leftAccesBoxTicketBooth && playerXPosition < rightAccessBoxTicketBooth && playerYPosition < bottomAccessBoxTicketBooth && playerYPosition > topAccessBoxTicketBooth){
+//    if (mouseX > leftClickAreaTicketBooth && mouseX < rightClickAreaTicketBooth && mouseY < bottomClickAreaTicketBooth && mouseY > topClickAreaTicketBooth){ //MouseClicked
+//    mouseClicked();
+//    }
+//  }
 //}
+
+void mouseClicked(){
+  if (playerXPosition > leftAccesBoxTicketBooth && playerXPosition < rightAccessBoxTicketBooth && playerYPosition < bottomAccessBoxTicketBooth && playerYPosition > topAccessBoxTicketBooth){
+    if (mouseX > leftClickAreaTicketBooth && mouseX < rightClickAreaTicketBooth && mouseY < bottomClickAreaTicketBooth && mouseY > topClickAreaTicketBooth){ //MouseClicked
+    println("Buy ticket");
+    }
+  }
+}
