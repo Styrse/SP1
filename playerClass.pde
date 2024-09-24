@@ -16,8 +16,8 @@ class Player {
   }
 
   void ticket(int amountTickets) {
-    for (int i = 0; i < amountTickets; i++) {
-      if (ticketCount < boughtTickets.length) {
+    if (wallet > 0) {
+      for (int i = 0; i < amountTickets; i++) {
         int randomNumber = (int) random(remainingTickets);
         boughtTickets[ticketCount] = ticketsID.get(randomNumber);
 
@@ -34,6 +34,8 @@ class Player {
 
         remainingTickets--;
       }
+    } else {
+      text("Insuficient funds", tileX*5, tileY*25); //Fix time
     }
   }
 }
