@@ -83,8 +83,3 @@ void keyPressed() {
 void keyReleased() {
   moving = false;
 }
-
-
-
-//playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
-//playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
