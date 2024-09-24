@@ -23,6 +23,12 @@ float rightClickAreaTicketBooth;
 float topClickAreaTicketBooth;
 float bottomClickAreaTicketBooth;
 
+//Access area tent
+float leftAccessBoxTent;
+float rightAccessBoxTent;
+float topAccessBoxTent;
+float bottomAccessBoxTent;
+
 
 boolean moving= false;
 
@@ -43,9 +49,9 @@ void boxes() {
   rect(leftAccesBoxTicketBooth, topAccessBoxTicketBooth, rightAccessBoxTicketBooth, bottomAccessBoxTicketBooth);
   fill(255, 100);
   rect(leftClickAreaTicketBooth, topClickAreaTicketBooth, rightClickAreaTicketBooth, bottomClickAreaTicketBooth);
-  ////Tent
-  //fill(0, 100);
-  //rect(tileX*23, tileY*23.25, tileX*3.25, tileY*3);
+  //Tent
+  fill(0, 100);
+  rect(leftAccessBoxTent, topAccessBoxTent, rightAccessBoxTent, bottomAccessBoxTent);
   //fill(255, 100);
   //rect(tileX*23, tileY*25, tileX*6, tileY*3);
 
