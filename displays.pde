@@ -1,6 +1,10 @@
 PImage img;
 PImage wallet;
 PImage tickets;
+PImage coffee;
+
+int playerXPosition;
+int playerYPosition;
 
 void backgroundFunction() {
   imageMode(CENTER);
@@ -24,7 +28,7 @@ void boxes() {
   rect(tileX*23, tileY*23.25, tileX*3.25, tileY*3);
   fill(255, 100);
   rect(tileX*23, tileY*25, tileX*6, tileY*3);
-  
+
   //Walkable area
   rectMode(CORNERS);
   fill(100, 50, 150, 50);
@@ -35,7 +39,7 @@ void menu() {
   fill(255, 127, 50, 100);
   rectMode(CENTER);
   rect(width/2, tileY*2, width-tileX*2, tileY*2, 50);
-  
+
   //Wallet
   wallet = loadImage("wallet.png");
   image(wallet, tileX*2.25, tileY*2, tileX*1.25, tileY*1.25);
@@ -43,10 +47,16 @@ void menu() {
   textSize(tileY);
   textAlign(LEFT, CENTER);
   text(player.wallet, tileX*3.25, tileY*2);
-  
+
   //Tickets
   tickets = loadImage("tickets.png");
   image(tickets, tileX*10, tileY*2, tileX*1.25, tileY*1.25);
   text(player.tickets, tileX*11, tileY*2);
-  
 }
+
+void makePlayer(){
+  coffee = loadImage("coffee.png");
+  image(coffee, width/2, 700, tileX*4, tileY*5);
+}
+
+//Make movement for player
