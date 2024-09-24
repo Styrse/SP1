@@ -35,7 +35,6 @@ float rightClickAreaTent;
 float topClickAreaTent;
 float bottomClickAreaTent;
 
-
 boolean moving= false;
 
 void backgroundFunction() {
@@ -123,18 +122,12 @@ void keyReleased() {
   moving = false;
 }
 
-//void ticketBooth() {
-//  if (playerXPosition > leftAccesBoxTicketBooth && playerXPosition < rightAccessBoxTicketBooth && playerYPosition < bottomAccessBoxTicketBooth && playerYPosition > topAccessBoxTicketBooth){
-//    if (mouseX > leftClickAreaTicketBooth && mouseX < rightClickAreaTicketBooth && mouseY < bottomClickAreaTicketBooth && mouseY > topClickAreaTicketBooth){ //MouseClicked
-//    mouseClicked();
-//    }
-//  }
-//}
-
 void mouseClicked(){
-  if (playerXPosition > leftAccesBoxTicketBooth && playerXPosition < rightAccessBoxTicketBooth && playerYPosition < bottomAccessBoxTicketBooth && playerYPosition > topAccessBoxTicketBooth){
-    if (mouseX > leftClickAreaTicketBooth && mouseX < rightClickAreaTicketBooth && mouseY < bottomClickAreaTicketBooth && mouseY > topClickAreaTicketBooth){ //MouseClicked
-    println("Buy ticket");
+  if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth){
+    if (mouseX >= leftClickAreaTicketBooth && mouseX <= rightClickAreaTicketBooth && mouseY <= bottomClickAreaTicketBooth && mouseY >= topClickAreaTicketBooth){ //MouseClicked
+    player.ticket(1);
+    println("Ticket bought");
+    printPlayerInfo();
     }
   }
 }
