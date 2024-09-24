@@ -124,6 +124,14 @@ void infoBox() {
 void makePlayer() {
   coffee = loadImage("coffee.png");
   image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
+  //Name tag
+  rectMode(CORNERS);
+  fill(0, 255, 0, 85);
+  rect(playerXPosition-tileX*2, playerYPosition-tileY*3, playerXPosition+tileX*2, playerYPosition-tileY*2.2, 50);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  textSize(tileY*0.4);
+  text(playerName, playerXPosition, playerYPosition-tileY*2.6);
 }
 
 //Make movement for player
