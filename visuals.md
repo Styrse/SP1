@@ -6,6 +6,15 @@ https://www.flaticon.com/free-icons/money" title="money icons">Money icons creat
 Lottery ticket:
 https://www.flaticon.com/free-icons/ticket" title="ticket icons">Ticket icons created by Smashicons - Flaticon
 
+Bank:
+https://www.flaticon.com/free-icons/bank" title="bank icons">Bank icons created by Freepik - Flaticon
+
+Raffle:
+https://www.flaticon.com/free-icons/raffle" title="raffle icons">Raffle icons created by Freepik - Flaticon
+
+Lottery:
+https://www.flaticon.com/free-icons/lottery" title="lottery icons">Lottery icons created by Aranagraphics - Flaticon
+
 Player character:
 https://www.flaticon.com/free-stickers/cute" title="cute stickers">Cute stickers created by Adorableninana - Flaticon
 

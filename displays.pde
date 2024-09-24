@@ -2,6 +2,9 @@ PImage img;
 PImage wallet;
 PImage tickets;
 PImage coffee;
+PImage bankIMG;
+PImage raffle;
+PImage lottery;
 
 float playerXPosition;
 float playerYPosition;
@@ -37,6 +40,8 @@ float bottomClickAreaTent;
 
 boolean moving= false;
 
+
+
 void backgroundFunction() {
   imageMode(CENTER);
   img = loadImage("carnival_background.jpg");
@@ -67,13 +72,18 @@ void boxes() {
 }
 
 void menu() {
+  float iconSizeX = tileX*1.25;
+  float iconSizeY = tileY*1.25;
+
   fill(255, 127, 50, 100);
   rectMode(CENTER);
   rect(width/2, tileY*2, width-tileX*2, tileY*2, 25);
+  rectMode(CORNERS);
+  rect(tileX, tileY, tileX*12, tileY*3, 25);
 
   //Wallet
   wallet = loadImage("wallet.png");
-  image(wallet, tileX*2.25, tileY*2, tileX*1.25, tileY*1.25);
+  image(wallet, tileX*2.25, tileY*2, iconSizeX, iconSizeY);
   fill(0);
   textSize(tileY);
   textAlign(LEFT, CENTER);
@@ -81,8 +91,21 @@ void menu() {
 
   //Tickets
   tickets = loadImage("tickets.png");
-  image(tickets, tileX*10, tileY*2, tileX*1.25, tileY*1.25);
-  text(player.tickets, tileX*11, tileY*2);
+  image(tickets, tileX*8.25, tileY*2, iconSizeX, iconSizeY);
+  text(player.tickets, tileX*9.25, tileY*2);
+
+  //Bank
+  bankIMG = loadImage("bank.png");
+  image(bankIMG, tileX*14.25, tileY*2, iconSizeX, iconSizeY);
+  text(bank, tileX*15.25, tileY*2);
+
+  //Raffle
+  raffle = loadImage("raffle.png");
+  image(raffle, tileX*20.25, tileY*2, iconSizeX, iconSizeY);
+
+  //Lottery
+  lottery = loadImage("lottery.png");
+  image(lottery, tileX*27.5, tileY*2, iconSizeX, iconSizeY);
 }
 
 void infoBox() {
@@ -122,16 +145,16 @@ void keyReleased() {
   moving = false;
 }
 
-void mouseClicked(){
-  if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth){
-    if (mouseX >= leftClickAreaTicketBooth && mouseX <= rightClickAreaTicketBooth && mouseY <= bottomClickAreaTicketBooth && mouseY >= topClickAreaTicketBooth){
-    player.ticket(1);
-    println("Ticket bought");
-    printPlayerInfo();
+void mouseClicked() {
+  if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth) {
+    if (mouseX >= leftClickAreaTicketBooth && mouseX <= rightClickAreaTicketBooth && mouseY <= bottomClickAreaTicketBooth && mouseY >= topClickAreaTicketBooth) {
+      player.ticket(1);
+      println("Ticket bought");
+      printPlayerInfo();
     }
-  } else if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent){
-    if ( mouseX >= leftClickAreaTent && mouseX <= rightClickAreaTent && mouseY <= bottomClickAreaTent && mouseY >= topClickAreaTent){
-      println("Enter tent");
+  } else if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent) {
+    if ( mouseX >= leftClickAreaTent && mouseX <= rightClickAreaTent && mouseY <= bottomClickAreaTent && mouseY >= topClickAreaTent) {
+      tent();
     }
   }
 }
