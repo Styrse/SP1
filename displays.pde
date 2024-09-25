@@ -66,9 +66,9 @@ void boxes() {
   rect(leftClickAreaTent, topClickAreaTent, rightClickAreaTent, bottomClickAreaTent);
 
   //Walkable area
-  rectMode(CORNERS);
   fill(100, 50, 150, 50);
   rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge);
+
 }
 
 void menu() {
