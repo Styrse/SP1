@@ -12,6 +12,9 @@ https://www.flaticon.com/free-icons/bank" title="bank icons">Bank icons created 
 Raffle:
 https://www.flaticon.com/free-icons/raffle" title="raffle icons">Raffle icons created by Freepik - Flaticon
 
+Help:
+https://www.flaticon.com/free-icons/help" title="help icons">Help icons created by Freepik - Flaticon
+
 Lottery:
 https://www.flaticon.com/free-icons/lottery" title="lottery icons">Lottery icons created by Aranagraphics - Flaticon
 
