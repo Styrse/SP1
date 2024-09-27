@@ -40,6 +40,14 @@ void setup() {
   rightClickAreaTent = tileX*24.65;
   topClickAreaTent = tileY*21.5;
   bottomClickAreaTent = tileY*24.75;
+  
+  //Wallet
+  leftWallet = tileX*3;
+  rightWallet = tileX*4;
+  topWallet = tileY*3;
+  bottomWallet = tileY*4;
+  
+  
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);

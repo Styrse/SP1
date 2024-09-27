@@ -7,6 +7,9 @@ PImage raffle;
 PImage help;
 PImage lottery;
 
+float iconSizeX;
+float iconSizeY;
+
 float playerXPosition;
 float playerYPosition;
 
@@ -110,8 +113,8 @@ void boxes() {
 }
 
 void menu() {
-  float iconSizeX = tileX*1.25;
-  float iconSizeY = tileY*1.25;
+  iconSizeX = tileX*1.25;
+  iconSizeY = tileY*1.25;
 
   fill(255, 127, 50, 100);
   rectMode(CENTER);
@@ -123,13 +126,15 @@ void menu() {
   rect(tileX*23, tileY, tileX*29, tileY*3, 25);
 
   //Wallet
+  imageMode(CORNERS);
   wallet = loadImage("wallet.png");
-  image(wallet, tileX*2.25, tileY*2, iconSizeX, iconSizeY);
+  image(wallet, leftWallet, topWallet, rightWallet, bottomWallet);
   fill(0);
   textSize(tileY);
   textAlign(LEFT, CENTER);
   text(player.wallet, tileX*3.25, tileY*2);
 
+imageMode(CENTER);
   //Tickets
   tickets = loadImage("tickets.png");
   image(tickets, tileX*8.25, tileY*2, iconSizeX, iconSizeY);
