@@ -81,6 +81,7 @@ float bottomEnter;
 boolean moving = false;
 boolean boxesOn = false;
 boolean start = true;
+boolean typing = false;
 boolean enteredUsername = false;
 
 void backgroundFunction() {
@@ -191,6 +192,14 @@ void makePlayer() {
 
 //Make movement for player
 void keyPressed() {
+  if (start == true && typing == true){
+    if (key == BACKSPACE && playerName.length() > 0 && playerName.length() < 20){
+      playerName = playerName.substring(0, playerName.length()-1);
+    } else if ( key != BACKSPACE && key != ENTER){
+      playerName += key;
+    }
+  }
+  
   if (start == false) {
     if (key == CODED) {
       if (keyCode == LEFT && !moving) {
@@ -215,7 +224,6 @@ void keyReleased() {
 
 void mouseClicked() {
   if (start == false) {
-
     if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth) {
       if (mouseX >= leftClickAreaTicketBooth && mouseX <= rightClickAreaTicketBooth && mouseY <= bottomClickAreaTicketBooth && mouseY >= topClickAreaTicketBooth) {
         player.ticket(1);
@@ -242,10 +250,9 @@ void mouseClicked() {
     }
   } else {
     if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
-      println("Enter username");
+      typing = true;
     } else if (mouseX < rightEnter && mouseX > leftEnter && mouseY < bottomEnter && mouseY > topEnter){
       start = false;
-      //Also need username to have atleast one character
     }
   }
 }
@@ -274,8 +281,11 @@ void startInfo() {
   fill(255);
   rectMode(CORNERS);
   rect(leftUsername, topUsername, rightUsername, bottomUsername, 25);
+  fill(0);
+  textSize(tileX*1.15);
+  text(playerName, width/2, tileY*19.75);
 
-  if (enteredUsername == false) {
+  if (playerName.length() <= 0) {
     fill(127);
   } else {
     fill(0, 255, 0);
@@ -284,6 +294,4 @@ void startInfo() {
   textSize(width/35);
   fill(0);
   text("Enter", width/2, tileY*21.5);
-
-  //Make scanner username here
 }
