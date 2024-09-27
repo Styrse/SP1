@@ -7,6 +7,7 @@ Player player;
 
 
 void setup() {
+  windowTitle("Fantasia Fairgrounds");
   size(900, 900);
   tileX = width/30;
   tileY = height/30;

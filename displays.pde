@@ -190,16 +190,19 @@ void makePlayer() {
 }
 
 void keyPressed() {
-  if (start == true && typing == true){
-    if (key == BACKSPACE && playerName.length() > 0 && playerName.length() < 20){
+  if (start == true && typing == true) {
+    if (key == BACKSPACE && playerName.length() > 0 && playerName.length() < 20) {
       playerName = playerName.substring(0, playerName.length()-1);
-    } else if (Character.isLetter(key) || key == ' ' ){
+    } else if (Character.isLetter(key) || key == ' ' || Character.isDigit(key)) {
       playerName += key;
-    } else if (key == ENTER && playerName.length() > 0){
+      if (playerName.length() > 15) {
+        playerName = playerName.substring(0, 15);
+      }
+    } else if (key == ENTER && playerName.length() > 0) {
       start = false;
     }
   }
-  
+
   if (start == false) {
     if (key == CODED) {
       if (keyCode == LEFT && !moving) {
@@ -251,7 +254,7 @@ void mouseClicked() {
   } else {
     if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
       typing = true;
-    } else if (mouseX < rightEnter && mouseX > leftEnter && mouseY < bottomEnter && mouseY > topEnter){
+    } else if (mouseX < rightEnter && mouseX > leftEnter && mouseY < bottomEnter && mouseY > topEnter) {
       start = false;
     }
   }
@@ -263,13 +266,13 @@ void startInfo() {
   rect(width/2, height/2, width/2, height/2, 25);
   line(tileX*8, tileY*11, tileX*22, tileY*11);
   line(tileX*8, tileY*17, tileX*22, tileY*17);
-  
+
   textAlign(CENTER, CENTER);
   textSize(width/45);
   fill(0);
   text("Enjoy a sunny day at the " + '"' + "Fantasia Fairgrounds" + '"' + "\nBuy some lottery tickets or gamble in the tent", width/2, tileY*9.5);
   strokeWeight(1.5);
-  
+
   text("To finish the day and see what you won \nclick this icon in the top right corner.", width/2, tileY*12.5);
   lottery = loadImage("lottery.png");
   image(lottery, width/2, height/2, iconSizeX*2, iconSizeY*2);
@@ -277,7 +280,7 @@ void startInfo() {
   //Username
   text("Please enter your name by clicking the box below.", width/2, tileY*17.75);
   textSize(width/65);
-  text("Max 20 chracters", width/2, tileY*18.5);
+  text("Max 15 chracters", width/2, tileY*18.5);
   fill(255);
   rectMode(CORNERS);
   rect(leftUsername, topUsername, rightUsername, bottomUsername, 25);

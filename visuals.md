@@ -1,5 +1,8 @@
 # SP1
 
+Icon:
+https://www.flaticon.com/free-icons/carnival" title="carnival icons">Carnival icons created by dDara - Flaticon
+
 Wallet:
 https://www.flaticon.com/free-icons/money" title="money icons">Money icons created by Freepik - Flaticon
 
