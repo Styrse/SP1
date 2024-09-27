@@ -85,21 +85,16 @@ void boxes() {
 
   rectMode(CORNERS);
   strokeWeight(3);
+  noFill();
   //Ticket booth
-  fill(0, 100);
   rect(leftAccesBoxTicketBooth, topAccessBoxTicketBooth, rightAccessBoxTicketBooth, bottomAccessBoxTicketBooth);
-  fill(255, 100);
   rect(leftClickAreaTicketBooth, topClickAreaTicketBooth, rightClickAreaTicketBooth, bottomClickAreaTicketBooth);
   //Tent
-  fill(0, 100);
   rect(leftAccessBoxTent, topAccessBoxTent, rightAccessBoxTent, bottomAccessBoxTent);
-  fill(255, 100);
   rect(leftClickAreaTent, topClickAreaTent, rightClickAreaTent, bottomClickAreaTent);
-
   //Walkable area
-  fill(100, 50, 150, 50);
   rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge);
-  
+
   //Menu
   //Wallet
   rect(leftWallet, top, rightWallet, bottom);
@@ -175,7 +170,8 @@ void makePlayer() {
   image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
   //Name tag
   rectMode(CORNERS);
-  fill(0, 255, 0, 85);
+  strokeWeight(2);
+  fill(0, 255, 0, 127);
   rect(playerXPosition-tileX*2, playerYPosition-tileY*3, playerXPosition+tileX*2, playerYPosition-tileY*2.2, 50);
   fill(0);
   textAlign(CENTER, CENTER);
@@ -216,5 +212,18 @@ void mouseClicked() {
     if ( mouseX >= leftClickAreaTent && mouseX <= rightClickAreaTent && mouseY <= bottomClickAreaTent && mouseY >= topClickAreaTent) {
       tent();
     }
+  }
+  if (mouseX < rightWallet && mouseX > leftWallet && mouseY < bottom && mouseY > top) {
+    println("Wallet");
+  } else if (mouseX < rightTickets && mouseX > leftTickets && mouseY < bottom && mouseY > top) {
+    println("Tickets");
+  } else if (mouseX < rightBank && mouseX > leftBank && mouseY < bottom && mouseY > top) {
+    println("Bank");
+  } else if (mouseX < rightRaffle && mouseX > leftRaffle && mouseY < bottom && mouseY > top) {
+    println("Raffle");
+  }else if (mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top){
+    println("Help");
+  }else if (mouseX < rightLottery && mouseX > leftLottery && mouseY < bottom && mouseY > top){
+    println("Lottery");
   }
 }
