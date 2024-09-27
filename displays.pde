@@ -43,41 +43,31 @@ float topClickAreaTent;
 float bottomClickAreaTent;
 
 //Menu
+float top;
+float bottom;
 //Wallet
 float leftWallet;
 float rightWallet;
-float topWallet;
-float bottomWallet;
 
 //Tickets
 float leftTickets;
 float rightTickets;
-float topTickets;
-float bottomTickets;
 
 //Bank
 float leftBank;
 float rightBank;
-float topBank;
-float bottomBank;
 
 //Raffle
 float leftRaffle;
 float rightRaffle;
-float topRaffle;
-float bottomRaffle;
 
 //Help
 float leftHelp;
 float rightHelp;
-float topHelp;
-float bottomHelp;
 
 //Lottery
 float leftLottery;
 float rightLottery;
-float topLottery;
-float bottomLottery;
 
 boolean moving= false;
 
@@ -109,12 +99,9 @@ void boxes() {
   //Walkable area
   fill(100, 50, 150, 50);
   rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge);
-
 }
 
 void menu() {
-  iconSizeX = tileX*1.25;
-  iconSizeY = tileY*1.25;
 
   fill(255, 127, 50, 100);
   rectMode(CENTER);
@@ -128,34 +115,34 @@ void menu() {
   //Wallet
   imageMode(CORNERS);
   wallet = loadImage("wallet.png");
-  image(wallet, leftWallet, topWallet, rightWallet, bottomWallet);
+  image(wallet, leftWallet, top, rightWallet, bottom);
   fill(0);
   textSize(tileY);
   textAlign(LEFT, CENTER);
   text(player.wallet, tileX*3.25, tileY*2);
 
-imageMode(CENTER);
+
   //Tickets
   tickets = loadImage("tickets.png");
-  image(tickets, tileX*8.25, tileY*2, iconSizeX, iconSizeY);
+  image(tickets, leftTickets, top, rightTickets, bottom);
   text(player.tickets, tileX*9.25, tileY*2);
 
   //Bank
   bankIMG = loadImage("bank.png");
-  image(bankIMG, tileX*14.25, tileY*2, iconSizeX, iconSizeY);
+  image(bankIMG, leftBank, top, rightBank, bottom);
   text(bank, tileX*15.25, tileY*2);
 
   //Raffle
   raffle = loadImage("raffle.png");
-  image(raffle, tileX*20.25, tileY*2, iconSizeX, iconSizeY);
-  
+  image(raffle, leftRaffle, top, rightRaffle, bottom);
+
   //Help
   help = loadImage("help.png");
-  image(help, tileX*24.75, tileY*2, iconSizeX, iconSizeY);
+  image(help, leftHelp, top, rightHelp, bottom);
 
   //Lottery
   lottery = loadImage("lottery.png");
-  image(lottery, tileX*27.5, tileY*2, iconSizeX, iconSizeY);
+  image(lottery, leftLottery, top, rightLottery, bottom);
 }
 
 void infoBox() {
@@ -169,6 +156,7 @@ void infoBox() {
 }
 
 void makePlayer() {
+  imageMode(CENTER);
   coffee = loadImage("coffee.png");
   image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
   //Name tag

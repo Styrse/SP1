@@ -10,6 +10,10 @@ void setup() {
   size(900, 900);
   tileX = width/30;
   tileY = height/30;
+  
+  
+  iconSizeX = tileX*1.25;
+  iconSizeY = tileY*1.25;
 
   //Walkable area
   leftWalkableEdge = tileX;
@@ -41,14 +45,33 @@ void setup() {
   topClickAreaTent = tileY*21.5;
   bottomClickAreaTent = tileY*24.75;
   
+  //Menu
+  top = tileY*1.3;
+  bottom = top+iconSizeY;
   //Wallet
-  leftWallet = tileX*3;
-  rightWallet = tileX*4;
-  topWallet = tileY*3;
-  bottomWallet = tileY*4;
+  leftWallet = tileX*1.75;
+  rightWallet = leftWallet+iconSizeX;
   
+  //Tickets
+  leftTickets = tileX*7.75;
+  rightTickets = leftTickets+iconSizeX;
   
-
+  //Bank
+  leftBank = tileX*13.75;
+  rightBank = leftBank+iconSizeX;
+  
+  //Raffle
+  leftRaffle = tileX*19.75;
+  rightRaffle = leftRaffle+iconSizeX;
+  
+  //Help
+  leftHelp = tileX*24.25;
+  rightHelp = leftHelp+iconSizeX;
+  
+  //Lottery
+  leftLottery = tileX*26.75;
+  rightLottery = leftLottery+iconSizeX;
+  
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
 
