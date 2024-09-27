@@ -4,6 +4,7 @@ PImage tickets;
 PImage coffee;
 PImage bankIMG;
 PImage raffle;
+PImage help;
 PImage lottery;
 
 float playerXPosition;
@@ -105,6 +106,10 @@ void menu() {
   //Raffle
   raffle = loadImage("raffle.png");
   image(raffle, tileX*20.25, tileY*2, iconSizeX, iconSizeY);
+  
+  //Help
+  help = loadImage("help.png");
+  image(help, tileX*24.75, tileY*2, iconSizeX, iconSizeY);
 
   //Lottery
   lottery = loadImage("lottery.png");
