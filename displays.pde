@@ -82,7 +82,6 @@ boolean moving = false;
 boolean boxesOn = false;
 boolean start = true;
 boolean typing = false;
-boolean enteredUsername = false;
 
 void backgroundFunction() {
   imageMode(CENTER);
@@ -190,13 +189,14 @@ void makePlayer() {
   text(playerName, playerXPosition, playerYPosition-tileY*2.6);
 }
 
-//Make movement for player
 void keyPressed() {
   if (start == true && typing == true){
     if (key == BACKSPACE && playerName.length() > 0 && playerName.length() < 20){
       playerName = playerName.substring(0, playerName.length()-1);
-    } else if ( key != BACKSPACE && key != ENTER){
+    } else if (Character.isLetter(key) || key == ' ' ){
       playerName += key;
+    } else if (key == ENTER && playerName.length() > 0){
+      start = false;
     }
   }
   
