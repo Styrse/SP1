@@ -39,6 +39,43 @@ float rightClickAreaTent;
 float topClickAreaTent;
 float bottomClickAreaTent;
 
+//Menu
+//Wallet
+float leftWallet;
+float rightWallet;
+float topWallet;
+float bottomWallet;
+
+//Tickets
+float leftTickets;
+float rightTickets;
+float topTickets;
+float bottomTickets;
+
+//Bank
+float leftBank;
+float rightBank;
+float topBank;
+float bottomBank;
+
+//Raffle
+float leftRaffle;
+float rightRaffle;
+float topRaffle;
+float bottomRaffle;
+
+//Help
+float leftHelp;
+float rightHelp;
+float topHelp;
+float bottomHelp;
+
+//Lottery
+float leftLottery;
+float rightLottery;
+float topLottery;
+float bottomLottery;
+
 boolean moving= false;
 
 
