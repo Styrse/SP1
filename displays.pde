@@ -99,6 +99,20 @@ void boxes() {
   //Walkable area
   fill(100, 50, 150, 50);
   rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge);
+  
+  //Menu
+  //Wallet
+  rect(leftWallet, top, rightWallet, bottom);
+  //Tickets
+  rect(leftTickets, top, rightTickets, bottom);
+  //Bank
+  rect(leftBank, top, rightBank, bottom);
+  //Raffle
+  rect(leftRaffle, top, rightRaffle, bottom);
+  //Help
+  rect(leftHelp, top, rightHelp, bottom);
+  //Lottery
+  rect(leftLottery, top, rightLottery, bottom);
 }
 
 void menu() {
