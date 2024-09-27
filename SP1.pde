@@ -71,6 +71,18 @@ void setup() {
   //Lottery
   leftLottery = tileX*26.75;
   rightLottery = leftLottery+iconSizeX;
+  
+  //Username box
+  leftUsername = tileX*10;
+  rightUsername = tileX*20;
+  topUsername = tileY*19;
+  bottomUsername = tileY*20.5;
+  
+  //Enter box
+  leftEnter = tileX*13;
+  rightEnter = tileX*17;
+  topEnter = tileY*21;
+  bottomEnter = tileY*22;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
@@ -90,4 +102,8 @@ void draw() {
     boxes();
   }
   makePlayer();
+
+  if (start == true) {
+    startInfo();
+  }
 }

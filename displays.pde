@@ -66,15 +66,28 @@ float rightHelp;
 float leftLottery;
 float rightLottery;
 
+//Username box
+float leftUsername;
+float rightUsername;
+float topUsername;
+float bottomUsername;
+
+//Enter box
+float leftEnter;
+float rightEnter;
+float topEnter;
+float bottomEnter;
+
 boolean moving = false;
 boolean boxesOn = false;
+boolean start = true;
+boolean enteredUsername = false;
 
 void backgroundFunction() {
   imageMode(CENTER);
   img = loadImage("carnival_background.jpg");
 }
 
-//Make boxes to visualize areas. Should not be called when code is done.
 void boxes() {
   tileX = width/30;
   tileY = height/30;
@@ -109,19 +122,19 @@ void boxes() {
   rectMode(CENTER);
   fill(255, 0, 255, 150);
   rect(width/2, height/4, width/2, height/4, 25);
-  
+
   //Arrows
   imageMode(CENTER);
   arrows = loadImage("keyboard.png");
   image(arrows, tileX*12, tileY*9.5, tileX*2.5, tileY*2.5);
   //Mouse
   mouse = loadImage("mouse.png");
-  image(mouse, tileX*18, tileY*9.5, tileX*2.5, tileY*2.5); 
-  
+  image(mouse, tileX*18, tileY*9.5, tileX*2.5, tileY*2.5);
+
   fill(0);
   textAlign(CENTER);
   textSize(width/45);
-  text("Use the arrow keys to moved around \nUse the mouse for interactions", width/2, height/5);
+  text("Use the arrow keys to move around \nUse the mouse for interactions", width/2, height/5);
 }
 
 void menu() {
@@ -178,15 +191,17 @@ void makePlayer() {
 
 //Make movement for player
 void keyPressed() {
-  if (key == CODED) {
-    if (keyCode == LEFT && !moving) {
-      playerXPosition-= tileX*0.5;
-    } else if (keyCode == RIGHT && !moving) {
-      playerXPosition+= tileX*0.5;
-    } else if (keyCode == UP && !moving) {
-      playerYPosition-= tileY*0.5;
-    } else if (keyCode == DOWN && !moving) {
-      playerYPosition+= tileY*0.5;
+  if (start == false) {
+    if (key == CODED) {
+      if (keyCode == LEFT && !moving) {
+        playerXPosition-= tileX*0.5;
+      } else if (keyCode == RIGHT && !moving) {
+        playerXPosition+= tileX*0.5;
+      } else if (keyCode == UP && !moving) {
+        playerYPosition-= tileY*0.5;
+      } else if (keyCode == DOWN && !moving) {
+        playerYPosition+= tileY*0.5;
+      }
     }
   }
 
@@ -199,28 +214,78 @@ void keyReleased() {
 }
 
 void mouseClicked() {
-  if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth) {
-    if (mouseX >= leftClickAreaTicketBooth && mouseX <= rightClickAreaTicketBooth && mouseY <= bottomClickAreaTicketBooth && mouseY >= topClickAreaTicketBooth) {
-      player.ticket(1);
-      println("Ticket bought");
-      printPlayerInfo();
+  if (start == false) {
+
+    if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth) {
+      if (mouseX >= leftClickAreaTicketBooth && mouseX <= rightClickAreaTicketBooth && mouseY <= bottomClickAreaTicketBooth && mouseY >= topClickAreaTicketBooth) {
+        player.ticket(1);
+        println("Ticket bought");
+        printPlayerInfo();
+      }
+    } else if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent) {
+      if ( mouseX >= leftClickAreaTent && mouseX <= rightClickAreaTent && mouseY <= bottomClickAreaTent && mouseY >= topClickAreaTent) {
+        tent();
+      }
     }
-  } else if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent) {
-    if ( mouseX >= leftClickAreaTent && mouseX <= rightClickAreaTent && mouseY <= bottomClickAreaTent && mouseY >= topClickAreaTent) {
-      tent();
+    if (mouseX < rightWallet && mouseX > leftWallet && mouseY < bottom && mouseY > top) {
+      println("Wallet");
+    } else if (mouseX < rightTickets && mouseX > leftTickets && mouseY < bottom && mouseY > top) {
+      println("Tickets");
+    } else if (mouseX < rightBank && mouseX > leftBank && mouseY < bottom && mouseY > top) {
+      println("Bank");
+    } else if (mouseX < rightRaffle && mouseX > leftRaffle && mouseY < bottom && mouseY > top) {
+      println("Raffle");
+    } else if (mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
+      boxesOn = !boxesOn;
+    } else if (mouseX < rightLottery && mouseX > leftLottery && mouseY < bottom && mouseY > top) {
+      println("Lottery");
+    }
+  } else {
+    if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
+      println("Enter username");
+    } else if (mouseX < rightEnter && mouseX > leftEnter && mouseY < bottomEnter && mouseY > topEnter){
+      start = false;
+      //Also need username to have atleast one character
     }
   }
-  if (mouseX < rightWallet && mouseX > leftWallet && mouseY < bottom && mouseY > top) {
-    println("Wallet");
-  } else if (mouseX < rightTickets && mouseX > leftTickets && mouseY < bottom && mouseY > top) {
-    println("Tickets");
-  } else if (mouseX < rightBank && mouseX > leftBank && mouseY < bottom && mouseY > top) {
-    println("Bank");
-  } else if (mouseX < rightRaffle && mouseX > leftRaffle && mouseY < bottom && mouseY > top) {
-    println("Raffle");
-  } else if (mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
-    boxesOn = !boxesOn;
-  } else if (mouseX < rightLottery && mouseX > leftLottery && mouseY < bottom && mouseY > top) {
-    println("Lottery");
+}
+
+void startInfo() {
+  rectMode(CENTER);
+  fill(255, 0, 0, 200);
+  rect(width/2, height/2, width/2, height/2, 25);
+  line(tileX*8, tileY*11, tileX*22, tileY*11);
+  line(tileX*8, tileY*17, tileX*22, tileY*17);
+  
+  textAlign(CENTER, CENTER);
+  textSize(width/45);
+  fill(0);
+  text("Enjoy a sunny day at the " + '"' + "Fantasia Fairgrounds" + '"' + "\nBuy some lottery tickets or gamble in the tent", width/2, tileY*9.5);
+  strokeWeight(1.5);
+  
+  text("To finish the day and see what you won \nclick this icon in the top right corner.", width/2, tileY*12.5);
+  lottery = loadImage("lottery.png");
+  image(lottery, width/2, height/2, iconSizeX*2, iconSizeY*2);
+  
+  
+
+  //Username
+  text("Please enter your name by clicking the box below.", width/2, tileY*17.75);
+  textSize(width/65);
+  text("Max 20 chracters", width/2, tileY*18.5);
+  fill(255);
+  rectMode(CORNERS);
+  rect(leftUsername, topUsername, rightUsername, bottomUsername, 25);
+
+  if (enteredUsername == false) {
+    fill(127);
+  } else {
+    fill(0, 255, 0);
   }
+  rect(leftEnter, topEnter, rightEnter, bottomEnter, 25);
+  textSize(width/35);
+  fill(0);
+  text("Enter", width/2, tileY*21.5);
+
+  //Make scanner username here
 }
