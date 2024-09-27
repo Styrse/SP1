@@ -249,7 +249,7 @@ void mouseClicked() {
     } else if (mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
       boxesOn = !boxesOn;
     } else if (mouseX < rightLottery && mouseX > leftLottery && mouseY < bottom && mouseY > top) {
-      println("Lottery");
+      lottery();
     }
   } else {
     if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
@@ -297,4 +297,15 @@ void startInfo() {
   textSize(width/35);
   fill(0);
   text("Enter", width/2, tileY*21.5);
+}
+
+int[] lottery(){
+  int[] winningNumbers = new int[20];
+  //Winning chance 20%
+  int winRate = totalTickets*0.2; 
+  
+  
+  
+  println("Lottery - More to do");
+  return winningNumbers;
 }
