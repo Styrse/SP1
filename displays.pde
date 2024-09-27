@@ -138,7 +138,7 @@ void boxes() {
 }
 
 void menu() {
-  fill(255, 127, 50, 100);
+  fill(255, 127, 0, 200);
   rectMode(CENTER);
   rect(width/2, tileY*2, width-tileX*2, tileY*2, 25);
   rectMode(CORNERS);
@@ -252,7 +252,7 @@ void mouseClicked() {
 
 void startInfo() {
   rectMode(CENTER);
-  fill(255, 0, 0, 200);
+  fill(255, 127, 0, 200);
   rect(width/2, height/2, width/2, height/2, 25);
   line(tileX*8, tileY*11, tileX*22, tileY*11);
   line(tileX*8, tileY*17, tileX*22, tileY*17);
@@ -266,8 +266,6 @@ void startInfo() {
   text("To finish the day and see what you won \nclick this icon in the top right corner.", width/2, tileY*12.5);
   lottery = loadImage("lottery.png");
   image(lottery, width/2, height/2, iconSizeX*2, iconSizeY*2);
-  
-  
 
   //Username
   text("Please enter your name by clicking the box below.", width/2, tileY*17.75);
