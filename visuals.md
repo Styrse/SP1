@@ -18,6 +18,12 @@ https://www.flaticon.com/free-icons/help" title="help icons">Help icons created 
 Lottery:
 https://www.flaticon.com/free-icons/lottery" title="lottery icons">Lottery icons created by Aranagraphics - Flaticon
 
+Key arrows:
+https://www.flaticon.com/free-icons/arrow-key" title="arrow key icons">Arrow key icons created by Smashicons - Flaticon
+
+Mouse:
+https://www.flaticon.com/free-icons/left-click" title="left-click icons">Left-click icons created by Smashicons - Flaticon
+
 Player character:
 https://www.flaticon.com/free-stickers/cute" title="cute stickers">Cute stickers created by Adorableninana - Flaticon
 

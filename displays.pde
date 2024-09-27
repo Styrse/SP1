@@ -6,6 +6,8 @@ PImage bankIMG;
 PImage raffle;
 PImage help;
 PImage lottery;
+PImage arrows;
+PImage mouse;
 
 float iconSizeX;
 float iconSizeY;
@@ -48,30 +50,24 @@ float bottom;
 //Wallet
 float leftWallet;
 float rightWallet;
-
 //Tickets
 float leftTickets;
 float rightTickets;
-
 //Bank
 float leftBank;
 float rightBank;
-
 //Raffle
 float leftRaffle;
 float rightRaffle;
-
 //Help
 float leftHelp;
 float rightHelp;
-
 //Lottery
 float leftLottery;
 float rightLottery;
 
-boolean moving= false;
-
-
+boolean moving = false;
+boolean boxesOn = false;
 
 void backgroundFunction() {
   imageMode(CENTER);
@@ -87,31 +83,48 @@ void boxes() {
   strokeWeight(3);
   noFill();
   //Ticket booth
-  rect(leftAccesBoxTicketBooth, topAccessBoxTicketBooth, rightAccessBoxTicketBooth, bottomAccessBoxTicketBooth);
-  rect(leftClickAreaTicketBooth, topClickAreaTicketBooth, rightClickAreaTicketBooth, bottomClickAreaTicketBooth);
+  rect(leftAccesBoxTicketBooth, topAccessBoxTicketBooth, rightAccessBoxTicketBooth, bottomAccessBoxTicketBooth, 15);
+  rect(leftClickAreaTicketBooth, topClickAreaTicketBooth, rightClickAreaTicketBooth, bottomClickAreaTicketBooth, 15);
   //Tent
-  rect(leftAccessBoxTent, topAccessBoxTent, rightAccessBoxTent, bottomAccessBoxTent);
-  rect(leftClickAreaTent, topClickAreaTent, rightClickAreaTent, bottomClickAreaTent);
+  rect(leftAccessBoxTent, topAccessBoxTent, rightAccessBoxTent, bottomAccessBoxTent, 15);
+  rect(leftClickAreaTent, topClickAreaTent, rightClickAreaTent, bottomClickAreaTent, 100, 100, 15, 15);
   //Walkable area
-  rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge);
+  rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge, 15);
 
   //Menu
   //Wallet
-  rect(leftWallet, top, rightWallet, bottom);
+  rect(leftWallet, top, rightWallet, bottom, 5);
   //Tickets
-  rect(leftTickets, top, rightTickets, bottom);
+  rect(leftTickets, top, rightTickets, bottom, 5);
   //Bank
-  rect(leftBank, top, rightBank, bottom);
+  rect(leftBank, top, rightBank, bottom, 5);
   //Raffle
-  rect(leftRaffle, top, rightRaffle, bottom);
+  rect(leftRaffle, top, rightRaffle, bottom, 5);
   //Help
-  rect(leftHelp, top, rightHelp, bottom);
+  rect(leftHelp, top, rightHelp, bottom, 5);
   //Lottery
-  rect(leftLottery, top, rightLottery, bottom);
+  rect(leftLottery, top, rightLottery, bottom, 5);
+
+  //Info box
+  rectMode(CENTER);
+  fill(255, 0, 255, 150);
+  rect(width/2, height/4, width/2, height/4, 25);
+  
+  //Arrows
+  imageMode(CENTER);
+  arrows = loadImage("keyboard.png");
+  image(arrows, tileX*12, tileY*9.5, tileX*2.5, tileY*2.5);
+  //Mouse
+  mouse = loadImage("mouse.png");
+  image(mouse, tileX*18, tileY*9.5, tileX*2.5, tileY*2.5); 
+  
+  fill(0);
+  textAlign(CENTER);
+  textSize(width/45);
+  text("Use the arrow keys to moved around \nUse the mouse for interactions", width/2, height/5);
 }
 
 void menu() {
-
   fill(255, 127, 50, 100);
   rectMode(CENTER);
   rect(width/2, tileY*2, width-tileX*2, tileY*2, 25);
@@ -129,39 +142,23 @@ void menu() {
   textSize(tileY);
   textAlign(LEFT, CENTER);
   text(player.wallet, tileX*3.25, tileY*2);
-
-
   //Tickets
   tickets = loadImage("tickets.png");
   image(tickets, leftTickets, top, rightTickets, bottom);
   text(player.tickets, tileX*9.25, tileY*2);
-
   //Bank
   bankIMG = loadImage("bank.png");
   image(bankIMG, leftBank, top, rightBank, bottom);
   text(bank, tileX*15.25, tileY*2);
-
   //Raffle
   raffle = loadImage("raffle.png");
   image(raffle, leftRaffle, top, rightRaffle, bottom);
-
   //Help
   help = loadImage("help.png");
   image(help, leftHelp, top, rightHelp, bottom);
-
   //Lottery
   lottery = loadImage("lottery.png");
   image(lottery, leftLottery, top, rightLottery, bottom);
-}
-
-void infoBox() {
-  fill(127, 99);
-  rectMode(CORNER);
-  rect(tileX*24, tileY*5, tileX*5, tileY*10, 25);
-
-  textSize(tileX);
-  fill(0);
-  text("Use arrows to move", tileX*26.5, tileY*12);
 }
 
 void makePlayer() {
@@ -221,9 +218,9 @@ void mouseClicked() {
     println("Bank");
   } else if (mouseX < rightRaffle && mouseX > leftRaffle && mouseY < bottom && mouseY > top) {
     println("Raffle");
-  }else if (mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top){
-    println("Help");
-  }else if (mouseX < rightLottery && mouseX > leftLottery && mouseY < bottom && mouseY > top){
+  } else if (mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
+    boxesOn = !boxesOn;
+  } else if (mouseX < rightLottery && mouseX > leftLottery && mouseY < bottom && mouseY > top) {
     println("Lottery");
   }
 }
