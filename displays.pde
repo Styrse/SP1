@@ -84,6 +84,11 @@ boolean start = true;
 boolean typing = false;
 boolean gameEnded = false;
 
+int winRate;
+
+ArrayList<Integer> winningNumbers = new ArrayList<Integer>();
+ArrayList<Integer> winningTicketsID = new ArrayList<Integer>();
+
 void backgroundFunction() {
   imageMode(CENTER);
   img = loadImage("carnival_background.jpg");
@@ -300,25 +305,37 @@ void startInfo() {
   text("Enter", width/2, tileY*21.5);
 }
 
-int[] lottery(){
-  int[] winningNumbers = new int[20];
+void getWinningNumbers(){
   //Winning chance 20%
-  int winRate = (totalTickets/100)*20;
+  winRate = (totalTickets/100)*20;
   
-  for (int i = 0; i < winRate; i++){
-    gameEnded = true;
-    println((int) random(100));
-    
+  for (int i = 0; i < winRate; i++) {
+    winningNumbers.add((int) random(1, 101));
   }
+  println(winningNumbers);
   
+  for (int i = 0; i < winRate; i++) {
+    winningTicketsID.add(ticketsID.get(winningNumbers.get(i)));
+  }
+  println(winningTicketsID);
   
-  
-  println("Lottery - More to do");
-  return winningNumbers;
 }
 
-void displayEndScreen(){
+void lottery() {
+  println("Lottery - More to do");
+}
+
+void displayEndScreen() {
   rectMode(CENTER);
   fill(255, 127, 0, 200);
   rect(width/2, height/2, width/2, height/2, 25);
+
+  fill(0);
+  textSize(width/25);
+  text("Winning numbers", width/2, tileY*9);
+  textSize(width/45);
+  
+
+  textSize(width/25);
+  text("Your numbers", width/2, tileY*15);
 }
