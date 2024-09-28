@@ -106,7 +106,7 @@ void draw() {
 
 
   menu();
-  makePlayer();
+  
   if (helpOn == true) {
     boxes();
   } else if (start == true) {
@@ -118,4 +118,5 @@ void draw() {
   } else if (walletOn == true) {
     wallet();
   }
+  makePlayer();
 }

@@ -321,6 +321,7 @@ void mouseClicked() {
       lottery();
     } else if (mouseX < rightMotherload && mouseX > leftMotherload && mouseY < bottomMotherload && mouseY > topMotherload) {
       motherload = true;
+      motherloadTrue = true;
     }
   } else if (start == true) {
     if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
@@ -465,6 +466,7 @@ void smallBox(String text) {
   fill(255, 127, 0, 200);
   rect(tileX*10, tileY*10, tileX*20, tileY*25, 25);
   fill(0);
+  textAlign(CENTER, CENTER);
   textSize(width/25);
   line(tileX*11, tileY*11.75, tileX*19, tileY*11.75);
   text(text, width/2, tileY*11);
