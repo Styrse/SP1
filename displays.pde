@@ -391,4 +391,13 @@ void playerTickets() {
   textSize(width/25);
   text("Your tickets", width/2, tileY*11);
   line(tileX*11, tileY*11.75, tileX*19, tileY*11.75);
+  
+  textSize(width/45);
+  int k = 0;
+  for (int i = 0; i < player.tickets; i++) {
+    if (i % 5 == 0 && i != 0) {
+      k++;
+    }
+    text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*12.25+tileY*k);
+  }
 }

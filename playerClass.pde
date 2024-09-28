@@ -12,7 +12,7 @@ class Player {
 
   Player(String fullName) {
     this.fullName = fullName;
-    wallet = 100;
+    wallet = 10;
   }
 
   void ticket(int amountTickets) {
@@ -35,7 +35,13 @@ class Player {
         remainingTickets--;
       }
     } else {
-      text("Insuficient funds", tileX*5, tileY*25); //Fix time
+      rectMode(CORNERS);
+      fill(255, 0, 0, 150);
+      rect(tileX*5, tileY*20, tileX*9, tileY*21, 25);
+      textAlign(CENTER, CENTER);
+      textSize(width/70);
+      fill(0);
+      text("Insuficient funds", tileX*7, tileY*20.5); //Fix time
     }
   }
 }
