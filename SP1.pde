@@ -107,4 +107,7 @@ void draw() {
   if (start == true) {
     startInfo();
   }
+  if (gameEnded == true){
+    displayEndScreen();
+  }
 }

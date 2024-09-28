@@ -82,6 +82,7 @@ boolean moving = false;
 boolean boxesOn = false;
 boolean start = true;
 boolean typing = false;
+boolean gameEnded = false;
 
 void backgroundFunction() {
   imageMode(CENTER);
@@ -302,10 +303,22 @@ void startInfo() {
 int[] lottery(){
   int[] winningNumbers = new int[20];
   //Winning chance 20%
-  int winRate = totalTickets*0.2; 
+  int winRate = (totalTickets/100)*20;
+  
+  for (int i = 0; i < winRate; i++){
+    gameEnded = true;
+    println((int) random(100));
+    
+  }
   
   
   
   println("Lottery - More to do");
   return winningNumbers;
+}
+
+void displayEndScreen(){
+  rectMode(CENTER);
+  fill(255, 127, 0, 200);
+  rect(width/2, height/2, width/2, height/2, 25);
 }
