@@ -83,7 +83,6 @@ float leftMotherload;
 float rightMotherload;
 float topMotherload;
 float bottomMotherload;
-String motherloadString = "Motherload";
 
 boolean moving = false;
 boolean walletOn = false;
@@ -96,6 +95,9 @@ boolean helpOn = false;
 boolean start = true;
 boolean typing = false;
 boolean gameEnded = false;
+
+String codeEntered = "";
+String motherloadString = "Motherload";
 
 int winRate;
 
@@ -159,7 +161,7 @@ void boxes() {
 void menu() {
   fill(255, 127, 0, 200);
   rectMode(CENTER);
-  rect(width/2, tileY*2, width-tileX*2, tileY*2, 25);
+  //rect(width/2, tileY*2, width-tileX*2, tileY*2, 25);
   rectMode(CORNERS);
   //Sub menus
   rect(tileX, tileY, tileX*12, tileY*3, 25);
@@ -221,17 +223,19 @@ void keyPressed() {
       start = false;
     }
   }
-  
+
   if (motherload == true) {
-     if (Character.isLetter(key) || key == ' ' || Character.isDigit(key)) {
-       
-      
-    } else if (key == ENTER) {
+    if (Character.isLetter(key) || key == ' ' || Character.isDigit(key)) {
+      codeEntered += key;
+    } else if (key ==ENTER) {
+      if (codeEntered.equals(motherloadString)) {
+        player.wallet += 1000;
+      }
+      codeEntered = "";
       motherload = false;
     }
   }
-  
-  
+
 
   if (start == false) {
     if (key == CODED) {
@@ -315,19 +319,18 @@ void mouseClicked() {
         helpOn = false;
       }
       lottery();
-    } else if (mouseX < rightMotherload && mouseX > leftMotherload && mouseY < bottomMotherload && mouseY > topMotherload){
+    } else if (mouseX < rightMotherload && mouseX > leftMotherload && mouseY < bottomMotherload && mouseY > topMotherload) {
       motherload = true;
-      motherloadTrue = true;
-      println("Motherload");
     }
   } else if (start == true) {
     if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
       typing = true;
-    } else if (mouseX < rightEnter && mouseX > leftEnter && mouseY < bottomEnter && mouseY > topEnter) {
+    } else if (mouseX < rightEnter && mouseX > leftEnter && mouseY < bottomEnter && mouseY > topEnter && playerName.length() > 0) {
       start = false;
     }
   }
 }
+
 
 void startInfo() {
   rectMode(CENTER);
@@ -343,6 +346,7 @@ void startInfo() {
   strokeWeight(1.5);
 
   text("To finish the day and see what you won \nclick this icon in the top right corner.", width/2, tileY*12.5);
+  imageMode(CENTER);
   lottery = loadImage("lottery.png");
   image(lottery, width/2, height/2, iconSizeX*2, iconSizeY*2);
 
@@ -389,9 +393,9 @@ void lottery() {
 }
 
 void displayEndScreen() {
-  rectMode(CENTER);
+  rectMode(CORNERS);
   fill(255, 127, 0, 200);
-  rect(width/2, height/2, width/2, height/2, 25);
+  rect(tileX*7, tileY*7.5, tileX*23, tileY*27.5, 25);
 
   //All winning numbers
   fill(0);
@@ -459,7 +463,7 @@ void playerTickets() {
 void smallBox(String text) {
   rectMode(CORNERS);
   fill(255, 127, 0, 200);
-  rect(tileX*10, tileY*10, tileX*20, tileY*20, 25);
+  rect(tileX*10, tileY*10, tileX*20, tileY*25, 25);
   fill(0);
   textSize(width/25);
   line(tileX*11, tileY*11.75, tileX*19, tileY*11.75);

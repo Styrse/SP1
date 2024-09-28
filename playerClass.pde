@@ -23,6 +23,7 @@ class Player {
     if (wallet > 0) {
       for (int i = 0; i < amountTickets; i++) {
         int randomNumber = (int) random(remainingTickets);
+        if (remainingTickets > 0){
         boughtTickets[ticketCount] = ticketsID.get(randomNumber);
 
         ticketCount++;
@@ -37,6 +38,7 @@ class Player {
         bank += ticketPrice;
 
         remainingTickets--;
+        }
       }
     } else {
       rectMode(CORNERS);

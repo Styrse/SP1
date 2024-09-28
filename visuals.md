@@ -29,6 +29,8 @@ https://www.flaticon.com/free-icons/left-click" title="left-click icons">Left-cl
 
 Player character:
 https://www.flaticon.com/free-stickers/cute" title="cute stickers">Cute stickers created by Adorableninana - Flaticon
+https://www.flaticon.com/free-stickers/cute" title="cute stickers">Cute stickers created by Adorableninana - Flaticon
+https://www.flaticon.com/free-stickers/coffee" title="coffee stickers">Coffee stickers created by Adorableninana - Flaticon
 
 Bot characters:
 https://www.flaticon.com/free-icons/cute" title="cute icons">Cute icons created by Adorableninana - Flaticon

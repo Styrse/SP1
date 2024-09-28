@@ -85,7 +85,7 @@ void setup() {
   topEnter = tileY*21;
   bottomEnter = tileY*22;
   
-  //Motherlaod
+  //Motherload
   leftMotherload = tileX*5.5;
   rightMotherload = tileX*8.75;
   topMotherload = tileY*14.75;
@@ -118,6 +118,4 @@ void draw() {
   } else if (walletOn == true) {
     wallet();
   }
-  rectMode(CORNERS);
-  rect(leftMotherload, topMotherload, rightMotherload, bottomMotherload);
 }
