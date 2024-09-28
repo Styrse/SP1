@@ -79,7 +79,11 @@ float topEnter;
 float bottomEnter;
 
 boolean moving = false;
-boolean boxesOn = false;
+boolean walletOn = false;
+boolean playerTicketsOn = false;
+boolean bankOn = false;
+boolean raffleOn = false;
+boolean helpOn = false;
 boolean start = true;
 boolean typing = false;
 boolean gameEnded = false;
@@ -245,19 +249,40 @@ void mouseClicked() {
       }
     }
     if (mouseX < rightWallet && mouseX > leftWallet && mouseY < bottom && mouseY > top) {
+      if (helpOn == true){
+        helpOn = false;
+      }
       println("Wallet");
     } else if (mouseX < rightTickets && mouseX > leftTickets && mouseY < bottom && mouseY > top) {
-      println("Tickets");
+      if (helpOn == true){
+        helpOn = false;
+      }
+      playerTicketsOn = !playerTicketsOn;
     } else if (mouseX < rightBank && mouseX > leftBank && mouseY < bottom && mouseY > top) {
+      if (helpOn == true){
+        helpOn = false;
+      }
       println("Bank");
     } else if (mouseX < rightRaffle && mouseX > leftRaffle && mouseY < bottom && mouseY > top) {
+      if (helpOn == true){
+        helpOn = false;
+      }
       println("Raffle");
     } else if (mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
-      boxesOn = !boxesOn;
+      if (walletOn == true || playerTicketsOn == true || bankOn == true || raffleOn == true) {
+        walletOn = false;
+        playerTicketsOn = false;
+        bankOn = false;
+        raffleOn = false;
+      }
+      helpOn = !helpOn;
     } else if (mouseX < rightLottery && mouseX > leftLottery && mouseY < bottom && mouseY > top) {
+      if (helpOn == true) {
+        helpOn = false;
+      }
       lottery();
     }
-  } else if (start == true){
+  } else if (start == true) {
     if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
       typing = true;
     } else if (mouseX < rightEnter && mouseX > leftEnter && mouseY < bottomEnter && mouseY > topEnter) {
@@ -350,11 +375,20 @@ void displayEndScreen() {
   line(tileX*8, tileY*15.75, tileX*22, tileY*15.75);
   textSize(width/45);
   int k = 0;
-  for (int i = 0; i < player.tickets; i++){
-    if (i % 5 == 0 && i != 0){
+  for (int i = 0; i < player.tickets; i++) {
+    if (i % 5 == 0 && i != 0) {
       k++;
     }
     text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*16.75+tileY*k);
   }
-  
+}
+
+void playerTickets() {
+  rectMode(CORNERS);
+  fill(255, 127, 0, 200);
+  rect(tileX*10, tileY*10, tileX*20, tileY*20, 25);
+  fill(0);
+  textSize(width/25);
+  text("Your tickets", width/2, tileY*11);
+  line(tileX*11, tileY*11.75, tileX*19, tileY*11.75);
 }

@@ -72,13 +72,13 @@ void setup() {
   //Lottery
   leftLottery = tileX*26.75;
   rightLottery = leftLottery+iconSizeX;
-  
+
   //Username box
   leftUsername = tileX*10;
   rightUsername = tileX*20;
   topUsername = tileY*19;
   bottomUsername = tileY*20.5;
-  
+
   //Enter box
   leftEnter = tileX*13;
   rightEnter = tileX*17;
@@ -97,10 +97,10 @@ void setup() {
 
 void draw() {
   image(img, width/2, height/2, width, height);
-  
+
 
   menu();
-  if (boxesOn == true) {
+  if (helpOn == true) {
     boxes();
   }
   makePlayer();
@@ -108,7 +108,9 @@ void draw() {
   if (start == true) {
     startInfo();
   }
-  if (gameEnded == true){
+  if (gameEnded == true) {
     displayEndScreen();
+  } else if (playerTicketsOn == true) {
+    playerTickets();
   }
 }
