@@ -305,23 +305,23 @@ void startInfo() {
   text("Enter", width/2, tileY*21.5);
 }
 
-void getWinningNumbers(){
+void getWinningNumbers() {
   //Winning chance 20%
   winRate = (totalTickets/100)*20;
-  
+
   for (int i = 0; i < winRate; i++) {
-    winningNumbers.add((int) random(1, 101));
+    winningNumbers.add((int) random(1, 100));
   }
-  println(winningNumbers);
-  
+
   for (int i = 0; i < winRate; i++) {
     winningTicketsID.add(ticketsID.get(winningNumbers.get(i)));
   }
-  println(winningTicketsID);
-  
 }
 
 void lottery() {
+
+  gameEnded = true;
+
   println("Lottery - More to do");
 }
 
@@ -330,12 +330,18 @@ void displayEndScreen() {
   fill(255, 127, 0, 200);
   rect(width/2, height/2, width/2, height/2, 25);
 
+
   fill(0);
   textSize(width/25);
   text("Winning numbers", width/2, tileY*9);
+  line(tileX*8, tileY*10, tileX*22, tileY*10);
   textSize(width/45);
-  
+  for (int i = 0; i < winningTicketsID.size(); i++) {
+
+    text(winningTicketsID.get(i), tileX*10+tileX*i, tileY*10.5+tileY*i);
+  }
 
   textSize(width/25);
   text("Your numbers", width/2, tileY*15);
+  line(tileX*8, tileY*15.75, tileX*22, tileY*15.75);
 }
