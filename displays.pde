@@ -108,7 +108,7 @@ ArrayList<Integer> winningTicketsID = new ArrayList<Integer>();
 
 void backgroundFunction() {
   imageMode(CENTER);
-  img = loadImage("carnival_background.jpg");
+  img = loadImage("images/carnival_background.jpg");
 }
 
 void boxes() {
@@ -148,10 +148,10 @@ void boxes() {
 
   //Arrows
   imageMode(CENTER);
-  arrows = loadImage("keyboard.png");
+  arrows = loadImage("images/icons/keyboard.png");
   image(arrows, tileX*12, tileY*9.5, tileX*2.5, tileY*2.5);
   //Mouse
-  mouse = loadImage("mouse.png");
+  mouse = loadImage("images/icons/mouse.png");
   image(mouse, tileX*18, tileY*9.5, tileX*2.5, tileY*2.5);
 
   fill(0);
@@ -172,34 +172,34 @@ void menu() {
 
   //Wallet
   imageMode(CORNERS);
-  wallet = loadImage("wallet.png");
+  wallet = loadImage("images/icons/wallet.png");
   image(wallet, leftWallet, top, rightWallet, bottom);
   fill(0);
   textSize(tileY);
   textAlign(LEFT, CENTER);
   text(player.wallet, tileX*3.25, tileY*2);
   //Tickets
-  tickets = loadImage("tickets.png");
+  tickets = loadImage("images/icons/tickets.png");
   image(tickets, leftTickets, top, rightTickets, bottom);
   text(player.tickets, tileX*9.25, tileY*2);
   //Bank
-  bankIMG = loadImage("bank.png");
+  bankIMG = loadImage("images/icons/bank.png");
   image(bankIMG, leftBank, top, rightBank, bottom);
   text(bank, tileX*15.25, tileY*2);
   //Raffle
-  raffle = loadImage("raffle.png");
+  raffle = loadImage("images/icons/raffle.png");
   image(raffle, leftRaffle, top, rightRaffle, bottom);
   //Help
-  help = loadImage("help.png");
+  help = loadImage("images/icons/help.png");
   image(help, leftHelp, top, rightHelp, bottom);
   //Lottery
-  lottery = loadImage("lottery.png");
+  lottery = loadImage("images/icons/lottery.png");
   image(lottery, leftLottery, top, rightLottery, bottom);
 }
 
-void makePlayer() {
+void loadPlayer() {
   imageMode(CENTER);
-  coffee = loadImage("coffee.png");
+  coffee = loadImage("images/characters/coffee.png");
   image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
   //Name tag
   rectMode(CORNERS);
@@ -351,7 +351,7 @@ void startInfo() {
 
   text("To finish the day and see what you won \nclick this icon in the top right corner.", width/2, tileY*12.5);
   imageMode(CENTER);
-  lottery = loadImage("lottery.png");
+  lottery = loadImage("images/icons/lottery.png");
   image(lottery, width/2, height/2, iconSizeX*2, iconSizeY*2);
 
   //Username

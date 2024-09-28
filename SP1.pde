@@ -120,5 +120,5 @@ void draw() {
   } else if (bankOn == true) {
     bank();
   }
-  makePlayer();
+  loadPlayer();
 }
