@@ -330,7 +330,7 @@ void displayEndScreen() {
   fill(255, 127, 0, 200);
   rect(width/2, height/2, width/2, height/2, 25);
 
-
+  //All winning numbers
   fill(0);
   textSize(width/25);
   text("Winning numbers", width/2, tileY*9);
@@ -344,7 +344,17 @@ void displayEndScreen() {
     text(winningTicketsID.get(i), tileX*11+tileX*2*(i%5), tileY*10.5+tileY*j);
   }
 
+  //Player winning numbers
   textSize(width/25);
   text("Your numbers", width/2, tileY*15);
   line(tileX*8, tileY*15.75, tileX*22, tileY*15.75);
+  textSize(width/45);
+  int k = 0;
+  for (int i = 0; i < player.tickets; i++){
+    if (i % 5 == 0 && i != 0){
+      k++;
+    }
+    text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*16.75+tileY*k);
+  }
+  
 }
