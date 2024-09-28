@@ -84,6 +84,12 @@ void setup() {
   rightEnter = tileX*17;
   topEnter = tileY*21;
   bottomEnter = tileY*22;
+  
+  //Motherlaod
+  leftMotherload = tileX*5.5;
+  rightMotherload = tileX*8.75;
+  topMotherload = tileY*14.75;
+  bottomMotherload = tileY*16.25;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
@@ -112,4 +118,6 @@ void draw() {
   } else if (walletOn == true) {
     wallet();
   }
+  rectMode(CORNERS);
+  rect(leftMotherload, topMotherload, rightMotherload, bottomMotherload);
 }

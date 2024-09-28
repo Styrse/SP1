@@ -78,9 +78,17 @@ float rightEnter;
 float topEnter;
 float bottomEnter;
 
+//Motherload
+float leftMotherload;
+float rightMotherload;
+float topMotherload;
+float bottomMotherload;
+String motherloadString = "Motherload";
+
 boolean moving = false;
 boolean walletOn = false;
 boolean motherload = false;
+boolean motherloadTrue = false;
 boolean playerTicketsOn = false;
 boolean bankOn = false;
 boolean raffleOn = false;
@@ -213,6 +221,17 @@ void keyPressed() {
       start = false;
     }
   }
+  
+  if (motherload == true) {
+     if (Character.isLetter(key) || key == ' ' || Character.isDigit(key)) {
+       
+      
+    } else if (key == ENTER) {
+      motherload = false;
+    }
+  }
+  
+  
 
   if (start == false) {
     if (key == CODED) {
@@ -296,6 +315,10 @@ void mouseClicked() {
         helpOn = false;
       }
       lottery();
+    } else if (mouseX < rightMotherload && mouseX > leftMotherload && mouseY < bottomMotherload && mouseY > topMotherload){
+      motherload = true;
+      motherloadTrue = true;
+      println("Motherload");
     }
   } else if (start == true) {
     if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
@@ -412,7 +435,7 @@ void wallet() {
   } else if (player.gamble > 0) {
     text("Gamble    =    +" + player.gamble, tileX*15, tileY*13.5);
   }
-  if (motherload == true) {
+  if (motherloadTrue == true) {
     text("Motherload    =    " + player.wallet, tileX*15, tileY*14.5);
     text("Balance    =    " + player.wallet, tileX*15, tileY*15.5);
   } else {
