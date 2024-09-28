@@ -100,6 +100,7 @@ String codeEntered = "";
 String motherloadString = "Motherload";
 
 int winRate;
+int motherloadCount = 0;
 
 ArrayList<Integer> winningNumbers = new ArrayList<Integer>();
 ArrayList<Integer> winningTicketsID = new ArrayList<Integer>();
@@ -230,6 +231,8 @@ void keyPressed() {
     } else if (key ==ENTER) {
       if (codeEntered.equals(motherloadString)) {
         player.wallet += 1000;
+        motherloadTrue = true;
+        motherloadCount++;
       }
       codeEntered = "";
       motherload = false;
@@ -321,7 +324,6 @@ void mouseClicked() {
       lottery();
     } else if (mouseX < rightMotherload && mouseX > leftMotherload && mouseY < bottomMotherload && mouseY > topMotherload) {
       motherload = true;
-      motherloadTrue = true;
     }
   } else if (start == true) {
     if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
@@ -441,7 +443,7 @@ void wallet() {
     text("Gamble    =    +" + player.gamble, tileX*15, tileY*13.5);
   }
   if (motherloadTrue == true) {
-    text("Motherload    =    " + player.wallet, tileX*15, tileY*14.5);
+    text("Motherload    =    " + motherloadCount*1000, tileX*15, tileY*14.5);
     text("Balance    =    " + player.wallet, tileX*15, tileY*15.5);
   } else {
     text("Balance    =    " + player.wallet, tileX*15, tileY*14.5);
