@@ -8,6 +8,16 @@ PImage help;
 PImage lottery;
 PImage arrows;
 PImage mouse;
+PImage avocado;
+PImage bread;
+PImage burger;
+PImage can;
+PImage cookie;
+PImage doughnut;
+PImage frenchfries;
+PImage pineapple;
+PImage pizza;
+PImage tomato;
 
 float iconSizeX;
 float iconSizeY;
@@ -210,6 +220,12 @@ void loadPlayer() {
   textAlign(CENTER, CENTER);
   textSize(tileY*0.4);
   text(playerName, playerXPosition, playerYPosition-tileY*2.6);
+}
+
+void loadBots(){
+  String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
+  imageMode(CENTER);
+  
 }
 
 void keyPressed() {
