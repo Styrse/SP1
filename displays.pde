@@ -80,6 +80,7 @@ float bottomEnter;
 
 boolean moving = false;
 boolean walletOn = false;
+boolean motherload = false;
 boolean playerTicketsOn = false;
 boolean bankOn = false;
 boolean raffleOn = false;
@@ -399,6 +400,24 @@ void displayEndScreen() {
 
 void wallet() {
   smallBox("Your wallet");
+  int gamble = 0;
+  textAlign(CENTER);
+  textSize(width/45);
+
+  text("Tickets    =    " + (player.tickets == 0 ? "": "-") + player.tickets*ticketPrice, tileX*15, tileY*12.5);
+  if (player.wallet+(player.tickets+ticketPrice) == player.initialWallet) {
+    text("Gamble    =    " + player.wallet, tileX*15, tileY*13.5);
+  } else if (player.wallet+(player.tickets*ticketPrice) < 100) {
+    text("Gamble    =    -" + (player.initialWallet+(player.tickets*ticketPrice)), tileX*15, tileY*13.5);
+  } else if (player.wallet+(player.tickets*ticketPrice) > 100) {
+    text("Gamble    =    +" + (player.initialWallet-player.wallet+player.tickets*ticketPrice), tileX*15, tileY*13.5);
+  }
+  if (motherload == true) {
+    text("Motherload    =    " + player.wallet, tileX*15, tileY*14.5);
+    text("Balance    =    " + player.wallet, tileX*15, tileY*15.5);
+  } else {
+    text("Balance    =    " + player.wallet, tileX*15, tileY*14.5);
+  }
 }
 
 void playerTickets() {

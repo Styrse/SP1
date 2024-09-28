@@ -1,11 +1,13 @@
 String[] botFirstNames = {"Mette", "Lars", "Helle", "Anders", "Poul", "Anker", "Jens"};
 String[] botLastNames = {"Krag", "Jørgensen", "Hartling", "Schlüter", "Rasmussen", "Thorning-Schmidt", "Frederiksen", "Fogh", "Nyrup", "Løkke"};
 Player[] bots = new Player[amountBots];
+int ticketPrice = 5;
 
 class Player {
 
   String fullName;
   int wallet;
+  int initialWallet;
   int tickets;
   int[] boughtTickets = new int[totalTickets];
   int ticketCount = 0;
@@ -13,6 +15,7 @@ class Player {
   Player(String fullName) {
     this.fullName = fullName;
     wallet = 10;
+    initialWallet = wallet;
   }
 
   void ticket(int amountTickets) {
@@ -28,9 +31,9 @@ class Player {
         ticketsID.remove(randomNumber);
 
         // Remove money from player
-        wallet -= 5;
+        wallet -= ticketPrice;
         // Add money to bank
-        bank += 5;
+        bank += ticketPrice;
 
         remainingTickets--;
       }
