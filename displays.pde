@@ -249,22 +249,36 @@ void mouseClicked() {
       }
     }
     if (mouseX < rightWallet && mouseX > leftWallet && mouseY < bottom && mouseY > top) {
-      if (helpOn == true){
+      if (helpOn == true || playerTicketsOn == true || bankOn == true || raffleOn == true) {
+        playerTicketsOn = false;
+        bankOn = false;
+        raffleOn = false;
         helpOn = false;
       }
-      println("Wallet");
+      walletOn = !walletOn;
     } else if (mouseX < rightTickets && mouseX > leftTickets && mouseY < bottom && mouseY > top) {
-      if (helpOn == true){
+      if (helpOn == true || walletOn == true || bankOn == true || raffleOn == true) {
+        walletOn = false;
+        bankOn = false;
+        raffleOn = false;
         helpOn = false;
       }
       playerTicketsOn = !playerTicketsOn;
     } else if (mouseX < rightBank && mouseX > leftBank && mouseY < bottom && mouseY > top) {
-      if (helpOn == true){
+      if (helpOn == true || walletOn == true || playerTicketsOn == true || raffleOn == true) {
+        walletOn = false;
+        playerTicketsOn = false;
+        bankOn = false;
+        raffleOn = false;
         helpOn = false;
       }
       println("Bank");
     } else if (mouseX < rightRaffle && mouseX > leftRaffle && mouseY < bottom && mouseY > top) {
-      if (helpOn == true){
+      if (helpOn == true || walletOn == true || playerTicketsOn == true || bankOn == true) {
+        walletOn = false;
+        playerTicketsOn = false;
+        bankOn = false;
+        raffleOn = false;
         helpOn = false;
       }
       println("Raffle");
@@ -383,15 +397,13 @@ void displayEndScreen() {
   }
 }
 
+void wallet() {
+  smallBox("Your wallet");
+}
+
 void playerTickets() {
-  rectMode(CORNERS);
-  fill(255, 127, 0, 200);
-  rect(tileX*10, tileY*10, tileX*20, tileY*20, 25);
-  fill(0);
-  textSize(width/25);
-  text("Your tickets", width/2, tileY*11);
-  line(tileX*11, tileY*11.75, tileX*19, tileY*11.75);
-  
+  smallBox("Your Tickets");
+
   textSize(width/45);
   int k = 0;
   for (int i = 0; i < player.tickets; i++) {
@@ -400,4 +412,14 @@ void playerTickets() {
     }
     text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*12.25+tileY*k);
   }
+}
+
+void smallBox(String text) {
+  rectMode(CORNERS);
+  fill(255, 127, 0, 200);
+  rect(tileX*10, tileY*10, tileX*20, tileY*20, 25);
+  fill(0);
+  textSize(width/25);
+  line(tileX*11, tileY*11.75, tileX*19, tileY*11.75);
+  text(text, width/2, tileY*11);
 }

@@ -100,17 +100,16 @@ void draw() {
 
 
   menu();
+  makePlayer();
   if (helpOn == true) {
     boxes();
-  }
-  makePlayer();
-
-  if (start == true) {
+  } else if (start == true) {
     startInfo();
-  }
-  if (gameEnded == true) {
+  } else if (gameEnded == true) {
     displayEndScreen();
   } else if (playerTicketsOn == true) {
     playerTickets();
+  } else if (walletOn == true) {
+    wallet();
   }
 }
