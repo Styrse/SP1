@@ -336,9 +336,12 @@ void displayEndScreen() {
   text("Winning numbers", width/2, tileY*9);
   line(tileX*8, tileY*10, tileX*22, tileY*10);
   textSize(width/45);
+  int j = 0;
   for (int i = 0; i < winningTicketsID.size(); i++) {
-
-    text(winningTicketsID.get(i), tileX*10+tileX*i, tileY*10.5+tileY*i);
+    if (i % 5 == 0 && i != 0) {
+      j++;
+    }
+    text(winningTicketsID.get(i), tileX*11+tileX*2*(i%5), tileY*10.5+tileY*j);
   }
 
   textSize(width/25);
