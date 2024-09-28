@@ -232,11 +232,11 @@ void keyReleased() {
 }
 
 void mouseClicked() {
-  if (start == false) {
+  if (start == false  && gameEnded == false) {
     if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth) {
       if (mouseX >= leftClickAreaTicketBooth && mouseX <= rightClickAreaTicketBooth && mouseY <= bottomClickAreaTicketBooth && mouseY >= topClickAreaTicketBooth) {
         player.ticket(1);
-        println("Ticket bought");
+        println("Ticket bought - Make ticket pop on screen");
         printPlayerInfo();
       }
     } else if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent) {
@@ -257,7 +257,7 @@ void mouseClicked() {
     } else if (mouseX < rightLottery && mouseX > leftLottery && mouseY < bottom && mouseY > top) {
       lottery();
     }
-  } else {
+  } else if (start == true){
     if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
       typing = true;
     } else if (mouseX < rightEnter && mouseX > leftEnter && mouseY < bottomEnter && mouseY > topEnter) {
