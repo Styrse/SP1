@@ -2,6 +2,7 @@ String[] botFirstNames = {"Mette", "Lars", "Helle", "Anders", "Poul", "Anker", "
 String[] botLastNames = {"Krag", "Jørgensen", "Hartling", "Schlüter", "Rasmussen", "Thorning-Schmidt", "Frederiksen", "Fogh", "Nyrup", "Løkke"};
 Player[] bots = new Player[amountBots];
 int ticketPrice = 5;
+int ticketCostPrice = 3;
 
 class Player {
 

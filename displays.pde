@@ -101,6 +101,7 @@ String motherloadString = "Motherload";
 
 int winRate;
 int motherloadCount = 0;
+int motherloadMoney = 1000;
 
 ArrayList<Integer> winningNumbers = new ArrayList<Integer>();
 ArrayList<Integer> winningTicketsID = new ArrayList<Integer>();
@@ -230,7 +231,7 @@ void keyPressed() {
       codeEntered += key;
     } else if (key ==ENTER) {
       if (codeEntered.equals(motherloadString)) {
-        player.wallet += 1000;
+        player.wallet += motherloadMoney;
         motherloadTrue = true;
         motherloadCount++;
       }
@@ -299,7 +300,7 @@ void mouseClicked() {
         raffleOn = false;
         helpOn = false;
       }
-      println("Bank");
+      bankOn = !bankOn;
     } else if (mouseX < rightRaffle && mouseX > leftRaffle && mouseY < bottom && mouseY > top) {
       if (helpOn == true || walletOn == true || playerTicketsOn == true || bankOn == true) {
         walletOn = false;
@@ -443,7 +444,7 @@ void wallet() {
     text("Gamble    =    +" + player.gamble, tileX*15, tileY*13.5);
   }
   if (motherloadTrue == true) {
-    text("Motherload    =    " + motherloadCount*1000, tileX*15, tileY*14.5);
+    text("Motherload    =    " + motherloadCount*motherloadMoney, tileX*15, tileY*14.5);
     text("Balance    =    " + player.wallet, tileX*15, tileY*15.5);
   } else {
     text("Balance    =    " + player.wallet, tileX*15, tileY*14.5);
@@ -463,13 +464,25 @@ void playerTickets() {
   }
 }
 
+void bank(){
+  smallBox("Lottery economy");
+  
+  textAlign(CENTER);
+  textSize(width/45);
+  
+  text("Income from tickets    =    " + (totalTickets-remainingTickets)*ticketPrice, tileX*15, tileY*12.5);
+  text("Expenses from tickets    =    " + (totalTickets-remainingTickets)*ticketCostPrice, tileX*15, tileY*13.5);
+  text("Profit from tickets    =    " + (totalTickets-remainingTickets)*(ticketPrice-ticketCostPrice), tileX*15, tileY*14.5);
+  
+}
+
 void smallBox(String text) {
   rectMode(CORNERS);
   fill(255, 127, 0, 200);
   rect(tileX*10, tileY*10, tileX*20, tileY*25, 25);
   fill(0);
   textAlign(CENTER, CENTER);
-  textSize(width/25);
+  textSize(width/26);
   line(tileX*11, tileY*11.75, tileX*19, tileY*11.75);
   text(text, width/2, tileY*11);
 }

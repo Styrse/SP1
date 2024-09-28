@@ -84,7 +84,7 @@ void setup() {
   rightEnter = tileX*17;
   topEnter = tileY*21;
   bottomEnter = tileY*22;
-  
+
   //Motherload
   leftMotherload = tileX*5.5;
   rightMotherload = tileX*8.75;
@@ -106,17 +106,19 @@ void draw() {
 
 
   menu();
-  
+
   if (helpOn == true) {
     boxes();
   } else if (start == true) {
     startInfo();
   } else if (gameEnded == true) {
     displayEndScreen();
-  } else if (playerTicketsOn == true) {
-    playerTickets();
   } else if (walletOn == true) {
     wallet();
+  } else if (playerTicketsOn == true) {
+    playerTickets();
+  } else if (bankOn == true) {
+    bank();
   }
   makePlayer();
 }
