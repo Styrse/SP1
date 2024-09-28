@@ -16,7 +16,7 @@ class Player {
 
   Player(String fullName) {
     this.fullName = fullName;
-    wallet = 10;
+    wallet = 100;
     initialWallet = wallet;
   }
 

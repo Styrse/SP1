@@ -404,6 +404,7 @@ void displayEndScreen() {
   //All winning numbers
   fill(0);
   textSize(width/25);
+  textAlign(CENTER, CENTER);
   text("Winning numbers", width/2, tileY*9);
   line(tileX*8, tileY*10, tileX*22, tileY*10);
   textSize(width/45);
