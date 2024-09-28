@@ -8,16 +8,8 @@ PImage help;
 PImage lottery;
 PImage arrows;
 PImage mouse;
-PImage avocado;
-PImage bread;
-PImage burger;
-PImage can;
-PImage cookie;
-PImage doughnut;
-PImage frenchfries;
-PImage pineapple;
-PImage pizza;
-PImage tomato;
+PImage[] botImages = new PImage[10];
+String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
 
 float iconSizeX;
 float iconSizeY;
@@ -223,8 +215,12 @@ void loadPlayer() {
 }
 
 void loadBots(){
-  String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
   imageMode(CENTER);
+  
+  for (int i = 0; i < imageName.length; i++){
+    botImages[i] = loadImage("images/characters/" + imageName[i] + ".png");
+    image(botImages[i], (int) random(leftWalkableEdge, rightWalkableEdge), (int) random(topWalkableEdge, bottomWalkableEdge), tileX*4, tileY*4);
+  }
   
 }
 

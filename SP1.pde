@@ -120,5 +120,6 @@ void draw() {
   } else if (bankOn == true) {
     bank();
   }
+  loadBots();
   loadPlayer();
 }
