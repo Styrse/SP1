@@ -8,6 +8,7 @@ class Player {
   String fullName;
   int wallet;
   int initialWallet;
+  int gamble;
   int tickets;
   int[] boughtTickets = new int[totalTickets];
   int ticketCount = 0;
