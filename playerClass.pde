@@ -51,6 +51,10 @@ class Player {
       text("Insuficient funds", tileX*7, tileY*20.5); //Fix time
     }
   }
+  
+  void movement(){
+    
+  }
 }
 
 void makeBots() {
