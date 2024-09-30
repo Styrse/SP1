@@ -288,11 +288,13 @@ void keyReleased() {
 }
 
 void mouseClicked() {
-  if (start == false  && gameEnded == false) {
+  if (start == false  && gameEnded == false && tentOn == false) {
     if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth) {
       if (mouseX >= leftClickAreaTicketBooth && mouseX <= rightClickAreaTicketBooth && mouseY <= bottomClickAreaTicketBooth && mouseY >= topClickAreaTicketBooth) {
+        if (player.wallet > 0) {
+          image(tickets, tileX*6, tileY*19, tileX*2, tileY*2);
+        }
         player.ticket(1);
-        println("Ticket bought - Make ticket pop on screen");
       }
     } else if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent) {
       if ( mouseX >= leftClickAreaTent && mouseX <= rightClickAreaTent && mouseY <= bottomClickAreaTent && mouseY >= topClickAreaTent) {
@@ -361,6 +363,11 @@ void mouseClicked() {
       typing = true;
     } else if (mouseX < rightEnter && mouseX > leftEnter && mouseY < bottomEnter && mouseY > topEnter && playerName.length() > 0) {
       start = false;
+    }
+  } else if (tentOn == true) {
+    if (mouseX < width/10 && mouseY < height/10) {
+      tentOn = false;
+      println("Make exit cross in top right corner");
     }
   }
 }
@@ -548,9 +555,9 @@ void box(String text, int heightBox, int widthBox) {
   text(text, width/2, tileY*6);
 }
 
-void tent(){
+void tent() {
   println("Tent");
   imageMode(CENTER);
   tentBackground = loadImage("images/tent_background.png");
-  image(tentBackground, width/2, height/2, width/2, height/2);
+  image(tentBackground, width/2, height/2, width, height);
 }
