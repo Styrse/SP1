@@ -454,7 +454,11 @@ void displayEndScreen() {
 
 
 void wallet() {
+  if (motherloadTrue == true){
   box("Your wallet", 11, 10);
+  } else {
+    box("Your wallet", 10, 10);
+  }
   int gamble = 0;
   textAlign(CENTER);
   textSize(width/45);
