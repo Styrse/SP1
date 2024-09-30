@@ -448,29 +448,29 @@ void displayEndScreen() {
 }
 
 void wallet() {
-  smallBox("Your wallet");
+  smallBox("Your wallet", 11);
   int gamble = 0;
   textAlign(CENTER);
   textSize(width/45);
 
-  text("Tickets    =    " + (player.tickets == 0 ? "": "-") + player.tickets*ticketPrice, tileX*15, tileY*12.5);
+  text("Tickets    =    " + (player.tickets == 0 ? "": "-") + player.tickets*ticketPrice, tileX*15, tileY*7.5);
   if (player.gamble == 0) {
-    text("Gamble    =    " + player.gamble, tileX*15, tileY*13.5);
+    text("Gamble    =    " + player.gamble, tileX*15, tileY*8.5);
   } else if (player.gamble < 0) {
-    text("Gamble    =    -" + player.gamble, tileX*15, tileY*13.5);
+    text("Gamble    =    -" + player.gamble, tileX*15, tileY*8.5);
   } else if (player.gamble > 0) {
-    text("Gamble    =    +" + player.gamble, tileX*15, tileY*13.5);
+    text("Gamble    =    +" + player.gamble, tileX*15, tileY*8.5);
   }
   if (motherloadTrue == true) {
-    text("Motherload    =    " + motherloadCount*motherloadMoney, tileX*15, tileY*14.5);
-    text("Balance    =    " + player.wallet, tileX*15, tileY*15.5);
+    text("Motherload    =    " + motherloadCount*motherloadMoney, tileX*15, tileY*9.5);
+    text("Balance    =    " + player.wallet, tileX*15, tileY*10.5);
   } else {
-    text("Balance    =    " + player.wallet, tileX*15, tileY*14.5);
+    text("Balance    =    " + player.wallet, tileX*15, tileY*9.5);
   }
 }
 
 void playerTickets() {
-  smallBox("Your Tickets");
+  smallBox("Your Tickets", 15);
 
   textSize(width/45);
   int k = 0;
@@ -478,38 +478,53 @@ void playerTickets() {
     if (i % 5 == 0 && i != 0) {
       k++;
     }
-    text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*12.25+tileY*k);
+    text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*7.25+tileY*k);
   }
 }
 
 void bank(){
-  smallBox("Lottery economy");
+  smallBox("Bank", 10);
   
   textAlign(CENTER);
   textSize(width/45);
   
-  text("Income from tickets    =    " + (totalTickets-remainingTickets)*ticketPrice, tileX*15, tileY*12.5);
-  text("Expenses from tickets    =    " + (totalTickets-remainingTickets)*ticketCostPrice, tileX*15, tileY*13.5);
-  text("Profit from tickets    =    " + (totalTickets-remainingTickets)*(ticketPrice-ticketCostPrice), tileX*15, tileY*14.5);
+  text("Income from tickets    =    " + (totalTickets-remainingTickets)*ticketPrice, tileX*15, tileY*7.5);
+  text("Expenses from tickets    =    " + (totalTickets-remainingTickets)*ticketCostPrice, tileX*15, tileY*8.5);
+  text("Profit from tickets    =    " + (totalTickets-remainingTickets)*(ticketPrice-ticketCostPrice), tileX*15, tileY*9.5);
   
 }
 
 void raffle(){
-  smallBox("Raffle");
+  smallBox("Raffle", 10);
   
   textAlign(CENTER);
   textSize(width/45);
   
   
+  for (int i = 0; i < amountBots; i++){
+    
+    text(bots[i].fullName, tileX*15, tileY*7.25+tileY*i*2.5);
+  }
+  
+  
+  
+  
+  //int j = 0;
+  //for (int i = 0; i < winningTicketsID.size(); i++) {
+  //  if (i % 5 == 0 && i != 0) {
+  //    j++;
+  //  }
+  //  text(winningTicketsID.get(i), tileX*11+tileX*2*(i%5), tileY*10.5+tileY*j);
+  //}
 }
 
-void smallBox(String text) {
+void smallBox(String text, int heightBox) {
   rectMode(CORNERS);
   fill(255, 127, 0, 200);
-  rect(tileX*10, tileY*10, tileX*20, tileY*25, 25);
+  rect(tileX*10, tileY*5, tileX*20, tileY*heightBox, 25);
   fill(0);
   textAlign(CENTER, CENTER);
   textSize(width/26);
-  line(tileX*11, tileY*11.75, tileX*19, tileY*11.75);
-  text(text, width/2, tileY*11);
+  line(tileX*11, tileY*6.75, tileX*19, tileY*6.75);
+  text(text, width/2, tileY*6);
 }

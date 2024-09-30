@@ -67,7 +67,7 @@ void makeBots() {
   for (int i = 0; i < amountBots; i++) {
     bots[i] = new Player(randomNameGenerator());
 
-    bots[i].ticket((int) random(totalTickets/10));
+    bots[i].ticket((int) random(6, totalTickets/12));
   }
 }
 
