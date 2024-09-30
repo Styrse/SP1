@@ -505,10 +505,12 @@ void raffle() {
   textAlign(CENTER);
   textSize(width/45);
 
-
+  int k = 0;
   for (int i = 0; i < amountBots; i++) {
-
-    text(bots[i].fullName, tileX*15, tileY*7.5+tileY*i*2.5);
+    if (i%2 == 0 && i != 0) {
+      k++;
+    }
+    text(bots[i].fullName, tileX*10+tileX*10*(i%2), tileY*7.5+tileY*k*2.5);
   }
 
 
