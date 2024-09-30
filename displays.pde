@@ -1,3 +1,5 @@
+import java.util.Collections;
+
 PImage img;
 PImage wallet;
 PImage tickets;
@@ -208,17 +210,17 @@ void loadPlayer() {
   nameTag(playerName, playerXPosition, playerYPosition);
 }
 
-void loadBots(){
+void loadBots() {
   imageMode(CENTER);
-  
-  for (int i = 0; i < imageName.length; i++){
+
+  for (int i = 0; i < imageName.length; i++) {
     botImages[i] = loadImage("images/characters/" + imageName[i] + ".png");
     image(botImages[i], botXPosition[i], botYPosition[i], tileX*4, tileY*4);
     nameTag(bots[i].fullName, botXPosition[i], botYPosition[i]);
   }
 }
 
-void nameTag(String name, float xPos, float yPos){
+void nameTag(String name, float xPos, float yPos) {
   rectMode(CORNERS);
   strokeWeight(2);
   fill(0, 255, 0, 127);
@@ -404,6 +406,7 @@ void getWinningNumbers() {
   for (int i = 0; i < winRate; i++) {
     winningTicketsID.add(ticketsID.get(winningNumbers.get(i)));
   }
+  Collections.sort(winningTicketsID);
 }
 
 void lottery() {
@@ -443,9 +446,23 @@ void displayEndScreen() {
     if (i % 5 == 0 && i != 0) {
       k++;
     }
+
+    boolean isWinningTicket = false;
+    for (int h = 0; h < winningTicketsID.size(); h++) {
+      if (player.boughtTickets[h] == winningTicketsID.get(h)) {
+        isWinningTicket = true;
+        break;
+      }
+    }
+    if (isWinningTicket) {
+      fill(0, 255, 0);
+    } else {
+      fill(255, 0, 0);
+    }
     text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*16.75+tileY*k);
   }
 }
+
 
 void wallet() {
   smallBox("Your wallet", 11);
@@ -482,33 +499,32 @@ void playerTickets() {
   }
 }
 
-void bank(){
+void bank() {
   smallBox("Bank", 10);
-  
+
   textAlign(CENTER);
   textSize(width/45);
-  
+
   text("Income from tickets    =    " + (totalTickets-remainingTickets)*ticketPrice, tileX*15, tileY*7.5);
   text("Expenses from tickets    =    " + (totalTickets-remainingTickets)*ticketCostPrice, tileX*15, tileY*8.5);
   text("Profit from tickets    =    " + (totalTickets-remainingTickets)*(ticketPrice-ticketCostPrice), tileX*15, tileY*9.5);
-  
 }
 
-void raffle(){
+void raffle() {
   smallBox("Raffle", 10);
-  
+
   textAlign(CENTER);
   textSize(width/45);
-  
-  
-  for (int i = 0; i < amountBots; i++){
-    
+
+
+  for (int i = 0; i < amountBots; i++) {
+
     text(bots[i].fullName, tileX*15, tileY*7.25+tileY*i*2.5);
   }
-  
-  
-  
-  
+
+
+
+
   //int j = 0;
   //for (int i = 0; i < winningTicketsID.size(); i++) {
   //  if (i % 5 == 0 && i != 0) {
