@@ -96,15 +96,15 @@ void setup() {
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
-  
-  for (int i = 0; i < amountBots; i++){
+
+  for (int i = 0; i < amountBots; i++) {
     botXPosition[i] = random(leftWalkableEdge, rightWalkableEdge);
   }
-  
-  for (int i = 0; i < amountBots; i++){
+
+  for (int i = 0; i < amountBots; i++) {
     botYPosition[i] = random(topWalkableEdge, bottomWalkableEdge);
   }
-  
+
 
   backgroundFunction();
 
@@ -118,7 +118,7 @@ void draw() {
 
 
   menu();
-
+  loadBots();
   if (helpOn == true) {
     boxes();
   } else if (start == true) {
@@ -131,11 +131,10 @@ void draw() {
     playerTickets();
   } else if (bankOn == true) {
     bank();
-  } else if (raffleOn == true){
+  } else if (raffleOn == true) {
     raffle();
   }
-  loadBots();
+
   loadPlayer();
   bots[1].movement();
-
 }
