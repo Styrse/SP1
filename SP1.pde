@@ -5,6 +5,9 @@ float tileX;
 float tileY;
 Player player;
 
+int[] botXPosition = new int[amountBots];
+int[] botYPosition = new int[amountBots];
+
 
 void setup() {
   windowTitle("Fantasia Fairgrounds");
@@ -93,6 +96,18 @@ void setup() {
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
+  
+  for (int i = 0; i < amountBots; i++){
+    botXPosition[i] = (int) random(leftWalkableEdge, rightWalkableEdge);
+    println(botXPosition[i]);
+  }
+  println("-----");
+  
+  for (int i = 0; i < amountBots; i++){
+    botYPosition[i] = (int) random(topWalkableEdge, bottomWalkableEdge);
+    println(botYPosition[i]);
+  }
+  
 
   backgroundFunction();
 

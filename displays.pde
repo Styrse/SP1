@@ -128,6 +128,8 @@ void boxes() {
   rect(leftClickAreaTent, topClickAreaTent, rightClickAreaTent, bottomClickAreaTent, 100, 100, 15, 15);
   //Walkable area
   rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge, 15);
+  //Motherload
+  rect(leftMotherload, topMotherload, rightMotherload, bottomMotherload);
 
   //Menu
   //Wallet
@@ -203,15 +205,16 @@ void loadPlayer() {
   imageMode(CENTER);
   coffee = loadImage("images/characters/coffee.png");
   image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
-  //Name tag
-  rectMode(CORNERS);
-  strokeWeight(2);
-  fill(0, 255, 0, 127);
-  rect(playerXPosition-tileX*2, playerYPosition-tileY*3, playerXPosition+tileX*2, playerYPosition-tileY*2.2, 50);
-  fill(0);
-  textAlign(CENTER, CENTER);
-  textSize(tileY*0.4);
-  text(playerName, playerXPosition, playerYPosition-tileY*2.6);
+  ////Name tag
+  //rectMode(CORNERS);
+  //strokeWeight(2);
+  //fill(0, 255, 0, 127);
+  //rect(playerXPosition-tileX*2, playerYPosition-tileY*3, playerXPosition+tileX*2, playerYPosition-tileY*2.2, 50);
+  //fill(0);
+  //textAlign(CENTER, CENTER);
+  //textSize(tileY*0.4);
+  //text(playerName, playerXPosition, playerYPosition-tileY*2.6);
+  nameTag(playerName, playerXPosition, playerYPosition);
 }
 
 void loadBots(){
@@ -219,9 +222,20 @@ void loadBots(){
   
   for (int i = 0; i < imageName.length; i++){
     botImages[i] = loadImage("images/characters/" + imageName[i] + ".png");
-    image(botImages[i], (int) random(leftWalkableEdge, rightWalkableEdge), (int) random(topWalkableEdge, bottomWalkableEdge), tileX*4, tileY*4);
+    image(botImages[i], botXPosition[i], botYPosition[i], tileX*4, tileY*4);
+    nameTag(bots[i].fullName, botXPosition[i], botYPosition[i]);
   }
-  
+}
+
+void nameTag(String name, float xPos, float yPos){
+  rectMode(CORNERS);
+  strokeWeight(2);
+  fill(0, 255, 0, 127);
+  rect(xPos-tileX*2, yPos-tileY*3, xPos+tileX*2, yPos-tileY*2.2, 50);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  textSize(tileY*0.4);
+  text(name, xPos, yPos-tileY*2.6);
 }
 
 void keyPressed() {
