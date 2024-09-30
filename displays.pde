@@ -476,7 +476,7 @@ void wallet() {
 }
 
 void playerTickets() {
-  box("Your Tickets", 15, 10);
+  box("Your tickets", 15, 10);
 
   textSize(width/45);
   int k = 0;
@@ -500,7 +500,7 @@ void bank() {
 }
 
 void raffle() {
-  box("Raffle", 20, 20);
+  box("Sold tickets", 20, 20);
 
   textAlign(CENTER);
   textSize(width/45);
