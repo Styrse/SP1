@@ -205,15 +205,6 @@ void loadPlayer() {
   imageMode(CENTER);
   coffee = loadImage("images/characters/coffee.png");
   image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
-  ////Name tag
-  //rectMode(CORNERS);
-  //strokeWeight(2);
-  //fill(0, 255, 0, 127);
-  //rect(playerXPosition-tileX*2, playerYPosition-tileY*3, playerXPosition+tileX*2, playerYPosition-tileY*2.2, 50);
-  //fill(0);
-  //textAlign(CENTER, CENTER);
-  //textSize(tileY*0.4);
-  //text(playerName, playerXPosition, playerYPosition-tileY*2.6);
   nameTag(playerName, playerXPosition, playerYPosition);
 }
 
@@ -231,7 +222,7 @@ void nameTag(String name, float xPos, float yPos){
   rectMode(CORNERS);
   strokeWeight(2);
   fill(0, 255, 0, 127);
-  rect(xPos-tileX*2, yPos-tileY*3, xPos+tileX*2, yPos-tileY*2.2, 50);
+  rect(xPos-tileX*2.25, yPos-tileY*3, xPos+tileX*2.25, yPos-tileY*2.2, 50);
   fill(0);
   textAlign(CENTER, CENTER);
   textSize(tileY*0.4);

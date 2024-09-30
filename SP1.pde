@@ -99,13 +99,10 @@ void setup() {
   
   for (int i = 0; i < amountBots; i++){
     botXPosition[i] = (int) random(leftWalkableEdge, rightWalkableEdge);
-    println(botXPosition[i]);
   }
-  println("-----");
   
   for (int i = 0; i < amountBots; i++){
     botYPosition[i] = (int) random(topWalkableEdge, bottomWalkableEdge);
-    println(botYPosition[i]);
   }
   
 
