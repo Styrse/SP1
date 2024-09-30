@@ -530,6 +530,7 @@ void box(String text, int heightBox, int widthBox) {
   fill(0);
   textAlign(CENTER, CENTER);
   textSize(width/26);
-  line(tileX*11, tileY*6.75, tileX*19, tileY*6.75);
+  float space = tileX*(tiles-widthBox)/2+tileX;
+  line(space, tileY*6.75, width-space, tileY*6.75);
   text(text, width/2, tileY*6);
 }

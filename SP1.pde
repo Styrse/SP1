@@ -1,6 +1,7 @@
 Player bot;
 int amountBots = 10;
 int totalTickets = 100;
+int tiles = 30;
 float tileX;
 float tileY;
 Player player;
@@ -12,8 +13,8 @@ float[] botYPosition = new float[amountBots];
 void setup() {
   windowTitle("Fantasia Fairgrounds");
   size(900, 900);
-  tileX = width/30;
-  tileY = height/30;
+  tileX = width/tiles;
+  tileY = height/tiles;
 
 
   iconSizeX = tileX*1.25;
