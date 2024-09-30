@@ -510,11 +510,22 @@ void raffle() {
     if (i%2 == 0 && i != 0) {
       k++;
     }
+    textSize(width/55);
     text(bots[i].fullName, tileX*10+tileX*10*(i%2), tileY*7.5+tileY*k*2.5);
+    
+    int v = 0;
+    for (int j = 0; j < bots[i].tickets; j++){
+      if (j%3 == 0 && j != 0){
+        v++;
+      }
+    text(bots[i].boughtTickets[j], tileX*8.5+tileX*1.5*(j % 3)+tileX*10*(i % 2), tileY*8+tileY*v*.5+tileY*k*2.5);
+    
+    
+    }
   }
 
 
-
+//println(bots[i].fullName + ": " + bots[i].boughtTickets[j]);
 
   //int j = 0;
   //for (int i = 0; i < winningTicketsID.size(); i++) {
