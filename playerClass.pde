@@ -24,21 +24,21 @@ class Player {
     if (wallet > 0) {
       for (int i = 0; i < amountTickets; i++) {
         int randomNumber = (int) random(remainingTickets);
-        if (remainingTickets > 0){
-        boughtTickets[ticketCount] = ticketsID.get(randomNumber);
+        if (remainingTickets > 0) {
+          boughtTickets[ticketCount] = ticketsID.get(randomNumber);
 
-        ticketCount++;
-        tickets++;
+          ticketCount++;
+          tickets++;
 
-        // Remove the randomNumber from ticketsID to prevent duplicate tickets
-        ticketsID.remove(randomNumber);
+          // Remove the randomNumber from ticketsID to prevent duplicate tickets
+          ticketsID.remove(randomNumber);
 
-        // Remove money from player
-        wallet -= ticketPrice;
-        // Add money to bank
-        bank += ticketPrice;
+          // Remove money from player
+          wallet -= ticketPrice;
+          // Add money to bank
+          bank += ticketPrice;
 
-        remainingTickets--;
+          remainingTickets--;
         }
       }
     } else {
@@ -51,12 +51,18 @@ class Player {
       text("Insuficient funds", tileX*7, tileY*20.5); //Fix time
     }
   }
-  
-  void movement(){
-    
+
+  public void movement() {
+
+    for (int i = 0; i < amountBots; i++) {
+      botXPosition[i] += random(-tileX*0.25, tileX*0.25);
+      botYPosition[i] += random(-tileY*0.25, tileY*0.25);
+      botXPosition[i] = constrain(botXPosition[i], leftWalkableEdge, rightWalkableEdge);
+      botYPosition[i] = constrain(botYPosition[i], topWalkableEdge, bottomWalkableEdge);
+    }
   }
 }
-
+//playerXPosition = constrain(playerXPosition, leftWalkableEdge, rightWalkableEdge);
 void makeBots() {
   for (int i = 0; i < amountBots; i++) {
     bots[i] = new Player(randomNameGenerator());

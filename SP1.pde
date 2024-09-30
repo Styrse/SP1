@@ -5,8 +5,8 @@ float tileX;
 float tileY;
 Player player;
 
-int[] botXPosition = new int[amountBots];
-int[] botYPosition = new int[amountBots];
+float[] botXPosition = new float[amountBots];
+float[] botYPosition = new float[amountBots];
 
 
 void setup() {
@@ -98,11 +98,11 @@ void setup() {
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
   
   for (int i = 0; i < amountBots; i++){
-    botXPosition[i] = (int) random(leftWalkableEdge, rightWalkableEdge);
+    botXPosition[i] = random(leftWalkableEdge, rightWalkableEdge);
   }
   
   for (int i = 0; i < amountBots; i++){
-    botYPosition[i] = (int) random(topWalkableEdge, bottomWalkableEdge);
+    botYPosition[i] = random(topWalkableEdge, bottomWalkableEdge);
   }
   
 
@@ -134,4 +134,6 @@ void draw() {
   }
   loadBots();
   loadPlayer();
+  bots[1].movement();
+
 }
