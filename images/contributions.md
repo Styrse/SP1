@@ -24,6 +24,9 @@ https://www.flaticon.com/free-icons/lottery" title="lottery icons">Lottery icons
 Key arrows:
 https://www.flaticon.com/free-icons/arrow-key" title="arrow key icons">Arrow key icons created by Smashicons - Flaticon
 
+Arrows:
+https://www.flaticon.com/free-icons/next" title="next icons">Next icons created by BizzBox - Flaticon
+
 Mouse:
 https://www.flaticon.com/free-icons/left-click" title="left-click icons">Left-click icons created by Smashicons - Flaticon
 

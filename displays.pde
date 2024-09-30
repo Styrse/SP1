@@ -454,7 +454,7 @@ void displayEndScreen() {
 
 
 void wallet() {
-  smallBox("Your wallet", 11);
+  box("Your wallet", 11, 10);
   int gamble = 0;
   textAlign(CENTER);
   textSize(width/45);
@@ -476,7 +476,7 @@ void wallet() {
 }
 
 void playerTickets() {
-  smallBox("Your Tickets", 15);
+  box("Your Tickets", 15, 10);
 
   textSize(width/45);
   int k = 0;
@@ -489,7 +489,7 @@ void playerTickets() {
 }
 
 void bank() {
-  smallBox("Bank", 10);
+  box("Bank", 10, 10);
 
   textAlign(CENTER);
   textSize(width/45);
@@ -500,7 +500,7 @@ void bank() {
 }
 
 void raffle() {
-  smallBox("Raffle", 10);
+  box("Raffle", 20, 20);
 
   textAlign(CENTER);
   textSize(width/45);
@@ -508,7 +508,7 @@ void raffle() {
 
   for (int i = 0; i < amountBots; i++) {
 
-    text(bots[i].fullName, tileX*15, tileY*7.25+tileY*i*2.5);
+    text(bots[i].fullName, tileX*15, tileY*7.5+tileY*i*2.5);
   }
 
 
@@ -523,10 +523,10 @@ void raffle() {
   //}
 }
 
-void smallBox(String text, int heightBox) {
+void box(String text, int heightBox, int widthBox) {
   rectMode(CORNERS);
   fill(255, 127, 0, 200);
-  rect(tileX*10, tileY*5, tileX*20, tileY*heightBox, 25);
+  rect((width/2)-tileX*(widthBox/2), tileY*5, width/2+tileX*(widthBox/2), tileY*heightBox, 25);
   fill(0);
   textAlign(CENTER, CENTER);
   textSize(width/26);
