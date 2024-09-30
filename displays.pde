@@ -448,7 +448,6 @@ void displayEndScreen() {
     if (i % 5 == 0 && i != 0) {
       k++;
     }
-
     text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*13.5+tileY*k);
   }
 }
