@@ -134,6 +134,8 @@ void draw() {
     bank();
   } else if (raffleOn == true) {
     raffle();
+  } else if (tentOn == true) {
+    tent();
   }
 
   loadPlayer();

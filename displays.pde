@@ -1,6 +1,7 @@
 import java.util.Collections;
 
 PImage img;
+PImage tentBackground;
 PImage wallet;
 PImage tickets;
 PImage coffee;
@@ -96,6 +97,7 @@ boolean playerTicketsOn = false;
 boolean bankOn = false;
 boolean raffleOn = false;
 boolean helpOn = false;
+boolean tentOn = false;
 boolean start = true;
 boolean typing = false;
 boolean gameEnded = false;
@@ -294,11 +296,18 @@ void mouseClicked() {
       }
     } else if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent) {
       if ( mouseX >= leftClickAreaTent && mouseX <= rightClickAreaTent && mouseY <= bottomClickAreaTent && mouseY >= topClickAreaTent) {
-        tent();
+        if (walletOn == true || playerTicketsOn == true || bankOn == true || raffleOn == true || helpOn == true) {
+          walletOn = false;
+          playerTicketsOn = false;
+          bankOn = false;
+          raffleOn = false;
+          helpOn = false;
+        }
+        tentOn = !tentOn;
       }
     }
     if (mouseX < rightWallet && mouseX > leftWallet && mouseY < bottom && mouseY > top) {
-      if (helpOn == true || playerTicketsOn == true || bankOn == true || raffleOn == true) {
+      if (playerTicketsOn == true || bankOn == true || raffleOn == true || helpOn == true) {
         playerTicketsOn = false;
         bankOn = false;
         raffleOn = false;
@@ -306,7 +315,7 @@ void mouseClicked() {
       }
       walletOn = !walletOn;
     } else if (mouseX < rightTickets && mouseX > leftTickets && mouseY < bottom && mouseY > top) {
-      if (helpOn == true || walletOn == true || bankOn == true || raffleOn == true) {
+      if (walletOn == true || bankOn == true || raffleOn == true || helpOn == true) {
         walletOn = false;
         bankOn = false;
         raffleOn = false;
@@ -314,7 +323,7 @@ void mouseClicked() {
       }
       playerTicketsOn = !playerTicketsOn;
     } else if (mouseX < rightBank && mouseX > leftBank && mouseY < bottom && mouseY > top) {
-      if (helpOn == true || walletOn == true || playerTicketsOn == true || raffleOn == true) {
+      if (walletOn == true || playerTicketsOn == true || raffleOn == true || helpOn == true) {
         walletOn = false;
         playerTicketsOn = false;
         bankOn = false;
@@ -323,7 +332,7 @@ void mouseClicked() {
       }
       bankOn = !bankOn;
     } else if (mouseX < rightRaffle && mouseX > leftRaffle && mouseY < bottom && mouseY > top) {
-      if (helpOn == true || walletOn == true || playerTicketsOn == true || bankOn == true) {
+      if (walletOn == true || playerTicketsOn == true || bankOn == true || helpOn == true) {
         walletOn = false;
         playerTicketsOn = false;
         bankOn = false;
@@ -454,8 +463,8 @@ void displayEndScreen() {
 
 
 void wallet() {
-  if (motherloadTrue == true){
-  box("Your wallet", 11, 10);
+  if (motherloadTrue == true) {
+    box("Your wallet", 11, 10);
   } else {
     box("Your wallet", 10, 10);
   }
@@ -516,28 +525,15 @@ void raffle() {
     }
     textSize(width/55);
     text(bots[i].fullName, tileX*10+tileX*10*(i%2), tileY*7.5+tileY*k*2.5);
-    
+
     int v = 0;
-    for (int j = 0; j < bots[i].tickets; j++){
-      if (j%3 == 0 && j != 0){
+    for (int j = 0; j < bots[i].tickets; j++) {
+      if (j%3 == 0 && j != 0) {
         v++;
       }
-    text(bots[i].boughtTickets[j], tileX*8.5+tileX*1.5*(j % 3)+tileX*10*(i % 2), tileY*8+tileY*v*.5+tileY*k*2.5);
-    
-    
+      text(bots[i].boughtTickets[j], tileX*8.5+tileX*1.5*(j % 3)+tileX*10*(i % 2), tileY*8+tileY*v*.5+tileY*k*2.5);
     }
   }
-
-
-//println(bots[i].fullName + ": " + bots[i].boughtTickets[j]);
-
-  //int j = 0;
-  //for (int i = 0; i < winningTicketsID.size(); i++) {
-  //  if (i % 5 == 0 && i != 0) {
-  //    j++;
-  //  }
-  //  text(winningTicketsID.get(i), tileX*11+tileX*2*(i%5), tileY*10.5+tileY*j);
-  //}
 }
 
 void box(String text, int heightBox, int widthBox) {
@@ -550,4 +546,11 @@ void box(String text, int heightBox, int widthBox) {
   float space = tileX*(tiles-widthBox)/2+tileX;
   line(space, tileY*6.75, width-space, tileY*6.75);
   text(text, width/2, tileY*6);
+}
+
+void tent(){
+  println("Tent");
+  imageMode(CENTER);
+  tentBackground = loadImage("images/tent_background.png");
+  image(tentBackground, width/2, height/2, width/2, height/2);
 }
