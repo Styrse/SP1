@@ -129,7 +129,7 @@ void boxes() {
   //Walkable area
   rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge, 15);
   //Motherload
-  rect(leftMotherload, topMotherload, rightMotherload, bottomMotherload);
+  rect(leftMotherload, topMotherload, rightMotherload, bottomMotherload, 15);
 
   //Menu
   //Wallet
@@ -147,7 +147,7 @@ void boxes() {
 
   //Info box
   rectMode(CENTER);
-  fill(255, 0, 255, 150);
+  fill(255, 127, 0, 200);
   rect(width/2, height/4, width/2, height/4, 25);
 
   //Arrows
@@ -326,7 +326,7 @@ void mouseClicked() {
         raffleOn = false;
         helpOn = false;
       }
-      println("Raffle");
+      raffleOn = !raffleOn;
     } else if (mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
       if (walletOn == true || playerTicketsOn == true || bankOn == true || raffleOn == true) {
         walletOn = false;
@@ -491,6 +491,15 @@ void bank(){
   text("Income from tickets    =    " + (totalTickets-remainingTickets)*ticketPrice, tileX*15, tileY*12.5);
   text("Expenses from tickets    =    " + (totalTickets-remainingTickets)*ticketCostPrice, tileX*15, tileY*13.5);
   text("Profit from tickets    =    " + (totalTickets-remainingTickets)*(ticketPrice-ticketCostPrice), tileX*15, tileY*14.5);
+  
+}
+
+void raffle(){
+  smallBox("Raffle");
+  
+  textAlign(CENTER);
+  textSize(width/45);
+  
   
 }
 

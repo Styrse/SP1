@@ -131,6 +131,8 @@ void draw() {
     playerTickets();
   } else if (bankOn == true) {
     bank();
+  } else if (raffleOn == true){
+    raffle();
   }
   loadBots();
   loadPlayer();
