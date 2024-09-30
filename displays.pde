@@ -230,7 +230,7 @@ void nameTag(String name, float xPos, float yPos, float h) {
   rect(xPos-tileX*2.25, yPos-tileY*(h*1.2), xPos+tileX*2.25, yPos-tileY*(h*0.8), 50);
   fill(0);
   textAlign(CENTER, CENTER);
-  
+
   text(name, xPos, yPos-tileY*h);
 }
 
@@ -421,27 +421,27 @@ void lottery() {
 void displayEndScreen() {
   rectMode(CORNERS);
   fill(255, 127, 0, 200);
-  rect(tileX*7, tileY*7.5, tileX*23, tileY*27.5, 25);
+  rect(tileX*7, tileY*5, tileX*23, tileY*22.5, 25);
 
   //All winning numbers
   fill(0);
   textSize(width/25);
   textAlign(CENTER, CENTER);
-  text("Winning numbers", width/2, tileY*9);
-  line(tileX*8, tileY*10, tileX*22, tileY*10);
+  text("Winning numbers", width/2, tileY*6);
+  line(tileX*8, tileY*6.75, tileX*22, tileY*6.75);
   textSize(width/45);
   int j = 0;
   for (int i = 0; i < winningTicketsID.size(); i++) {
     if (i % 5 == 0 && i != 0) {
       j++;
     }
-    text(winningTicketsID.get(i), tileX*11+tileX*2*(i%5), tileY*10.5+tileY*j);
+    text(winningTicketsID.get(i), tileX*11+tileX*2*(i%5), tileY*7.5+tileY*j);
   }
 
   //Player winning numbers
   textSize(width/25);
-  text("Your numbers", width/2, tileY*15);
-  line(tileX*8, tileY*15.75, tileX*22, tileY*15.75);
+  text("Your numbers", width/2, tileY*12);
+  line(tileX*8, tileY*12.75, tileX*22, tileY*12.75);
   textSize(width/45);
   int k = 0;
   for (int i = 0; i < player.tickets; i++) {
@@ -449,19 +449,7 @@ void displayEndScreen() {
       k++;
     }
 
-    boolean isWinningTicket = false;
-    for (int h = 0; h < winningTicketsID.size(); h++) {
-      if (player.boughtTickets[h] == winningTicketsID.get(h)) {
-        isWinningTicket = true;
-        break;
-      }
-    }
-    if (isWinningTicket) {
-      fill(0, 255, 0);
-    } else {
-      fill(255, 0, 0);
-    }
-    text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*16.75+tileY*k);
+    text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*13.5+tileY*k);
   }
 }
 
