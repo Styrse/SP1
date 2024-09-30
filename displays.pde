@@ -215,7 +215,7 @@ void loadBots() {
 
   for (int i = 0; i < imageName.length; i++) {
     botImages[i] = loadImage("images/characters/" + imageName[i] + ".png");
-    image(botImages[i], botXPosition[i], botYPosition[i], tileX*4, tileY*4);
+    image(botImages[i], botXPosition[i], botYPosition[i], tileX*3, tileY*3);
     nameTag(bots[i].fullName, botXPosition[i], botYPosition[i]);
   }
 }
