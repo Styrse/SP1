@@ -130,15 +130,32 @@ void setup() {
   bottomUpArrow = bottomDownArrow;
   
   //Odd/Even
-  leftOne = tileX*11;
-  rightOne = leftOne+tileX*2;
-  topOne = tileY*8;
-  bottomOne = tileY*10;
+  leftOdd = tileX*11;
+  rightOdd = leftOdd+tileX*2;
+  topOdd = tileY*9;
+  bottomOdd = topOdd+tileY*2;
   
-  leftTwo = leftOne+tileX*2.5;
-  rightTwo = leftTwo+tileX*2;
-  topTwo = topOne;
-  bottomTwo = bottomOne;
+  leftEven = leftOdd+tileX*2.5;
+  rightEven = leftEven+tileX*2;
+  topEven = topOdd;
+  bottomEven = bottomOdd;
+  
+  //Red/Green
+  leftRed = leftOdd+tileX*5.5;
+  rightRed = leftRed+tileX*2;
+  topRed = topOdd;
+  bottomRed = topRed+tileY*2;
+  
+  leftGreen = leftRed+tileX*2.5;
+  rightGreen = leftGreen+tileX*2;
+  topGreen = topOdd;
+  bottomGreen = bottomOdd;
+  
+  //Poker chip
+  leftPokerChip = rightEven+tileX*7.625;
+  rightPokerChip = leftPokerChip+tileX*2;
+  topPokerChip = topOdd;
+  bottomPokerChip = bottomOdd;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);

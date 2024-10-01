@@ -72,3 +72,9 @@ Numbers:
 https://www.flaticon.com/free-icons/number-one" title="number one icons">Number one icons created by Fathema Khanom - Flaticon
 https://www.flaticon.com/free-icons/number" title="number icons">Number icons created by Fathema Khanom - Flaticon
 
+Red/Green:
+https://www.flaticon.com/free-icons/red-circle" title="red circle icons">Red circle icons created by customicondesign_1 - Flaticon
+
+Poker chip:
+https://www.flaticon.com/free-icons/bet" title="Bet icons">Bet icons created by Shastry - Flaticon
+

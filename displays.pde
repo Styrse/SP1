@@ -19,6 +19,9 @@ PImage arrowUp;
 PImage arrowDown;
 PImage odd;
 PImage even;
+PImage red;
+PImage green;
+PImage pokerChip;
 PImage[] botImages = new PImage[10];
 String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
 
@@ -136,15 +139,32 @@ float topUpArrow;
 float bottomUpArrow;
 
 //Odd/Even
-float leftOne;
-float rightOne;
-float topOne;
-float bottomOne;
+float leftOdd;
+float rightOdd;
+float topOdd;
+float bottomOdd;
 
-float leftTwo;
-float rightTwo;
-float topTwo;
-float bottomTwo;
+float leftEven;
+float rightEven;
+float topEven;
+float bottomEven;
+
+//Red/Green
+float leftRed;
+float rightRed;
+float topRed;
+float bottomRed;
+
+float leftGreen;
+float rightGreen;
+float topGreen;
+float bottomGreen;
+
+//Poker chip
+float leftPokerChip;
+float rightPokerChip;
+float topPokerChip;
+float bottomPokerChip;
 
 boolean moving = false;
 boolean walletOn = false;
@@ -436,9 +456,9 @@ void mouseClicked() {
       roulette();
     } else if (mouseX < rightDownArrow && mouseX > leftDownArrow && mouseY < bottomDownArrow && mouseY > topDownArrow) {
       bet -= 5;
-    } else if (mouseX < rightUpArrow && mouseX > leftUpArrow && mouseY < bottomUpArrow && mouseY > topUpArrow) {
+    }// else if (mouseX < rightUpArrow && mouseX > leftUpArrow && mouseY < bottomUpArrow && mouseY > topUpArrow) {
       bet += 5;
-    }
+    //} else if mouseX < rightOdd
     bet = constrain(bet, 0, player.wallet);
   }
 }
@@ -678,15 +698,32 @@ void tent() {
   image(arrowDown, leftDownArrow, topDownArrow, rightDownArrow, bottomDownArrow);
   image(arrowUp, leftUpArrow, topUpArrow, rightUpArrow, bottomUpArrow);
   
+  line(tileX*10.375, tileY*6.5, tileX*10.375, tileY*12);
+  
   textSize(width/45);
   text("Pick a bet", tileX*19.5, tileY*6.5);
   
+  text("Odd or Even", tileX*13.125, tileY*8);
+  text("Payout 1:1", tileX*13.125, tileY*11.75);
+  
   odd = loadImage("images/icons/one.png");
   even = loadImage("images/icons/two.png");
+  image(odd, leftOdd, topOdd, rightOdd, bottomOdd);
+  image(even, leftEven, topEven, rightEven, bottomEven);
   
-  image(odd, leftOne, topOne, rightOne, bottomOne);
-  image(even, leftTwo, topTwo, rightTwo, bottomTwo);
+  text("Red or Green", tileX*18.625, tileY*8);
+  text("Payout 1:1", tileX*18.625, tileY*11.75);
   
+  red = loadImage("images/icons/red.png");
+  green = loadImage("images/icons/green.png");
+  image(red, leftRed, topRed, rightRed, bottomRed);
+  image(green, leftGreen, topGreen, rightGreen, bottomGreen);
+  
+  text("Pick a number", tileX*24.125, tileY*8);
+  text("Payout 35:1", tileX*24.125, tileY*11.75);
+  
+  pokerChip = loadImage("images/icons/poker-chip.png");
+  image(pokerChip, leftPokerChip, topPokerChip, rightPokerChip, bottomPokerChip);
 }
 
 void loadRoulette(float size) {
@@ -699,4 +736,9 @@ void roulette() {
   loadRoulette(1.2);
 
   println("Roulette");
+  
+  //Generate a random int number
+  int randomNumber = (int) random(0, 36+1);
+  
+  //if (
 }
