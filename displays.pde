@@ -2,6 +2,7 @@ import java.util.Collections;
 
 PImage img;
 PImage tentBackground;
+PImage roulette;
 PImage wallet;
 PImage tickets;
 PImage coffee;
@@ -11,6 +12,7 @@ PImage help;
 PImage lottery;
 PImage arrows;
 PImage mouse;
+PImage cross;
 PImage[] botImages = new PImage[10];
 String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
 
@@ -88,6 +90,12 @@ float leftMotherload;
 float rightMotherload;
 float topMotherload;
 float bottomMotherload;
+
+//Cross
+float leftCross;
+float rightCross;
+float topCross;
+float bottomCross;
 
 boolean moving = false;
 boolean walletOn = false;
@@ -493,6 +501,8 @@ void wallet() {
   } else {
     text("Balance    =    " + player.wallet, tileX*15, tileY*9.5);
   }
+  cross = loadImage("images/icons/cross.png");
+  image(cross, leftCross, topCross, tileX, tileY);
 }
 
 void playerTickets() {
@@ -506,6 +516,8 @@ void playerTickets() {
     }
     text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*7.25+tileY*k);
   }
+  cross = loadImage("images/icons/cross.png");
+  image(cross, leftCross, topCross, tileX, tileY);
 }
 
 void bank() {
@@ -517,6 +529,9 @@ void bank() {
   text("Income from tickets    =    " + (totalTickets-remainingTickets)*ticketPrice, tileX*15, tileY*7.5);
   text("Expenses from tickets    =    " + (totalTickets-remainingTickets)*ticketCostPrice, tileX*15, tileY*8.5);
   text("Profit from tickets    =    " + (totalTickets-remainingTickets)*(ticketPrice-ticketCostPrice), tileX*15, tileY*9.5);
+  
+  cross = loadImage("images/icons/cross.png");
+  image(cross, leftCross, topCross, tileX, tileY);
 }
 
 void raffle() {
@@ -541,6 +556,8 @@ void raffle() {
       text(bots[i].boughtTickets[j], tileX*8.5+tileX*1.5*(j % 3)+tileX*10*(i % 2), tileY*8+tileY*v*.5+tileY*k*2.5);
     }
   }
+  cross = loadImage("images/icons/cross.png");
+  image(cross, leftCross, topCross, tileX, tileY);
 }
 
 void box(String text, int heightBox, int widthBox) {
@@ -556,8 +573,9 @@ void box(String text, int heightBox, int widthBox) {
 }
 
 void tent() {
-  println("Tent");
   imageMode(CENTER);
   tentBackground = loadImage("images/tent_background.png");
   image(tentBackground, width/2, height/2, width, height);
+  roulette = loadImage("images/roulette.png");
+  image(roulette, tileX*15, tileY*22, tileX*6, tileY*6);
 }

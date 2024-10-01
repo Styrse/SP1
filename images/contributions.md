@@ -54,3 +54,5 @@ Roulette:
 https://www.pngegg.com/en/png-wsavs/download
 https://www.flaticon.com/free-icons/roulette" title="roulette icons">Roulette icons created by smashingstocks - Flaticon
 
+Cross:
+https://www.flaticon.com/free-icons/cross" title="cross icons">Cross icons created by Freepik - Flaticon
