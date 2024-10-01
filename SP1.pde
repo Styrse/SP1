@@ -16,7 +16,6 @@ void setup() {
   tileX = width/tiles;
   tileY = height/tiles;
 
-
   iconSizeX = tileX*1.25;
   iconSizeY = tileY*1.25;
 
