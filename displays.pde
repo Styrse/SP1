@@ -17,11 +17,6 @@ PImage exit;
 PImage carnivalTent;
 PImage arrowUp;
 PImage arrowDown;
-PImage odd;
-PImage even;
-PImage red;
-PImage green;
-PImage pokerChip;
 PImage[] botImages = new PImage[10];
 String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
 int[] redNumbers = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36};
@@ -179,6 +174,7 @@ boolean tentOn = false;
 boolean start = true;
 boolean typing = false;
 boolean gameEnded = false;
+boolean betOn = false;
 
 String codeEntered = "";
 String motherloadString = "Motherload";
@@ -454,24 +450,42 @@ void mouseClicked() {
       playerXPosition = tileX*23;
       playerYPosition = tileY*23.5;
       tentOn = false;
-    } else if (mouseX < rightDownArrow && mouseX > leftDownArrow && mouseY < bottomDownArrow && mouseY > topDownArrow) {
+    }
+    if (mouseX < rightDownArrow && mouseX > leftDownArrow && mouseY < bottomDownArrow && mouseY > topDownArrow) {
       bet -= 5;
     } else if (mouseX < rightUpArrow && mouseX > leftUpArrow && mouseY < bottomUpArrow && mouseY > topUpArrow) {
       bet += 5;
-    } else if (mouseX < rightOdd && mouseX > leftOdd && mouseY < bottomOdd && mouseY > topOdd) {
+    }
+    bet = constrain(bet, 0, player.wallet);
+
+    if (mouseX < rightOdd && mouseX > leftOdd && mouseY < bottomOdd && mouseY > topOdd) {
       number = 1;
+      if (bet > 0) {
+        betOn = true;
+      }
     } else if (mouseX < rightEven && mouseX > leftEven && mouseY < bottomEven && mouseY > topEven) {
       number = 2;
+      if (bet > 0) {
+        betOn = true;
+      }
     } else if (mouseX < rightRed && mouseX > leftRed && mouseY < bottomRed && mouseY > topRed) {
       number = 3;
+      if (bet > 0) {
+        betOn = true;
+      }
     } else if (mouseX < rightGreen && mouseX > leftGreen && mouseY < bottomGreen && mouseY > topGreen) {
       number = 4;
+      if (bet > 0) {
+        betOn = true;
+      }
     } else if (mouseX < rightPokerChip && mouseX > leftPokerChip && mouseY < bottomPokerChip && mouseY > topPokerChip) {
       number = 5;
-    } else if (mouseX < rightRoulette && mouseX > leftRoulette && mouseY < bottomRoulette && mouseY > topRoulette) {
+      if (bet > 0) {
+        betOn = true;
+      }
+    } else if (mouseX < rightRoulette && mouseX > leftRoulette && mouseY < bottomRoulette && mouseY > topRoulette && betOn == true) {
       roulette();
-    } else
-      bet = constrain(bet, 0, player.wallet);
+    }
   }
 }
 
@@ -715,27 +729,30 @@ void tent() {
   textSize(width/45);
   text("Pick a bet", tileX*19.5, tileY*6.5);
 
+
+
+  fill(0);
   text("Odd or Even", tileX*13.125, tileY*8);
   text("Payout 1:1", tileX*13.125, tileY*11.75);
-
-  odd = loadImage("images/icons/one.png");
-  even = loadImage("images/icons/two.png");
-  image(odd, leftOdd, topOdd, rightOdd, bottomOdd);
-  image(even, leftEven, topEven, rightEven, bottomEven);
-
   text("Red or Green", tileX*18.625, tileY*8);
   text("Payout 1:1", tileX*18.625, tileY*11.75);
-
-  red = loadImage("images/icons/red.png");
-  green = loadImage("images/icons/green.png");
-  image(red, leftRed, topRed, rightRed, bottomRed);
-  image(green, leftGreen, topGreen, rightGreen, bottomGreen);
-
   text("Pick a number", tileX*24.125, tileY*8);
   text("Payout 35:1", tileX*24.125, tileY*11.75);
 
-  pokerChip = loadImage("images/icons/poker-chip.png");
-  image(pokerChip, leftPokerChip, topPokerChip, rightPokerChip, bottomPokerChip);
+  ellipseMode(CORNERS);
+  //Odd or even
+  fill(255, 221, 74);
+  ellipse(leftOdd, topOdd, rightOdd, bottomOdd);
+  fill(156, 137, 184);
+  ellipse(leftEven, topEven, rightEven, bottomEven);
+  //Red or green
+  fill(230, 57, 70);
+  ellipse(leftRed, topRed, rightRed, bottomRed);
+  fill(42, 157, 143);
+  ellipse(leftGreen, topGreen, rightGreen, bottomGreen);
+  //Pick a number
+  fill(78, 168, 222);
+  ellipse(leftPokerChip, topPokerChip, rightPokerChip, bottomPokerChip);
 }
 
 void loadRoulette(float size) {
