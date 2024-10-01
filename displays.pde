@@ -178,12 +178,14 @@ boolean betOn = false;
 
 String codeEntered = "";
 String motherloadString = "Motherload";
+String playerPick = "";
 
 int winRate;
 int motherloadCount = 0;
 int motherloadMoney = 1000;
 int bank = 0;
 int number = 0;
+int playerPickInt;
 
 ArrayList<Integer> winningNumbers = new ArrayList<Integer>();
 ArrayList<Integer> winningTicketsID = new ArrayList<Integer>();
@@ -313,7 +315,7 @@ void nameTag(String name, float xPos, float yPos, float h) {
 
 void keyPressed() {
   if (start == true && typing == true) {
-    if (key == BACKSPACE && playerName.length() > 0 && playerName.length() < 20) {
+    if (key == BACKSPACE && playerName.length() > 0 && playerName.length() < 15) {
       playerName = playerName.substring(0, playerName.length()-1);
     } else if (Character.isLetter(key) || key == ' ' || Character.isDigit(key)) {
       playerName += key;
@@ -323,6 +325,13 @@ void keyPressed() {
     } else if (key == ENTER && playerName.length() > 0) {
       start = false;
     }
+  } else if (tentOn == true && typing == true){
+    if (key == BACKSPACE && playerPick.length() > 0){
+      playerPick = playerPick.substring(0, playerPick.length()-1);
+    } else if (Character.isDigit(key)) {
+      playerPick += key;
+    }
+    playerPickInt = constrain(Integer.parseInt(playerPick), 0, 37);
   }
 
   if (motherload == true) {
@@ -759,6 +768,7 @@ void tent() {
   textSize(width/20);
   text("1", leftOdd+tileX, topOdd+tileY);
   text("2", leftEven+tileX, topEven+tileY);
+  text(playerPick, leftPokerChip+tileX, topPokerChip+tileY);
 }
 
 void loadRoulette(float size) {
@@ -803,11 +813,11 @@ void roulette() {
         number = 0;
       }
     } else if (number == 5) {
-      //if (randomNumber == playerPick) {
-      //  number = 5;
-      //} else {
-      //  number = 0;
-      //}
+      if (randomNumber == playerPickInt) {
+        number = 5;
+      } else {
+        number = 0;
+      }
     }
   }
 
