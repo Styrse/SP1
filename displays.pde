@@ -421,7 +421,12 @@ void mouseClicked() {
       tentOn = false;
     } else if (mouseX < rightRoulette && mouseX > leftRoulette && mouseY < bottomRoulette && mouseY > topRoulette) {
       roulette();
+    } else if (mouseX < rightDownArrow && mouseX > leftDownArrow && mouseY < bottomDownArrow && mouseY > topDownArrow) {
+      bet -= 5;
+    } else if (mouseX < rightUpArrow && mouseX > leftUpArrow && mouseY < bottomUpArrow && mouseY > topUpArrow) {
+      bet += 5;
     }
+    bet = constrain(bet, 0, player.wallet);
   }
 }
 
@@ -625,7 +630,7 @@ void tent() {
   image(exit, tileX*3, tileY*18, tileX*5, tileY*20);
 
   loadRoulette(1);
-  
+
   //Wallet
   rectMode(CORNERS);
   fill(255, 127, 0, 200);
@@ -637,36 +642,38 @@ void tent() {
   textSize(tileY);
   textAlign(LEFT, CENTER);
   text(player.wallet, tileX*3.25, tileY*2);
-  
+
   fill(255, 127, 0, 200);
   rect(tileX*3, tileY*4, tileX*27, tileY*13, 25);
-  
+
   fill(0);
   textAlign(CENTER, CENTER);
   textSize(width/30);
   text("Welcome to Casino Fantasia", width/2, tileY*5);
   line(tileX*4, tileY*5.75, tileX*26, tileY*5.75);
-  
+
   text("Your bet", tileX*7.5, tileY*6.5);
-  
+
   textSize(width/10);
   text((int)bet, tileX*7.5, tileY*8.5); //Typecasting just for Jesper
-  
+
+
+  arrowDown = loadImage("images/icons/down-arrow.png");
   arrowUp = loadImage("images/icons/up-arrow.png");
-  arrowDown = loadImage("image/icons/down-arrow.png");
   imageMode(CORNERS);
-  image(arrowUp, tileX*5, tileY*10, tileX*7, tileY*12);
+
+  image(arrowDown, leftDownArrow, topDownArrow, rightDownArrow, bottomDownArrow);
+  image(arrowUp, leftUpArrow, topUpArrow, rightUpArrow, bottomUpArrow);
 }
 
 void loadRoulette(float size) {
   imageMode(CENTER);
   roulette = loadImage("images/roulette.png");
-  image(roulette, tileX*15, tileY*22, (tileX*6)*size, (tileY*6)*size);  
-  
+  image(roulette, tileX*15, tileY*22, (tileX*6)*size, (tileY*6)*size);
 }
 
 void roulette() {
   loadRoulette(1.2);
-  
+
   println("Roulette");
 }
