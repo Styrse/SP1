@@ -111,6 +111,12 @@ void setup() {
   rightRestart = tileX*16.5;
   topRestart = tileY*22;
   bottomRestart = tileY*25;
+  
+  //Roulette
+  leftRoulette = tileX*12.5;
+  rightRoulette = tileX*17.5;
+  topRoulette = tileY*20;
+  bottomRoulette = tileY*24;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);

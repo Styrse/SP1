@@ -111,6 +111,12 @@ float rightRestart;
 float topRestart;
 float bottomRestart;
 
+//Roulette
+float leftRoulette;
+float rightRoulette;
+float topRoulette;
+float bottomRoulette;
+
 boolean moving = false;
 boolean walletOn = false;
 boolean motherload = false;
@@ -394,7 +400,11 @@ void mouseClicked() {
     }
   } else if (tentOn == true) {
     if (mouseX < rightExit && mouseX > leftExit && mouseY < bottomExit && mouseY > topExit) {
+      playerXPosition = tileX*23;
+      playerYPosition = tileY*23.5;
       tentOn = false;
+    } else if (mouseX < rightRoulette && mouseX > leftRoulette && mouseY < bottomRoulette && mouseY > topRoulette) {
+      roulette();
     }
   }
 }
@@ -495,7 +505,7 @@ void displayEndScreen() {
   }
   imageMode(CORNERS);
   carnivalTent = loadImage("images/icons/carnival-tent.png");
-  image(carnivalTent, leftRestart, topRestart, rightRestart, bottomRestart); 
+  image(carnivalTent, leftRestart, topRestart, rightRestart, bottomRestart);
 }
 
 
@@ -593,10 +603,35 @@ void tent() {
   imageMode(CENTER);
   tentBackground = loadImage("images/tent_background.png");
   image(tentBackground, width/2, height/2, width, height);
-  roulette = loadImage("images/roulette.png");
-  image(roulette, tileX*15, tileY*22, tileX*6, tileY*6);
 
   imageMode(CORNERS);
   exit = loadImage("images/icons/exit.png");
   image(exit, tileX*3, tileY*18, tileX*5, tileY*20);
+
+  loadRoulette(1);
+  
+  //Wallet
+  rectMode(CORNERS);
+  fill(255, 127, 0, 200);
+  rect(tileX, tileY, tileX*7, tileY*3, 25);
+  imageMode(CORNERS);
+  wallet = loadImage("images/icons/wallet.png");
+  image(wallet, leftWallet, top, rightWallet, bottom);
+  fill(0);
+  textSize(tileY);
+  textAlign(LEFT, CENTER);
+  text(player.wallet, tileX*3.25, tileY*2);
+  
+  fill(255, 127, 0, 200);
+  rect(tileX*3, tileY*4, tileX*27, tileY*13, 25);
+}
+void loadRoulette(float size) {
+  imageMode(CENTER);
+  roulette = loadImage("images/roulette.png");
+  image(roulette, tileX*15, tileY*22, (tileX*6)*size, (tileY*6)*size);
+}
+
+void roulette() {
+  loadRoulette(1.2);
+  println("Roulette");
 }
