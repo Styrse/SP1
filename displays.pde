@@ -739,7 +739,7 @@ void tent() {
   text("Payout 1:1", tileX*18.625, tileY*11.75);
   text("Pick a number", tileX*24.125, tileY*8);
   text("Payout 35:1", tileX*24.125, tileY*11.75);
-
+  
   ellipseMode(CORNERS);
   //Odd or even
   fill(255, 221, 74);
@@ -754,6 +754,11 @@ void tent() {
   //Pick a number
   fill(78, 168, 222);
   ellipse(leftPokerChip, topPokerChip, rightPokerChip, bottomPokerChip);
+  
+  fill(0);
+  textSize(width/20);
+  text("1", leftOdd+tileX, topOdd+tileY);
+  text("2", leftEven+tileX, topEven+tileY);
 }
 
 void loadRoulette(float size) {
