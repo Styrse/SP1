@@ -47,8 +47,9 @@ https://www.flaticon.com/free-icons/pizza" title="pizza icons">Pizza icons creat
 https://www.flaticon.com/free-icons/hamburger" title="hamburger icons">Hamburger icons created by Adorableninana - Flaticon
 https://www.flaticon.com/free-stickers/avocado" title="avocado stickers">Avocado stickers created by Adorableninana - Flaticon
 
-Tent:
+Tents:
 www.canva.com
+https://www.flaticon.com/free-icons/carnival-tent" title="carnival tent icons">Carnival tent icons created by Freepik - Flaticon
 
 Roulette:
 https://www.pngegg.com/en/png-wsavs/download
@@ -62,3 +63,5 @@ https://www.flaticon.com/free-icons/exit" title="exit icons">Exit icons created 
 
 No money:
 https://www.flaticon.com/free-icons/no-money" title="no money icons">No money icons created by kerismaker - Flaticon
+
+
