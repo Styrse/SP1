@@ -654,7 +654,7 @@ void tent() {
 
   text("Your bet", tileX*7.5, tileY*6.5);
 
-  textSize(width/10);
+  textSize(width/12);
   text((int)bet, tileX*7.5, tileY*8.5); //Typecasting just for Jesper
 
 
