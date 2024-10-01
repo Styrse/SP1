@@ -128,6 +128,17 @@ void setup() {
   rightUpArrow = leftUpArrow+tileX*1.75;
   topUpArrow = topDownArrow;
   bottomUpArrow = bottomDownArrow;
+  
+  //Odd/Even
+  leftOne = tileX*11;
+  rightOne = leftOne+tileX*2;
+  topOne = tileY*8;
+  bottomOne = tileY*10;
+  
+  leftTwo = leftOne+tileX*2.5;
+  rightTwo = leftTwo+tileX*2;
+  topTwo = topOne;
+  bottomTwo = bottomOne;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);

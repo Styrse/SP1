@@ -17,6 +17,8 @@ PImage exit;
 PImage carnivalTent;
 PImage arrowUp;
 PImage arrowDown;
+PImage odd;
+PImage even;
 PImage[] botImages = new PImage[10];
 String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
 
@@ -132,6 +134,17 @@ float leftUpArrow;
 float rightUpArrow;
 float topUpArrow;
 float bottomUpArrow;
+
+//Odd/Even
+float leftOne;
+float rightOne;
+float topOne;
+float bottomOne;
+
+float leftTwo;
+float rightTwo;
+float topTwo;
+float bottomTwo;
 
 boolean moving = false;
 boolean walletOn = false;
@@ -664,6 +677,16 @@ void tent() {
 
   image(arrowDown, leftDownArrow, topDownArrow, rightDownArrow, bottomDownArrow);
   image(arrowUp, leftUpArrow, topUpArrow, rightUpArrow, bottomUpArrow);
+  
+  textSize(width/45);
+  text("Pick a bet", tileX*19.5, tileY*6.5);
+  
+  odd = loadImage("images/icons/one.png");
+  even = loadImage("images/icons/two.png");
+  
+  image(odd, leftOne, topOne, rightOne, bottomOne);
+  image(even, leftTwo, topTwo, rightTwo, bottomTwo);
+  
 }
 
 void loadRoulette(float size) {

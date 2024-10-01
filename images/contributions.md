@@ -68,4 +68,7 @@ Arrows up/down:
 https://www.flaticon.com/free-icons/down-arrow" title="down arrow icons">Down arrow icons created by Freepik - Flaticon
 https://www.flaticon.com/free-icons/scroll-up" title="scroll up icons">Scroll up icons created by Freepik - Flaticon
 
+Numbers:
+https://www.flaticon.com/free-icons/number-one" title="number one icons">Number one icons created by Fathema Khanom - Flaticon
+https://www.flaticon.com/free-icons/number" title="number icons">Number icons created by Fathema Khanom - Flaticon
 
