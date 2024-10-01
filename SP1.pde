@@ -117,6 +117,17 @@ void setup() {
   rightRoulette = tileX*17.5;
   topRoulette = tileY*20;
   bottomRoulette = tileY*24;
+  
+  //Betting arrows
+  leftDownArrow = 
+  rightDownArrow = 
+  topDownArrow = 
+  bottomDownArrow = 
+  
+  leftUpArrow = 
+  rightUpArrow = 
+  topUpArrow = 
+  bottomUpArrow = 
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);

@@ -15,6 +15,8 @@ PImage mouse;
 PImage cross;
 PImage exit;
 PImage carnivalTent;
+PImage arrowUp;
+PImage arrowDown;
 PImage[] botImages = new PImage[10];
 String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
 
@@ -116,6 +118,20 @@ float leftRoulette;
 float rightRoulette;
 float topRoulette;
 float bottomRoulette;
+
+//Bet
+float  bet = 5;
+
+//Betting arrows
+float leftDownArrow;
+float rightDownArrow;
+float topDownArrow;
+float bottomDownArrow;
+
+float leftUpArrow;
+float rightUpArrow;
+float topUpArrow;
+float bottomUpArrow;
 
 boolean moving = false;
 boolean walletOn = false;
@@ -632,6 +648,14 @@ void tent() {
   line(tileX*4, tileY*5.75, tileX*26, tileY*5.75);
   
   text("Your bet", tileX*7.5, tileY*6.5);
+  
+  textSize(width/10);
+  text((int)bet, tileX*7.5, tileY*8.5); //Typecasting just for Jesper
+  
+  arrowUp = loadImage("images/icons/up-arrow.png");
+  arrowDown = loadImage("image/icons/down-arrow.png");
+  imageMode(CORNERS);
+  image(arrowUp, tileX*5, tileY*10, tileX*7, tileY*12);
 }
 
 void loadRoulette(float size) {

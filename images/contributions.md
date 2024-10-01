@@ -64,4 +64,8 @@ https://www.flaticon.com/free-icons/exit" title="exit icons">Exit icons created 
 No money:
 https://www.flaticon.com/free-icons/no-money" title="no money icons">No money icons created by kerismaker - Flaticon
 
+Arrows up/down:
+https://www.flaticon.com/free-icons/down-arrow" title="down arrow icons">Down arrow icons created by Freepik - Flaticon
+https://www.flaticon.com/free-icons/scroll-up" title="scroll up icons">Scroll up icons created by Freepik - Flaticon
+
 
