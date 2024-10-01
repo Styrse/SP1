@@ -330,8 +330,12 @@ void keyPressed() {
       playerPick = playerPick.substring(0, playerPick.length()-1);
     } else if (Character.isDigit(key)) {
       playerPick += key;
+      playerPickInt = Integer.parseInt(playerPick);
+      if (playerPickInt > 36){
+        playerPickInt = 36;
+      }
     }
-    playerPickInt = constrain(Integer.parseInt(playerPick), 0, 37);
+    
   }
 
   if (motherload == true) {
