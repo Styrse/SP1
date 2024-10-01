@@ -624,14 +624,25 @@ void tent() {
   
   fill(255, 127, 0, 200);
   rect(tileX*3, tileY*4, tileX*27, tileY*13, 25);
+  
+  fill(0);
+  textAlign(CENTER, CENTER);
+  textSize(width/30);
+  text("Welcome to Casino Fantasia", width/2, tileY*5);
+  line(tileX*4, tileY*5.75, tileX*26, tileY*5.75);
+  
+  text("Your bet", tileX*7.5, tileY*6.5);
 }
+
 void loadRoulette(float size) {
   imageMode(CENTER);
   roulette = loadImage("images/roulette.png");
-  image(roulette, tileX*15, tileY*22, (tileX*6)*size, (tileY*6)*size);
+  image(roulette, tileX*15, tileY*22, (tileX*6)*size, (tileY*6)*size);  
+  
 }
 
 void roulette() {
   loadRoulette(1.2);
+  
   println("Roulette");
 }
