@@ -14,6 +14,7 @@ PImage arrows;
 PImage mouse;
 PImage cross;
 PImage exit;
+PImage carnivalTent;
 PImage[] botImages = new PImage[10];
 String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
 
@@ -103,6 +104,12 @@ float leftExit;
 float rightExit;
 float topExit;
 float bottomExit;
+
+//Restart
+float leftRestart;
+float rightRestart;
+float topRestart;
+float bottomRestart;
 
 boolean moving = false;
 boolean walletOn = false;
@@ -457,7 +464,7 @@ void lottery() {
 void displayEndScreen() {
   rectMode(CORNERS);
   fill(255, 127, 0, 200);
-  rect(tileX*7, tileY*5, tileX*23, tileY*22.5, 25);
+  rect(tileX*7, tileY*5, tileX*23, tileY*25.5, 25);
 
   //All winning numbers
   fill(0);
@@ -486,6 +493,9 @@ void displayEndScreen() {
     }
     text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*13.5+tileY*k);
   }
+  imageMode(CORNERS);
+  carnivalTent = loadImage("images/icons/carnival-tent.png");
+  image(carnivalTent, leftRestart, topRestart, rightRestart, bottomRestart); 
 }
 
 

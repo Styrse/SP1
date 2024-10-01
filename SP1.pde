@@ -105,6 +105,12 @@ void setup() {
   rightExit = tileX*5;
   topExit = tileY*18.5;
   bottomExit = tileY*23.5;
+  
+  //Restart
+  leftRestart = tileX*13.5;
+  rightRestart = tileX*16.5;
+  topRestart = tileY*22;
+  bottomRestart = tileY*25;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
