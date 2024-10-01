@@ -13,6 +13,7 @@ PImage lottery;
 PImage arrows;
 PImage mouse;
 PImage cross;
+PImage exit;
 PImage[] botImages = new PImage[10];
 String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
 
@@ -96,6 +97,12 @@ float leftCross;
 float rightCross;
 float topCross;
 float bottomCross;
+
+//Exit
+float leftExit;
+float rightExit;
+float topExit;
+float bottomExit;
 
 boolean moving = false;
 boolean walletOn = false;
@@ -379,9 +386,8 @@ void mouseClicked() {
       start = false;
     }
   } else if (tentOn == true) {
-    if (mouseX < width/10 && mouseY < height/10) {
+    if (mouseX < rightExit && mouseX > leftExit && mouseY < bottomExit && mouseY > topExit) {
       tentOn = false;
-      println("Make exit sign");
     }
   }
 }
@@ -567,7 +573,7 @@ void box(String text, int heightBox, int widthBox) {
   float space = tileX*(tiles-widthBox)/2+tileX;
   line(space, tileY*6.75, width-space, tileY*6.75);
   text(text, width/2, tileY*6);
-  
+
   imageMode(CORNERS);
   cross = loadImage("images/icons/cross.png");
   image(cross, leftCross, topCross, rightCross, bottomCross);
@@ -579,4 +585,8 @@ void tent() {
   image(tentBackground, width/2, height/2, width, height);
   roulette = loadImage("images/roulette.png");
   image(roulette, tileX*15, tileY*22, tileX*6, tileY*6);
+
+  imageMode(CORNERS);
+  exit = loadImage("images/icons/exit.png");
+  image(exit, tileX*3, tileY*18, tileX*5, tileY*20);
 }

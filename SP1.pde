@@ -100,6 +100,12 @@ void setup() {
   rightCross = leftCross+tileX;
   topCross = tileY*5.5;
   bottomCross = topCross+tileY;
+  
+  //Exit
+  leftExit = tileX*3;
+  rightExit = tileX*5;
+  topExit = tileY*18.5;
+  bottomExit = tileY*23.5;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);

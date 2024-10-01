@@ -56,3 +56,9 @@ https://www.flaticon.com/free-icons/roulette" title="roulette icons">Roulette ic
 
 Cross:
 https://www.flaticon.com/free-icons/cross" title="cross icons">Cross icons created by Freepik - Flaticon
+
+Exit:
+https://www.flaticon.com/free-icons/exit" title="exit icons">Exit icons created by Good Ware - Flaticon
+
+No money:
+https://www.flaticon.com/free-icons/no-money" title="no money icons">No money icons created by kerismaker - Flaticon

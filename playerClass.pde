@@ -1,3 +1,4 @@
+PImage noMoney;
 String[] botFirstNames = {"Mette", "Lars", "Helle", "Anders", "Poul", "Anker", "Jens"};
 String[] botLastNames = {"Krag", "Jørgensen", "Hartling", "Schlüter", "Rasmussen", "Thorning-Schmidt", "Frederiksen", "Fogh", "Nyrup", "Løkke"};
 Player[] bots = new Player[amountBots];
@@ -43,13 +44,8 @@ class Player {
         }
       }
     } else {
-      rectMode(CORNERS);
-      fill(255, 0, 0, 150);
-      rect(tileX*5, tileY*20, tileX*9, tileY*21, 25);
-      textAlign(CENTER, CENTER);
-      textSize(width/70);
-      fill(0);
-      text("Insuficient funds", tileX*7, tileY*20.5); //Fix time
+      noMoney = loadImage("images/icons/no-money.png");
+      image(noMoney, tileX*6, tileY*19, tileX*2, tileY*2);
     }
   }
 
