@@ -484,6 +484,7 @@ void mouseClicked() {
         betOn = true;
       }
     } else if (mouseX < rightRoulette && mouseX > leftRoulette && mouseY < bottomRoulette && mouseY > topRoulette && betOn == true) {
+      player.wallet -= bet;
       roulette();
     }
   }
@@ -828,8 +829,9 @@ void roulette() {
     break;
   }
 
-  //Resets number
+  //Resets number and betOn
   number = 0;
+  betOn = false;
 }
 
 
