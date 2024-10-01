@@ -366,6 +366,12 @@ void mouseClicked() {
     } else if (mouseX < rightMotherload && mouseX > leftMotherload && mouseY < bottomMotherload && mouseY > topMotherload) {
       motherload = true;
     }
+    if (mouseX < rightCross && mouseX > leftCross && mouseY < bottomCross && mouseY > topCross) {
+      walletOn = false;
+      playerTicketsOn = false;
+      bankOn = false;
+      raffleOn = false;
+    }
   } else if (start == true) {
     if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
       typing = true;
@@ -375,7 +381,7 @@ void mouseClicked() {
   } else if (tentOn == true) {
     if (mouseX < width/10 && mouseY < height/10) {
       tentOn = false;
-      println("Make exit cross in top right corner");
+      println("Make exit sign");
     }
   }
 }
@@ -501,8 +507,6 @@ void wallet() {
   } else {
     text("Balance    =    " + player.wallet, tileX*15, tileY*9.5);
   }
-  cross = loadImage("images/icons/cross.png");
-  image(cross, leftCross, topCross, tileX, tileY);
 }
 
 void playerTickets() {
@@ -516,8 +520,6 @@ void playerTickets() {
     }
     text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*7.25+tileY*k);
   }
-  cross = loadImage("images/icons/cross.png");
-  image(cross, leftCross, topCross, tileX, tileY);
 }
 
 void bank() {
@@ -529,9 +531,6 @@ void bank() {
   text("Income from tickets    =    " + (totalTickets-remainingTickets)*ticketPrice, tileX*15, tileY*7.5);
   text("Expenses from tickets    =    " + (totalTickets-remainingTickets)*ticketCostPrice, tileX*15, tileY*8.5);
   text("Profit from tickets    =    " + (totalTickets-remainingTickets)*(ticketPrice-ticketCostPrice), tileX*15, tileY*9.5);
-  
-  cross = loadImage("images/icons/cross.png");
-  image(cross, leftCross, topCross, tileX, tileY);
 }
 
 void raffle() {
@@ -556,8 +555,6 @@ void raffle() {
       text(bots[i].boughtTickets[j], tileX*8.5+tileX*1.5*(j % 3)+tileX*10*(i % 2), tileY*8+tileY*v*.5+tileY*k*2.5);
     }
   }
-  cross = loadImage("images/icons/cross.png");
-  image(cross, leftCross, topCross, tileX, tileY);
 }
 
 void box(String text, int heightBox, int widthBox) {
@@ -570,6 +567,10 @@ void box(String text, int heightBox, int widthBox) {
   float space = tileX*(tiles-widthBox)/2+tileX;
   line(space, tileY*6.75, width-space, tileY*6.75);
   text(text, width/2, tileY*6);
+  
+  imageMode(CORNERS);
+  cross = loadImage("images/icons/cross.png");
+  image(cross, leftCross, topCross, rightCross, bottomCross);
 }
 
 void tent() {

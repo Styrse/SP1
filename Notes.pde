@@ -15,7 +15,12 @@ To do
 
 
 
-
+if (mouseX < rightCross && mouseX > leftCross && mouseY < bottomCross && mouseY > topCross) {
+    walletOn = false;
+    playerTicketsOn = false;
+    bankOn = false;
+    raffleOn = false;
+  }
 
 
 

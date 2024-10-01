@@ -96,10 +96,10 @@ void setup() {
   bottomMotherload = tileY*16.25;
   
   //Cross
-  leftCross = tileX*19;
-  rightCross = tileX*20;
-  topCross = tileY*6;
-  bottomCross = tileY*7;
+  leftCross = tileX*18.5;
+  rightCross = leftCross+tileX;
+  topCross = tileY*5.5;
+  bottomCross = topCross+tileY;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
