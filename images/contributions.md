@@ -50,3 +50,7 @@ https://www.flaticon.com/free-stickers/avocado" title="avocado stickers">Avocado
 Tent:
 www.canva.com
 
+Roulette:
+https://www.pngegg.com/en/png-wsavs/download
+https://www.flaticon.com/free-icons/roulette" title="roulette icons">Roulette icons created by smashingstocks - Flaticon
+
