@@ -471,300 +471,356 @@ void mouseClicked() {
     } else if (mouseX < rightRoulette && mouseX > leftRoulette && mouseY < bottomRoulette && mouseY > topRoulette) {
       roulette();
     } else
-        bet = constrain(bet, 0, player.wallet);
+      bet = constrain(bet, 0, player.wallet);
+  }
+}
 
-      
-    }
+
+void startInfo() {
+  rectMode(CENTER);
+  fill(255, 127, 0, 200);
+  rect(width/2, height/2, width/2, height/2, 25);
+  line(tileX*8, tileY*11, tileX*22, tileY*11);
+  line(tileX*8, tileY*17, tileX*22, tileY*17);
+
+  textAlign(CENTER, CENTER);
+  textSize(width/45);
+  fill(0);
+  text("Enjoy a sunny day at the " + '"' + "Fantasia Fairgrounds" + '"' + "\nBuy some lottery tickets or gamble in the tent", width/2, tileY*9.5);
+  strokeWeight(1.5);
+
+  text("To finish the day and see what you won \nclick this icon in the top right corner.", width/2, tileY*12.5);
+  imageMode(CENTER);
+  lottery = loadImage("images/icons/lottery.png");
+  image(lottery, width/2, height/2, iconSizeX*2, iconSizeY*2);
+
+  //Username
+  text("Please enter your name by clicking the box below.", width/2, tileY*17.75);
+  textSize(width/65);
+  text("Max 15 chracters", width/2, tileY*18.5);
+  fill(255);
+  rectMode(CORNERS);
+  rect(leftUsername, topUsername, rightUsername, bottomUsername, 25);
+  fill(0);
+  textSize(tileX*1.15);
+  text(playerName, width/2, tileY*19.75);
+
+  if (playerName.length() <= 0) {
+    fill(127);
+  } else {
+    fill(0, 255, 0);
+  }
+  rect(leftEnter, topEnter, rightEnter, bottomEnter, 25);
+  textSize(width/35);
+  fill(0);
+  text("Enter", width/2, tileY*21.5);
+}
+
+void getWinningNumbers() {
+  //Winning chance 20%
+  winRate = (totalTickets/100)*20;
+
+  for (int i = 0; i < winRate; i++) {
+    winningNumbers.add((int) random(1, 100));
   }
 
+  for (int i = 0; i < winRate; i++) {
+    winningTicketsID.add(ticketsID.get(winningNumbers.get(i)));
+  }
+  Collections.sort(winningTicketsID);
+}
 
-  void startInfo() {
-    rectMode(CENTER);
-    fill(255, 127, 0, 200);
-    rect(width/2, height/2, width/2, height/2, 25);
-    line(tileX*8, tileY*11, tileX*22, tileY*11);
-    line(tileX*8, tileY*17, tileX*22, tileY*17);
+void lottery() {
 
-    textAlign(CENTER, CENTER);
-    textSize(width/45);
-    fill(0);
-    text("Enjoy a sunny day at the " + '"' + "Fantasia Fairgrounds" + '"' + "\nBuy some lottery tickets or gamble in the tent", width/2, tileY*9.5);
-    strokeWeight(1.5);
+  gameEnded = true;
 
-    text("To finish the day and see what you won \nclick this icon in the top right corner.", width/2, tileY*12.5);
-    imageMode(CENTER);
-    lottery = loadImage("images/icons/lottery.png");
-    image(lottery, width/2, height/2, iconSizeX*2, iconSizeY*2);
+  println("Lottery - More to do");
+}
 
-    //Username
-    text("Please enter your name by clicking the box below.", width/2, tileY*17.75);
-    textSize(width/65);
-    text("Max 15 chracters", width/2, tileY*18.5);
-    fill(255);
-    rectMode(CORNERS);
-    rect(leftUsername, topUsername, rightUsername, bottomUsername, 25);
-    fill(0);
-    textSize(tileX*1.15);
-    text(playerName, width/2, tileY*19.75);
+void displayEndScreen() {
+  rectMode(CORNERS);
+  fill(255, 127, 0, 200);
+  rect(tileX*7, tileY*5, tileX*23, tileY*25.5, 25);
 
-    if (playerName.length() <= 0) {
-      fill(127);
-    } else {
-      fill(0, 255, 0);
+  //All winning numbers
+  fill(0);
+  textSize(width/25);
+  textAlign(CENTER, CENTER);
+  text("Winning numbers", width/2, tileY*6);
+  line(tileX*8, tileY*6.75, tileX*22, tileY*6.75);
+  textSize(width/45);
+  int j = 0;
+  for (int i = 0; i < winningTicketsID.size(); i++) {
+    if (i % 5 == 0 && i != 0) {
+      j++;
     }
-    rect(leftEnter, topEnter, rightEnter, bottomEnter, 25);
-    textSize(width/35);
-    fill(0);
-    text("Enter", width/2, tileY*21.5);
+    text(winningTicketsID.get(i), tileX*11+tileX*2*(i%5), tileY*7.5+tileY*j);
   }
 
-  void getWinningNumbers() {
-    //Winning chance 20%
-    winRate = (totalTickets/100)*20;
-
-    for (int i = 0; i < winRate; i++) {
-      winningNumbers.add((int) random(1, 100));
+  //Player winning numbers
+  textSize(width/25);
+  text("Your numbers", width/2, tileY*12);
+  line(tileX*8, tileY*12.75, tileX*22, tileY*12.75);
+  textSize(width/45);
+  int k = 0;
+  for (int i = 0; i < player.tickets; i++) {
+    if (i % 5 == 0 && i != 0) {
+      k++;
     }
+    text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*13.5+tileY*k);
+  }
+  imageMode(CORNERS);
+  carnivalTent = loadImage("images/icons/carnival-tent.png");
+  image(carnivalTent, leftRestart, topRestart, rightRestart, bottomRestart);
+}
 
-    for (int i = 0; i < winRate; i++) {
-      winningTicketsID.add(ticketsID.get(winningNumbers.get(i)));
+
+void wallet() {
+  if (motherloadTrue == true) {
+    box("Your wallet", 11, 10);
+  } else {
+    box("Your wallet", 10, 10);
+  }
+  int gamble = 0;
+  textAlign(CENTER);
+  textSize(width/45);
+
+  text("Tickets    =    " + (player.tickets == 0 ? "": "-") + player.tickets*ticketPrice, tileX*15, tileY*7.5);
+  if (player.gamble == 0) {
+    text("Gamble    =    " + player.gamble, tileX*15, tileY*8.5);
+  } else if (player.gamble < 0) {
+    text("Gamble    =    -" + player.gamble, tileX*15, tileY*8.5);
+  } else if (player.gamble > 0) {
+    text("Gamble    =    +" + player.gamble, tileX*15, tileY*8.5);
+  }
+  if (motherloadTrue == true) {
+    text("Motherload    =    " + motherloadCount*motherloadMoney, tileX*15, tileY*9.5);
+    text("Balance    =    " + player.wallet, tileX*15, tileY*10.5);
+  } else {
+    text("Balance    =    " + player.wallet, tileX*15, tileY*9.5);
+  }
+}
+
+void playerTickets() {
+  box("Your tickets", 15, 10);
+
+  textSize(width/45);
+  int k = 0;
+  for (int i = 0; i < player.tickets; i++) {
+    if (i % 5 == 0 && i != 0) {
+      k++;
     }
-    Collections.sort(winningTicketsID);
+    text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*7.25+tileY*k);
   }
+}
 
-  void lottery() {
+void bank() {
+  box("Bank", 10, 10);
 
-    gameEnded = true;
+  textAlign(CENTER);
+  textSize(width/45);
 
-    println("Lottery - More to do");
-  }
+  text("Income from tickets    =    " + (totalTickets-remainingTickets)*ticketPrice, tileX*15, tileY*7.5);
+  text("Expenses from tickets    =    " + (totalTickets-remainingTickets)*ticketCostPrice, tileX*15, tileY*8.5);
+  text("Profit from tickets    =    " + (totalTickets-remainingTickets)*(ticketPrice-ticketCostPrice), tileX*15, tileY*9.5);
+}
 
-  void displayEndScreen() {
-    rectMode(CORNERS);
-    fill(255, 127, 0, 200);
-    rect(tileX*7, tileY*5, tileX*23, tileY*25.5, 25);
+void raffle() {
+  box("Sold tickets", 20, 20);
 
-    //All winning numbers
-    fill(0);
-    textSize(width/25);
-    textAlign(CENTER, CENTER);
-    text("Winning numbers", width/2, tileY*6);
-    line(tileX*8, tileY*6.75, tileX*22, tileY*6.75);
-    textSize(width/45);
-    int j = 0;
-    for (int i = 0; i < winningTicketsID.size(); i++) {
-      if (i % 5 == 0 && i != 0) {
-        j++;
+  textAlign(CENTER);
+  textSize(width/45);
+
+  int k = 0;
+  for (int i = 0; i < amountBots; i++) {
+    if (i%2 == 0 && i != 0) {
+      k++;
+    }
+    textSize(width/55);
+    text(bots[i].fullName, tileX*10+tileX*10*(i%2), tileY*7.5+tileY*k*2.5);
+
+    int v = 0;
+    for (int j = 0; j < bots[i].tickets; j++) {
+      if (j%3 == 0 && j != 0) {
+        v++;
       }
-      text(winningTicketsID.get(i), tileX*11+tileX*2*(i%5), tileY*7.5+tileY*j);
+      text(bots[i].boughtTickets[j], tileX*8.5+tileX*1.5*(j % 3)+tileX*10*(i % 2), tileY*8+tileY*v*.5+tileY*k*2.5);
     }
+  }
+}
 
-    //Player winning numbers
-    textSize(width/25);
-    text("Your numbers", width/2, tileY*12);
-    line(tileX*8, tileY*12.75, tileX*22, tileY*12.75);
-    textSize(width/45);
-    int k = 0;
-    for (int i = 0; i < player.tickets; i++) {
-      if (i % 5 == 0 && i != 0) {
-        k++;
+void box(String text, int heightBox, int widthBox) {
+  rectMode(CORNERS);
+  fill(255, 127, 0, 200);
+  rect((width/2)-tileX*(widthBox/2), tileY*5, width/2+tileX*(widthBox/2), tileY*heightBox, 25);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  textSize(width/26);
+  float space = tileX*(tiles-widthBox)/2+tileX;
+  line(space, tileY*6.75, width-space, tileY*6.75);
+  text(text, width/2, tileY*6);
+
+  imageMode(CORNERS);
+  cross = loadImage("images/icons/cross.png");
+  image(cross, leftCross, topCross, rightCross, bottomCross);
+}
+
+void tent() {
+  imageMode(CENTER);
+  tentBackground = loadImage("images/tent_background.png");
+  image(tentBackground, width/2, height/2, width, height);
+
+  imageMode(CORNERS);
+  exit = loadImage("images/icons/exit.png");
+  image(exit, tileX*3, tileY*18, tileX*5, tileY*20);
+
+  loadRoulette(1);
+
+  //Wallet
+  rectMode(CORNERS);
+  fill(255, 127, 0, 200);
+  rect(tileX, tileY, tileX*7, tileY*3, 25);
+  imageMode(CORNERS);
+  wallet = loadImage("images/icons/wallet.png");
+  image(wallet, leftWallet, top, rightWallet, bottom);
+  fill(0);
+  textSize(tileY);
+  textAlign(LEFT, CENTER);
+  text(player.wallet, tileX*3.25, tileY*2);
+
+  fill(255, 127, 0, 200);
+  rect(tileX*3, tileY*4, tileX*27, tileY*13, 25);
+
+  fill(0);
+  textAlign(CENTER, CENTER);
+  textSize(width/30);
+  text("Welcome to Casino Fantasia", width/2, tileY*5);
+  line(tileX*4, tileY*5.75, tileX*26, tileY*5.75);
+
+  text("Your bet", tileX*7.5, tileY*6.5);
+
+  textSize(width/12);
+  text((int)bet, tileX*7.5, tileY*8.5); //Typecasting just for Jesper
+
+
+  arrowDown = loadImage("images/icons/down-arrow.png");
+  arrowUp = loadImage("images/icons/up-arrow.png");
+  imageMode(CORNERS);
+
+  image(arrowDown, leftDownArrow, topDownArrow, rightDownArrow, bottomDownArrow);
+  image(arrowUp, leftUpArrow, topUpArrow, rightUpArrow, bottomUpArrow);
+
+  line(tileX*10.375, tileY*6.5, tileX*10.375, tileY*12);
+
+  textSize(width/45);
+  text("Pick a bet", tileX*19.5, tileY*6.5);
+
+  text("Odd or Even", tileX*13.125, tileY*8);
+  text("Payout 1:1", tileX*13.125, tileY*11.75);
+
+  odd = loadImage("images/icons/one.png");
+  even = loadImage("images/icons/two.png");
+  image(odd, leftOdd, topOdd, rightOdd, bottomOdd);
+  image(even, leftEven, topEven, rightEven, bottomEven);
+
+  text("Red or Green", tileX*18.625, tileY*8);
+  text("Payout 1:1", tileX*18.625, tileY*11.75);
+
+  red = loadImage("images/icons/red.png");
+  green = loadImage("images/icons/green.png");
+  image(red, leftRed, topRed, rightRed, bottomRed);
+  image(green, leftGreen, topGreen, rightGreen, bottomGreen);
+
+  text("Pick a number", tileX*24.125, tileY*8);
+  text("Payout 35:1", tileX*24.125, tileY*11.75);
+
+  pokerChip = loadImage("images/icons/poker-chip.png");
+  image(pokerChip, leftPokerChip, topPokerChip, rightPokerChip, bottomPokerChip);
+}
+
+void loadRoulette(float size) {
+  imageMode(CENTER);
+  roulette = loadImage("images/roulette.png");
+  image(roulette, tileX*15, tileY*22, (tileX*6)*size, (tileY*6)*size);
+}
+
+void roulette() {
+  loadRoulette(1.2);
+
+  println("Roulette");
+
+  //Generate a random int number
+  int randomNumber = (int) random(0, 36+1);
+
+  if (number == 1 || number == 2 || number == 3 || number == 4) {
+    if (randomNumber == 0) {
+      number = 0;
+    } else if (number == 1) {
+      if (randomNumber % 2 != 0) {
+        number = 1;
+      } else {
+        number = 0;
       }
-      text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*13.5+tileY*k);
-    }
-    imageMode(CORNERS);
-    carnivalTent = loadImage("images/icons/carnival-tent.png");
-    image(carnivalTent, leftRestart, topRestart, rightRestart, bottomRestart);
-  }
-
-
-  void wallet() {
-    if (motherloadTrue == true) {
-      box("Your wallet", 11, 10);
-    } else {
-      box("Your wallet", 10, 10);
-    }
-    int gamble = 0;
-    textAlign(CENTER);
-    textSize(width/45);
-
-    text("Tickets    =    " + (player.tickets == 0 ? "": "-") + player.tickets*ticketPrice, tileX*15, tileY*7.5);
-    if (player.gamble == 0) {
-      text("Gamble    =    " + player.gamble, tileX*15, tileY*8.5);
-    } else if (player.gamble < 0) {
-      text("Gamble    =    -" + player.gamble, tileX*15, tileY*8.5);
-    } else if (player.gamble > 0) {
-      text("Gamble    =    +" + player.gamble, tileX*15, tileY*8.5);
-    }
-    if (motherloadTrue == true) {
-      text("Motherload    =    " + motherloadCount*motherloadMoney, tileX*15, tileY*9.5);
-      text("Balance    =    " + player.wallet, tileX*15, tileY*10.5);
-    } else {
-      text("Balance    =    " + player.wallet, tileX*15, tileY*9.5);
-    }
-  }
-
-  void playerTickets() {
-    box("Your tickets", 15, 10);
-
-    textSize(width/45);
-    int k = 0;
-    for (int i = 0; i < player.tickets; i++) {
-      if (i % 5 == 0 && i != 0) {
-        k++;
+    } else if (number == 2) {
+      if (randomNumber % 2 == 0) {
+        number = 2;
+      } else {
+        number = 0;
       }
-      text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*7.25+tileY*k);
+    } else if (number == 3) {
+      if (checkValue(randomNumber)) {
+        number = 3;
+      } else {
+        number = 0;
+      }
+    } else if (number == 4) {
+      if (!checkValue(randomNumber)) {
+        number = 4;
+      } else {
+        number = 0;
+      }
+    } else if (number == 5) {
+      //if (randomNumber == playerPick) {
+      //  number = 5;
+      //} else {
+      //  number = 0;
+      //}
     }
   }
 
-  void bank() {
-    box("Bank", 10, 10);
 
-    textAlign(CENTER);
-    textSize(width/45);
 
-    text("Income from tickets    =    " + (totalTickets-remainingTickets)*ticketPrice, tileX*15, tileY*7.5);
-    text("Expenses from tickets    =    " + (totalTickets-remainingTickets)*ticketCostPrice, tileX*15, tileY*8.5);
-    text("Profit from tickets    =    " + (totalTickets-remainingTickets)*(ticketPrice-ticketCostPrice), tileX*15, tileY*9.5);
+
+
+  println(number);
+  println("Random number: " + randomNumber);
+
+  switch (number) {
+  case 1:
+  case 2:
+  case 3:
+  case 4:
+    println("1:1");
+    println("Win");
+    player.wallet += bet+bet;
+    break;
+  case 5:
+    println("35:1");
+    println("Win");
+    player.wallet += bet*35+bet;
+    break;
   }
 
-  void raffle() {
-    box("Sold tickets", 20, 20);
+  //Resets number
+  number = 0;
+}
 
-    textAlign(CENTER);
-    textSize(width/45);
 
-    int k = 0;
-    for (int i = 0; i < amountBots; i++) {
-      if (i%2 == 0 && i != 0) {
-        k++;
-      }
-      textSize(width/55);
-      text(bots[i].fullName, tileX*10+tileX*10*(i%2), tileY*7.5+tileY*k*2.5);
-
-      int v = 0;
-      for (int j = 0; j < bots[i].tickets; j++) {
-        if (j%3 == 0 && j != 0) {
-          v++;
-        }
-        text(bots[i].boughtTickets[j], tileX*8.5+tileX*1.5*(j % 3)+tileX*10*(i % 2), tileY*8+tileY*v*.5+tileY*k*2.5);
-      }
+boolean checkValue(int checkNumber) {
+  for (int i = 0; i < redNumbers.length; i++) {
+    if (redNumbers[i] == checkNumber) {
+      return true;
     }
   }
-
-  void box(String text, int heightBox, int widthBox) {
-    rectMode(CORNERS);
-    fill(255, 127, 0, 200);
-    rect((width/2)-tileX*(widthBox/2), tileY*5, width/2+tileX*(widthBox/2), tileY*heightBox, 25);
-    fill(0);
-    textAlign(CENTER, CENTER);
-    textSize(width/26);
-    float space = tileX*(tiles-widthBox)/2+tileX;
-    line(space, tileY*6.75, width-space, tileY*6.75);
-    text(text, width/2, tileY*6);
-
-    imageMode(CORNERS);
-    cross = loadImage("images/icons/cross.png");
-    image(cross, leftCross, topCross, rightCross, bottomCross);
-  }
-
-  void tent() {
-    imageMode(CENTER);
-    tentBackground = loadImage("images/tent_background.png");
-    image(tentBackground, width/2, height/2, width, height);
-
-    imageMode(CORNERS);
-    exit = loadImage("images/icons/exit.png");
-    image(exit, tileX*3, tileY*18, tileX*5, tileY*20);
-
-    loadRoulette(1);
-
-    //Wallet
-    rectMode(CORNERS);
-    fill(255, 127, 0, 200);
-    rect(tileX, tileY, tileX*7, tileY*3, 25);
-    imageMode(CORNERS);
-    wallet = loadImage("images/icons/wallet.png");
-    image(wallet, leftWallet, top, rightWallet, bottom);
-    fill(0);
-    textSize(tileY);
-    textAlign(LEFT, CENTER);
-    text(player.wallet, tileX*3.25, tileY*2);
-
-    fill(255, 127, 0, 200);
-    rect(tileX*3, tileY*4, tileX*27, tileY*13, 25);
-
-    fill(0);
-    textAlign(CENTER, CENTER);
-    textSize(width/30);
-    text("Welcome to Casino Fantasia", width/2, tileY*5);
-    line(tileX*4, tileY*5.75, tileX*26, tileY*5.75);
-
-    text("Your bet", tileX*7.5, tileY*6.5);
-
-    textSize(width/12);
-    text((int)bet, tileX*7.5, tileY*8.5); //Typecasting just for Jesper
-
-
-    arrowDown = loadImage("images/icons/down-arrow.png");
-    arrowUp = loadImage("images/icons/up-arrow.png");
-    imageMode(CORNERS);
-
-    image(arrowDown, leftDownArrow, topDownArrow, rightDownArrow, bottomDownArrow);
-    image(arrowUp, leftUpArrow, topUpArrow, rightUpArrow, bottomUpArrow);
-
-    line(tileX*10.375, tileY*6.5, tileX*10.375, tileY*12);
-
-    textSize(width/45);
-    text("Pick a bet", tileX*19.5, tileY*6.5);
-
-    text("Odd or Even", tileX*13.125, tileY*8);
-    text("Payout 1:1", tileX*13.125, tileY*11.75);
-
-    odd = loadImage("images/icons/one.png");
-    even = loadImage("images/icons/two.png");
-    image(odd, leftOdd, topOdd, rightOdd, bottomOdd);
-    image(even, leftEven, topEven, rightEven, bottomEven);
-
-    text("Red or Green", tileX*18.625, tileY*8);
-    text("Payout 1:1", tileX*18.625, tileY*11.75);
-
-    red = loadImage("images/icons/red.png");
-    green = loadImage("images/icons/green.png");
-    image(red, leftRed, topRed, rightRed, bottomRed);
-    image(green, leftGreen, topGreen, rightGreen, bottomGreen);
-
-    text("Pick a number", tileX*24.125, tileY*8);
-    text("Payout 35:1", tileX*24.125, tileY*11.75);
-
-    pokerChip = loadImage("images/icons/poker-chip.png");
-    image(pokerChip, leftPokerChip, topPokerChip, rightPokerChip, bottomPokerChip);
-  }
-
-  void loadRoulette(float size) {
-    imageMode(CENTER);
-    roulette = loadImage("images/roulette.png");
-    image(roulette, tileX*15, tileY*22, (tileX*6)*size, (tileY*6)*size);
-  }
-
-  void roulette() {
-    loadRoulette(1.2);
-
-    println("Roulette");
-
-    //Generate a random int number
-    int randomNumber = (int) random(0, 36+1);
-
-    println(number);
-    
-    switch (number) {
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-        println("1:1");
-        break;
-      case 5:
-        println("35:1");
-        break;
-      }
-  }
+  return false;
+}
