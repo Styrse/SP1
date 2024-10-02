@@ -200,10 +200,13 @@ boolean skyTrue = false;
 boolean gameEnded = false;
 boolean betOn = false;
 boolean boxesTent = false;
+boolean ofelia = false;
 
 String codeEntered = "";
 String motherloadString = "Motherload";
 String playerPick = "";
+String grade = "";
+String message = "A";
 
 int winRate;
 int motherloadCount = 0;
@@ -310,6 +313,11 @@ void menu() {
   //Lottery
   lottery = loadImage("images/icons/lottery.png");
   image(lottery, leftLottery, top, rightLottery, bottom);
+  
+  if (motherloadTrue == true && popcornTrue == true && flagTrue == true && skyTrue == true && gambleTrue == true){
+    typing = true;
+    ofelia = true;
+  }
 }
 
 void loadPlayer() {
@@ -364,6 +372,18 @@ void keyPressed() {
       playerPick = Integer.toString(playerPickInt);
     }
   }
+  
+  if (typing == true && ofelia == true){
+    if (Character.isLetter(key) || key == ' ' || Character.isDigit(key)) {
+      grade += key;
+    } else if (key ==ENTER) {
+      if (message.equals(grade)) {
+        println("Cat");
+      }
+    }
+  }
+
+
 
   if (motherload == true) {
     if (Character.isLetter(key) || key == ' ' || Character.isDigit(key)) {
