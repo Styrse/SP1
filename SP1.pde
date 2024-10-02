@@ -5,6 +5,7 @@ int tiles = 30;
 float tileX;
 float tileY;
 Player player;
+PFont myFont;
 
 float[] botXPosition = new float[amountBots];
 float[] botYPosition = new float[amountBots];
@@ -15,6 +16,10 @@ void setup() {
   size(900, 900);
   tileX = width/tiles;
   tileY = height/tiles;
+  
+  //Changes font
+  myFont = loadFont("C:/Users/Styrse/OneDrive/Desktop/GitHub/Projects/SP1/data/BerlinSansFB-Reg-48.vlw");
+  textFont(myFont);
 
   iconSizeX = tileX*1.25;
   iconSizeY = tileY*1.25;
