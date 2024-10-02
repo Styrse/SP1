@@ -78,3 +78,7 @@ https://www.flaticon.com/free-icons/red-circle" title="red circle icons">Red cir
 Poker chip:
 https://www.flaticon.com/free-icons/bet" title="Bet icons">Bet icons created by Shastry - Flaticon
 
+Win/loss:
+https://www.flaticon.com/free-icons/business-and-finance" title="business and finance icons">Business and finance icons created by cah nggunung - Flaticon
+https://www.flaticon.com/free-icons/cheap" title="cheap icons">Cheap icons created by cah nggunung - Flaticon
+
