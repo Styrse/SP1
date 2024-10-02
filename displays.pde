@@ -183,6 +183,10 @@ float rightPopcorn;
 float topPopcorn;
 float bottomPopcorn;
 
+//Win or loss
+float centerX;
+float centerY;
+
 boolean moving = false;
 boolean flagTrue = false;
 boolean walletOn = false;
@@ -903,18 +907,24 @@ void roulette() {
       playerPick = "";
     }
   }
+    imageMode(CENTER);
+    win = loadImage("images/icons/win.png");
+    loss = loadImage("images/icons/loss.png");
 
   switch (number) {
   case 0:
+  image(loss, centerX, centerY, iconSizeX*2, iconSizeY*2);
     break;
   case 1:
   case 2:
   case 3:
   case 4:
     player.wallet += bet+bet;
+    image(win, centerX, centerY, iconSizeX*2, iconSizeY*2);
     break;
   case 5:
     player.wallet += bet*35+bet;
+    image(win, centerX, centerY, iconSizeX*2, iconSizeY*2);
     break;
   }
 

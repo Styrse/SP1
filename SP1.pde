@@ -174,6 +174,10 @@ void setup() {
   rightPopcorn = tileX*10.25;
   topPopcorn = tileY*20.75;
   bottomPopcorn = tileY*24.75;
+  
+  //Win or loss
+  centerX = tileX*18;
+  centerY = tileY*20;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
