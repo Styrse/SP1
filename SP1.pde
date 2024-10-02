@@ -151,11 +151,29 @@ void setup() {
   topGreen = topOdd;
   bottomGreen = bottomOdd;
   
-  //Poker chip
-  leftPokerChip = rightEven+tileX*7.625;
-  rightPokerChip = leftPokerChip+tileX*2;
-  topPokerChip = topOdd;
-  bottomPokerChip = bottomOdd;
+  //Pick a number
+  leftPickANumber = rightEven+tileX*7.625;
+  rightPickANumber = leftPickANumber+tileX*2;
+  topPickANumber = topOdd;
+  bottomPickANumber = bottomOdd;
+  
+  //Flag
+  leftFlag = tileX*23;
+  rightFlag = tileX*26;
+  topFlag = tileY*12;
+  bottomFlag = tileY*13.5;
+  
+  //Sky
+  leftSky = tileX*10;
+  rightSky = tileX*15.75;
+  topSky = tileY*3.5;
+  bottomSky = tileY*6;
+  
+  //Popcorn
+  leftPopcorn = tileX*8.5;
+  rightPopcorn = tileX*10.25;
+  topPopcorn = tileY*20.75;
+  bottomPopcorn = tileY*24.75;
 
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);

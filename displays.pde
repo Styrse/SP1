@@ -159,12 +159,31 @@ float topGreen;
 float bottomGreen;
 
 //Poker chip
-float leftPokerChip;
-float rightPokerChip;
-float topPokerChip;
-float bottomPokerChip;
+float leftPickANumber;
+float rightPickANumber;
+float topPickANumber;
+float bottomPickANumber;
+
+//Flag
+float leftFlag;
+float rightFlag;
+float topFlag;
+float bottomFlag;
+
+//Sky
+float leftSky;
+float rightSky;
+float topSky;
+float bottomSky;
+
+//Popcorn
+float leftPopcorn;
+float rightPopcorn;
+float topPopcorn;
+float bottomPopcorn;
 
 boolean moving = false;
+boolean flagTrue = false;
 boolean walletOn = false;
 boolean motherload = false;
 boolean motherloadTrue = false;
@@ -172,9 +191,12 @@ boolean playerTicketsOn = false;
 boolean bankOn = false;
 boolean raffleOn = false;
 boolean helpOn = false;
+boolean gambleTrue = false;
 boolean tentOn = false;
+boolean popcornTrue = false;
 boolean start = true;
 boolean typing = false;
+boolean skyTrue = false;
 boolean gameEnded = false;
 boolean betOn = false;
 boolean boxesTent = false;
@@ -229,6 +251,10 @@ void boxes() {
   rect(leftHelp, top, rightHelp, bottom, 5);
   //Lottery
   rect(leftLottery, top, rightLottery, bottom, 5);
+  
+  rect(leftFlag, topFlag, rightFlag, bottomFlag);
+  rect(leftSky, topSky, rightSky, bottomSky);
+  rect(leftPopcorn, topPopcorn, rightPopcorn, bottomPopcorn);
 
   //Info box
   rectMode(CENTER);
@@ -452,6 +478,12 @@ void mouseClicked() {
       playerTicketsOn = false;
       bankOn = false;
       raffleOn = false;
+    } else if (mouseX < rightPopcorn && mouseX > leftPopcorn && mouseY < bottomPopcorn && mouseY > topPopcorn){
+      popcornTrue = true;
+    } else if (mouseX < rightSky && mouseX > leftSky && mouseY < bottomSky && mouseY > topSky){
+      skyTrue = true;
+    } else if (mouseX < rightFlag && mouseX > leftFlag && mouseY < bottomFlag && mouseY > topFlag){
+      flagTrue = true;
     }
   } else if (start == true) {
     if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
@@ -495,7 +527,7 @@ void mouseClicked() {
       if (bet > 0) {
         betOn = true;
       }
-    } else if (mouseX < rightPokerChip && mouseX > leftPokerChip && mouseY < bottomPokerChip && mouseY > topPokerChip) {
+    } else if (mouseX < rightPickANumber && mouseX > leftPickANumber && mouseY < bottomPickANumber && mouseY > topPickANumber) {
       number = 5;
       if (bet > 0) {
         betOn = true;
@@ -777,13 +809,13 @@ void tent() {
   ellipse(leftGreen, topGreen, rightGreen, bottomGreen);
   //Pick a number
   fill(78, 168, 222);
-  ellipse(leftPokerChip, topPokerChip, rightPokerChip, bottomPokerChip);
+  ellipse(leftPickANumber, topPickANumber, rightPickANumber, bottomPickANumber);
 
   fill(0);
   textSize(width/20);
   text("1", leftOdd+tileX, topOdd+tileY);
   text("2", leftEven+tileX, topEven+tileY);
-  text(playerPick, leftPokerChip+tileX, topPokerChip+tileY);
+  text(playerPick, leftPickANumber+tileX, topPickANumber+tileY);
   
   if (boxesTent == true){
     boxesTent();
@@ -797,6 +829,7 @@ void loadRoulette(float size) {
 }
 
 void roulette() {
+  gambleTrue = true;
   loadRoulette(1.2);
 
   //Generate a random int number
