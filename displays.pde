@@ -325,17 +325,15 @@ void keyPressed() {
     } else if (key == ENTER && playerName.length() > 0) {
       start = false;
     }
-  } else if (tentOn == true && typing == true){
-    if (key == BACKSPACE && playerPick.length() > 0){
+  } else if (tentOn == true && typing == true) {
+    if (key == BACKSPACE && playerPick.length() > 0) {
       playerPick = playerPick.substring(0, playerPick.length()-1);
     } else if (Character.isDigit(key)) {
       playerPick += key;
       playerPickInt = Integer.parseInt(playerPick);
-      if (playerPickInt > 36){
-        playerPickInt = 36;
-      }
+      playerPickInt = constrain(playerPickInt, 0, 36);
+      playerPick = Integer.toString(playerPickInt);
     }
-    
   }
 
   if (motherload == true) {
@@ -561,8 +559,6 @@ void getWinningNumbers() {
 void lottery() {
 
   gameEnded = true;
-
-  println("Lottery - More to do");
 }
 
 void displayEndScreen() {
@@ -752,7 +748,7 @@ void tent() {
   text("Payout 1:1", tileX*18.625, tileY*11.75);
   text("Pick a number", tileX*24.125, tileY*8);
   text("Payout 35:1", tileX*24.125, tileY*11.75);
-  
+
   ellipseMode(CORNERS);
   //Odd or even
   fill(255, 221, 74);
@@ -767,7 +763,7 @@ void tent() {
   //Pick a number
   fill(78, 168, 222);
   ellipse(leftPokerChip, topPokerChip, rightPokerChip, bottomPokerChip);
-  
+
   fill(0);
   textSize(width/20);
   text("1", leftOdd+tileX, topOdd+tileY);
@@ -784,12 +780,10 @@ void loadRoulette(float size) {
 void roulette() {
   loadRoulette(1.2);
 
-  println("Roulette");
-
   //Generate a random int number
   int randomNumber = (int) random(0, 36+1);
 
-  if (number == 1 || number == 2 || number == 3 || number == 4) {
+  if (number == 1 || number == 2 || number == 3 || number == 4 || number == 5) {
     if (randomNumber == 0) {
       number = 0;
     } else if (number == 1) {
@@ -822,28 +816,20 @@ void roulette() {
       } else {
         number = 0;
       }
+      playerPick = "";
     }
   }
 
-
-
-
-
-  println(number);
-  println("Random number: " + randomNumber);
-
   switch (number) {
+  case 0:
+    break;
   case 1:
   case 2:
   case 3:
   case 4:
-    println("1:1");
-    println("Win");
     player.wallet += bet+bet;
     break;
   case 5:
-    println("35:1");
-    println("Win");
     player.wallet += bet*35+bet;
     break;
   }
