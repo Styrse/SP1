@@ -119,8 +119,8 @@ void setup() {
   bottomRoulette = tileY*24;
   
   //Betting arrows
-  leftDownArrow = tileX*5.25;
-  rightDownArrow = tileX*7;
+  leftDownArrow = tileX*4.625;
+  rightDownArrow = tileX*6.375;
   topDownArrow = tileY*10.25;
   bottomDownArrow = tileY*12;
   

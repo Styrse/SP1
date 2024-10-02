@@ -464,6 +464,7 @@ void mouseClicked() {
       playerXPosition = tileX*23;
       playerYPosition = tileY*23.5;
       tentOn = false;
+      boxesTent = false;
     } else if ( mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top){
       boxesTent = !boxesTent;
     }
@@ -735,10 +736,10 @@ void tent() {
   text("Welcome to Casino Fantasia", width/2, tileY*5);
   line(tileX*4, tileY*5.75, tileX*26, tileY*5.75);
 
-  text("Your bet", tileX*7.5, tileY*6.5);
+  text("Your bet", tileX*6.875, tileY*6.5);
 
   textSize(width/12);
-  text((int)bet, tileX*7.5, tileY*8.5); //Typecasting just for Jesper
+  text((int)bet, tileX*6.875, tileY*8.5); //Typecasting just for Jesper
 
 
   arrowDown = loadImage("images/icons/down-arrow.png");
@@ -751,7 +752,7 @@ void tent() {
   line(tileX*10.375, tileY*6.5, tileX*10.375, tileY*12);
 
   textSize(width/45);
-  text("Pick a bet", tileX*19.5, tileY*6.5);
+  text("Pick a bet", tileX*18.625, tileY*6.5);
 
 
 
@@ -870,5 +871,7 @@ boolean checkValue(int checkNumber) {
 void boxesTent(){
   rectMode(CORNERS);
   noFill();
-  rect(leftExit, topExit, rightExit, bottomExit, 25);
+  rect(leftExit, topExit, rightExit, bottomExit, 5);
+  rect(leftHelp, top, rightHelp, bottom, 5);
+  rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge, 5);
 }
