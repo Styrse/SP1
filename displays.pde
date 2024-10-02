@@ -177,6 +177,7 @@ boolean start = true;
 boolean typing = false;
 boolean gameEnded = false;
 boolean betOn = false;
+boolean boxesTent = false;
 
 String codeEntered = "";
 String motherloadString = "Motherload";
@@ -463,6 +464,8 @@ void mouseClicked() {
       playerXPosition = tileX*23;
       playerYPosition = tileY*23.5;
       tentOn = false;
+    } else if ( mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top){
+      boxesTent = !boxesTent;
     }
     if (mouseX < rightDownArrow && mouseX > leftDownArrow && mouseY < bottomDownArrow && mouseY > topDownArrow) {
       bet -= 5;
@@ -716,7 +719,16 @@ void tent() {
 
   fill(255, 127, 0, 200);
   rect(tileX*3, tileY*4, tileX*27, tileY*13, 25);
+  
+  //Help
+  rectMode(CORNERS);
+  fill(255, 127, 0, 200);
+  rect(tileX*23, tileY, tileX*27, tileY*3, 25);
+  imageMode(CORNERS);
+  help = loadImage("images/icons/help.png");
+  image(help, leftHelp, top, rightHelp, bottom);
 
+  //Gambling
   fill(0);
   textAlign(CENTER, CENTER);
   textSize(width/30);
@@ -771,6 +783,10 @@ void tent() {
   text("1", leftOdd+tileX, topOdd+tileY);
   text("2", leftEven+tileX, topEven+tileY);
   text(playerPick, leftPokerChip+tileX, topPokerChip+tileY);
+  
+  if (boxesTent == true){
+    boxesTent();
+  }
 }
 
 void loadRoulette(float size) {
@@ -849,4 +865,10 @@ boolean checkValue(int checkNumber) {
     }
   }
   return false;
+}
+
+void boxesTent(){
+  rectMode(CORNERS);
+  noFill();
+  rect(leftExit, topExit, rightExit, bottomExit, 25);
 }

@@ -198,7 +198,7 @@ void draw() {
     raffle();
   } else if (tentOn == true) {
     tent();
-  }
+  } 
 
   loadPlayer();
   bots[1].movement();
