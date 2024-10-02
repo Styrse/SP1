@@ -129,12 +129,6 @@ float rightRoulette;
 float topRoulette;
 float bottomRoulette;
 
-//Roulette access
-float leftAccessRoulette;
-float rightAccessRoulette;
-float topAccessRoulette;
-float bottomAccessRoulette;
-
 //Bet
 float  bet = 5;
 
@@ -848,6 +842,8 @@ void tent() {
   text("Payout 1:1", tileX*18.625, tileY*11.75);
   text("Pick a number", tileX*24.125, tileY*8);
   text("Payout 35:1", tileX*24.125, tileY*11.75);
+  textSize(width/65);
+  text("From 0 to 36", tileX*24.125, tileY*8.5);
 
   ellipseMode(CORNERS);
   //Odd or even
@@ -965,7 +961,6 @@ void boxesTent() {
   noFill();
   rect(leftExit, topExit, rightExit, bottomExit, 5);
   rect(leftAccessExit, topAccessExit, rightAccessExit, bottomAccessExit, 5);
-  rect(leftAccessRoulette, topAccessRoulette, rightAccessRoulette, bottomAccessRoulette, 5);
   rect(leftHelp, top, rightHelp, bottom, 5);
   rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge, 5);
 }

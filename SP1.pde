@@ -124,12 +124,6 @@ void setup() {
   topRoulette = tileY*20;
   bottomRoulette = tileY*24;
   
-  //Roulette access area
-  leftAccessRoulette = tileX*10;
-  rightAccessRoulette = tileX*20;
-  topAccessRoulette = topWalkableEdge;
-  bottomAccessRoulette = topAccessRoulette+tileY*3;
-  
   //Betting arrows
   leftDownArrow = tileX*4.625;
   rightDownArrow = tileX*6.375;
