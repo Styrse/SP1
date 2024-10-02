@@ -18,7 +18,7 @@ void setup() {
   tileY = height/tiles;
   
   //Changes font
-  myFont = loadFont("C:/Users/Styrse/OneDrive/Desktop/GitHub/Projects/SP1/data/BerlinSansFB-Reg-48.vlw");
+  myFont = loadFont("C:/Users/Styrse/OneDrive/Desktop/GitHub/Projects/SP1/data/MVBoli-48.vlw");
   textFont(myFont);
 
   iconSizeX = tileX*1.25;

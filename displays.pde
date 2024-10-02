@@ -217,7 +217,7 @@ String codeEntered = "";
 String motherloadString = "Motherload";
 String playerPick = "";
 String grade = "";
-String message = "A";
+String GradeStyr = "A";
 
 int winRate;
 int motherloadCount = 0;
@@ -266,10 +266,6 @@ void boxes() {
   rect(leftHelp, top, rightHelp, bottom, 5);
   //Lottery
   rect(leftLottery, top, rightLottery, bottom, 5);
-
-  rect(leftFlag, topFlag, rightFlag, bottomFlag);
-  rect(leftSky, topSky, rightSky, bottomSky);
-  rect(leftPopcorn, topPopcorn, rightPopcorn, bottomPopcorn);
 
   //Info box
   rectMode(CENTER);
@@ -395,7 +391,7 @@ void keyPressed() {
     if (Character.isLetter(key) || key == ' ' || Character.isDigit(key)) {
       grade += key;
     } else if (key ==ENTER) {
-      if (message.equals(grade)) {
+      if (GradeStyr.equals(grade)) {
         character = 0;
       }
     }
@@ -531,14 +527,15 @@ void mouseClicked() {
       exit();
     }
   } else if (tentOn == true) {
-    if (playerXPosition < rightAccessExit && playerXPosition > leftAccessExit && playerYPosition < bottomAccessExit && playerYPosition > topAccessExit) {
+    if (playerXPosition <= rightAccessExit && playerXPosition >= leftAccessExit && playerYPosition <= bottomAccessExit && playerYPosition >= topAccessExit) {
       if (mouseX < rightExit && mouseX > leftExit && mouseY < bottomExit && mouseY > topExit) {
         playerXPosition = tileX*23;
         playerYPosition = tileY*23.5;
         tentOn = false;
         boxesTent = false;
       }
-    } else if ( mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
+    } 
+    if ( mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
       boxesTent = !boxesTent;
     }
     if (mouseX < rightDownArrow && mouseX > leftDownArrow && mouseY < bottomDownArrow && mouseY > topDownArrow) {
@@ -575,6 +572,7 @@ void mouseClicked() {
       }
     } else if (mouseX < rightRoulette && mouseX > leftRoulette && mouseY < bottomRoulette && mouseY > topRoulette && betOn == true) {
       player.wallet -= bet;
+      player.gamble -= bet;
       roulette();
     }
   }
@@ -677,18 +675,11 @@ void wallet() {
   } else {
     box("Your wallet", 10, 10);
   }
-  int gamble = 0;
   textAlign(CENTER);
   textSize(width/45);
 
   text("Tickets    =    " + (player.tickets == 0 ? "": "-") + player.tickets*ticketPrice, tileX*15, tileY*7.5);
-  if (player.gamble == 0) {
-    text("Gamble    =    " + player.gamble, tileX*15, tileY*8.5);
-  } else if (player.gamble < 0) {
-    text("Gamble    =    -" + player.gamble, tileX*15, tileY*8.5);
-  } else if (player.gamble > 0) {
-    text("Gamble    =    +" + player.gamble, tileX*15, tileY*8.5);
-  }
+  text("Gamble    =    " + player.gamble, tileX*15, tileY*8.5);
   if (motherloadTrue == true) {
     text("Motherload    =    " + motherloadCount*motherloadMoney, tileX*15, tileY*9.5);
     text("Balance    =    " + player.wallet, tileX*15, tileY*10.5);
@@ -918,10 +909,12 @@ void roulette() {
   case 3:
   case 4:
     player.wallet += bet+bet;
+    player.gamble += bet+bet;
     image(win, centerX, centerY, iconSizeX*2, iconSizeY*2);
     break;
   case 5:
     player.wallet += bet*35+bet;
+    player.gamble += bet*35+bet;
     image(win, centerX, centerY, iconSizeX*2, iconSizeY*2);
     break;
   }
