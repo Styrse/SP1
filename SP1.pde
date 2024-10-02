@@ -107,16 +107,10 @@ void setup() {
   bottomExit = tileY*23.5;
   
   //End game
-  leftEndGame = tileX*11;
-  rightEndGame = tileX*14;
+  leftEndGame = tileX*13.5;
+  rightEndGame = tileX*16.5;
   topEndGame = tileY*22;
   bottomEndGame = tileY*25;
-  
-  //Restart
-  leftRestart = tileX*16;
-  rightRestart = tileX*19;
-  topRestart = topEndGame;
-  bottomRestart = bottomEndGame;
   
   //Roulette
   leftRoulette = tileX*12.5;

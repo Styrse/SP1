@@ -15,7 +15,6 @@ PImage mouse;
 PImage cross;
 PImage exit;
 PImage endGame;
-PImage carnivalTent;
 PImage arrowUp;
 PImage arrowDown;
 PImage win;
@@ -118,12 +117,6 @@ float rightEndGame;
 float topEndGame;
 float bottomEndGame;
 
-//Restart
-float leftRestart;
-float rightRestart;
-float topRestart;
-float bottomRestart;
-
 //Roulette
 float leftRoulette;
 float rightRoulette;
@@ -166,7 +159,7 @@ float rightGreen;
 float topGreen;
 float bottomGreen;
 
-//Poker chip
+//Player pick
 float leftPickANumber;
 float rightPickANumber;
 float topPickANumber;
@@ -536,8 +529,6 @@ void mouseClicked() {
   } else if (gameEnded == true) {
     if (mouseX < rightEndGame && mouseX > leftEndGame && mouseY < bottomEndGame && mouseY > topEndGame){
       exit();
-    } else if (mouseX < rightRestart && mouseX > leftRestart &&  mouseY < bottomRestart && mouseY > topRestart){
-      start();
     }
   } else if (tentOn == true) {
     if (mouseX < rightExit && mouseX > leftExit && mouseY < bottomExit && mouseY > topExit) {
@@ -682,8 +673,6 @@ void displayEndScreen() {
   imageMode(CORNERS);
   endGame = loadImage("images/icons/endGame.png");
   image(endGame, leftEndGame, topEndGame, rightEndGame, bottomEndGame);
-  carnivalTent = loadImage("images/icons/carnival-tent.png");
-  image(carnivalTent, leftRestart, topRestart, rightRestart, bottomRestart);
 }
 
 
