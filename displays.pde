@@ -14,6 +14,7 @@ PImage arrows;
 PImage mouse;
 PImage cross;
 PImage exit;
+PImage endGame;
 PImage carnivalTent;
 PImage arrowUp;
 PImage arrowDown;
@@ -110,6 +111,12 @@ float leftExit;
 float rightExit;
 float topExit;
 float bottomExit;
+
+//End game
+float leftEndGame;
+float rightEndGame;
+float topEndGame;
+float bottomEndGame;
 
 //Restart
 float leftRestart;
@@ -341,7 +348,6 @@ void playerIcon() {
     coffee = loadImage("images/characters/coffee.png");
     image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
   }
-  
 }
 
 void loadBots() {
@@ -527,6 +533,12 @@ void mouseClicked() {
     } else if (mouseX < rightEnter && mouseX > leftEnter && mouseY < bottomEnter && mouseY > topEnter && playerName.length() > 0) {
       start = false;
     }
+  } else if (gameEnded == true) {
+    if (mouseX < rightEndGame && mouseX > leftEndGame && mouseY < bottomEndGame && mouseY > topEndGame){
+      exit();
+    } else if (mouseX < rightRestart && mouseX > leftRestart &&  mouseY < bottomRestart && mouseY > topRestart){
+      start();
+    }
   } else if (tentOn == true) {
     if (mouseX < rightExit && mouseX > leftExit && mouseY < bottomExit && mouseY > topExit) {
       playerXPosition = tileX*23;
@@ -668,6 +680,8 @@ void displayEndScreen() {
     text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*13.5+tileY*k);
   }
   imageMode(CORNERS);
+  endGame = loadImage("images/icons/endGame.png");
+  image(endGame, leftEndGame, topEndGame, rightEndGame, bottomEndGame);
   carnivalTent = loadImage("images/icons/carnival-tent.png");
   image(carnivalTent, leftRestart, topRestart, rightRestart, bottomRestart);
 }
@@ -907,13 +921,13 @@ void roulette() {
       playerPick = "";
     }
   }
-    imageMode(CENTER);
-    win = loadImage("images/icons/win.png");
-    loss = loadImage("images/icons/loss.png");
+  imageMode(CENTER);
+  win = loadImage("images/icons/win.png");
+  loss = loadImage("images/icons/loss.png");
 
   switch (number) {
   case 0:
-  image(loss, centerX, centerY, iconSizeX*2, iconSizeY*2);
+    image(loss, centerX, centerY, iconSizeX*2, iconSizeY*2);
     break;
   case 1:
   case 2:

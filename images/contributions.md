@@ -51,6 +51,9 @@ Tents:
 www.canva.com
 https://www.flaticon.com/free-icons/carnival-tent" title="carnival tent icons">Carnival tent icons created by Freepik - Flaticon
 
+End game:
+https://www.flaticon.com/free-icons/power-off" title="power off icons">Power off icons created by Icon home - Flaticon
+
 Roulette:
 https://www.pngegg.com/en/png-wsavs/download
 https://www.flaticon.com/free-icons/roulette" title="roulette icons">Roulette icons created by smashingstocks - Flaticon
