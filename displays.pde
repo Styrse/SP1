@@ -19,6 +19,7 @@ PImage arrowUp;
 PImage arrowDown;
 PImage win;
 PImage loss;
+PImage cat;
 PImage[] botImages = new PImage[10];
 String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
 int[] redNumbers = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36};
@@ -214,6 +215,7 @@ int motherloadMoney = 1000;
 int bank = 0;
 int number = 0;
 int playerPickInt;
+int character = 1;
 
 ArrayList<Integer> winningNumbers = new ArrayList<Integer>();
 ArrayList<Integer> winningTicketsID = new ArrayList<Integer>();
@@ -254,7 +256,7 @@ void boxes() {
   rect(leftHelp, top, rightHelp, bottom, 5);
   //Lottery
   rect(leftLottery, top, rightLottery, bottom, 5);
-  
+
   rect(leftFlag, topFlag, rightFlag, bottomFlag);
   rect(leftSky, topSky, rightSky, bottomSky);
   rect(leftPopcorn, topPopcorn, rightPopcorn, bottomPopcorn);
@@ -313,19 +315,29 @@ void menu() {
   //Lottery
   lottery = loadImage("images/icons/lottery.png");
   image(lottery, leftLottery, top, rightLottery, bottom);
-  
-  if (motherloadTrue == true && popcornTrue == true && flagTrue == true && skyTrue == true && gambleTrue == true){
+
+  if (motherloadTrue == true && popcornTrue == true && flagTrue == true && skyTrue == true && gambleTrue == true) {
     typing = true;
     ofelia = true;
   }
 }
 
 void loadPlayer() {
-  imageMode(CENTER);
-  coffee = loadImage("images/characters/coffee.png");
-  image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
+  playerIcon();
   textSize(tileY*0.6);
   nameTag(playerName, playerXPosition, playerYPosition, 2.6);
+}
+
+void playerIcon() {
+  imageMode(CENTER);
+  if (character == 0) {
+    cat = loadImage("images/characters/cat.png");
+    image(cat, playerXPosition, playerYPosition, tileX*4, tileY*4);
+  } else if (character == 1) {
+    coffee = loadImage("images/characters/coffee.png");
+    image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
+  }
+  
 }
 
 void loadBots() {
@@ -372,13 +384,13 @@ void keyPressed() {
       playerPick = Integer.toString(playerPickInt);
     }
   }
-  
-  if (typing == true && ofelia == true){
+
+  if (typing == true && ofelia == true) {
     if (Character.isLetter(key) || key == ' ' || Character.isDigit(key)) {
       grade += key;
     } else if (key ==ENTER) {
       if (message.equals(grade)) {
-        println("Cat");
+        character = 0;
       }
     }
   }
@@ -498,11 +510,11 @@ void mouseClicked() {
       playerTicketsOn = false;
       bankOn = false;
       raffleOn = false;
-    } else if (mouseX < rightPopcorn && mouseX > leftPopcorn && mouseY < bottomPopcorn && mouseY > topPopcorn){
+    } else if (mouseX < rightPopcorn && mouseX > leftPopcorn && mouseY < bottomPopcorn && mouseY > topPopcorn) {
       popcornTrue = true;
-    } else if (mouseX < rightSky && mouseX > leftSky && mouseY < bottomSky && mouseY > topSky){
+    } else if (mouseX < rightSky && mouseX > leftSky && mouseY < bottomSky && mouseY > topSky) {
       skyTrue = true;
-    } else if (mouseX < rightFlag && mouseX > leftFlag && mouseY < bottomFlag && mouseY > topFlag){
+    } else if (mouseX < rightFlag && mouseX > leftFlag && mouseY < bottomFlag && mouseY > topFlag) {
       flagTrue = true;
     }
   } else if (start == true) {
@@ -517,7 +529,7 @@ void mouseClicked() {
       playerYPosition = tileY*23.5;
       tentOn = false;
       boxesTent = false;
-    } else if ( mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top){
+    } else if ( mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
       boxesTent = !boxesTent;
     }
     if (mouseX < rightDownArrow && mouseX > leftDownArrow && mouseY < bottomDownArrow && mouseY > topDownArrow) {
@@ -772,7 +784,7 @@ void tent() {
 
   fill(255, 127, 0, 200);
   rect(tileX*3, tileY*4, tileX*27, tileY*13, 25);
-  
+
   //Help
   rectMode(CORNERS);
   fill(255, 127, 0, 200);
@@ -836,8 +848,8 @@ void tent() {
   text("1", leftOdd+tileX, topOdd+tileY);
   text("2", leftEven+tileX, topEven+tileY);
   text(playerPick, leftPickANumber+tileX, topPickANumber+tileY);
-  
-  if (boxesTent == true){
+
+  if (boxesTent == true) {
     boxesTent();
   }
 }
@@ -921,7 +933,7 @@ boolean checkValue(int checkNumber) {
   return false;
 }
 
-void boxesTent(){
+void boxesTent() {
   rectMode(CORNERS);
   noFill();
   rect(leftExit, topExit, rightExit, bottomExit, 5);
