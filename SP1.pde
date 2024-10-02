@@ -106,6 +106,12 @@ void setup() {
   topExit = tileY*18.5;
   bottomExit = tileY*23.5;
   
+  //Exit access area
+  leftAccessExit = tileX*1;
+  rightAccessExit = tileX*7;
+  topAccessExit = topWalkableEdge;
+  bottomAccessExit = topAccessExit+tileY*3;
+  
   //End game
   leftEndGame = tileX*13.5;
   rightEndGame = tileX*16.5;
@@ -117,6 +123,12 @@ void setup() {
   rightRoulette = tileX*17.5;
   topRoulette = tileY*20;
   bottomRoulette = tileY*24;
+  
+  //Roulette access area
+  leftAccessRoulette = tileX*10;
+  rightAccessRoulette = tileX*20;
+  topAccessRoulette = topWalkableEdge;
+  bottomAccessRoulette = topAccessRoulette+tileY*3;
   
   //Betting arrows
   leftDownArrow = tileX*4.625;

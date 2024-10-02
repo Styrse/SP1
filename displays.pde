@@ -111,6 +111,12 @@ float rightExit;
 float topExit;
 float bottomExit;
 
+//Exit access area
+float leftAccessExit;
+float rightAccessExit;
+float topAccessExit;
+float bottomAccessExit;
+
 //End game
 float leftEndGame;
 float rightEndGame;
@@ -122,6 +128,12 @@ float leftRoulette;
 float rightRoulette;
 float topRoulette;
 float bottomRoulette;
+
+//Roulette access
+float leftAccessRoulette;
+float rightAccessRoulette;
+float topAccessRoulette;
+float bottomAccessRoulette;
 
 //Bet
 float  bet = 5;
@@ -527,15 +539,17 @@ void mouseClicked() {
       start = false;
     }
   } else if (gameEnded == true) {
-    if (mouseX < rightEndGame && mouseX > leftEndGame && mouseY < bottomEndGame && mouseY > topEndGame){
+    if (mouseX < rightEndGame && mouseX > leftEndGame && mouseY < bottomEndGame && mouseY > topEndGame) {
       exit();
     }
   } else if (tentOn == true) {
-    if (mouseX < rightExit && mouseX > leftExit && mouseY < bottomExit && mouseY > topExit) {
-      playerXPosition = tileX*23;
-      playerYPosition = tileY*23.5;
-      tentOn = false;
-      boxesTent = false;
+    if (playerXPosition < rightAccessExit && playerXPosition > leftAccessExit && playerYPosition < bottomAccessExit && playerYPosition > topAccessExit) {
+      if (mouseX < rightExit && mouseX > leftExit && mouseY < bottomExit && mouseY > topExit) {
+        playerXPosition = tileX*23;
+        playerYPosition = tileY*23.5;
+        tentOn = false;
+        boxesTent = false;
+      }
     } else if ( mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
       boxesTent = !boxesTent;
     }
@@ -950,6 +964,8 @@ void boxesTent() {
   rectMode(CORNERS);
   noFill();
   rect(leftExit, topExit, rightExit, bottomExit, 5);
+  rect(leftAccessExit, topAccessExit, rightAccessExit, bottomAccessExit, 5);
+  rect(leftAccessRoulette, topAccessRoulette, rightAccessRoulette, bottomAccessRoulette, 5);
   rect(leftHelp, top, rightHelp, bottom, 5);
   rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge, 5);
 }
