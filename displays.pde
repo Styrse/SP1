@@ -293,7 +293,6 @@ void boxes() {
 void menu() {
   fill(255, 127, 0, 200);
   rectMode(CENTER);
-  //rect(width/2, tileY*2, width-tileX*2, tileY*2, 25);
   rectMode(CORNERS);
   //Sub menus
   rect(tileX, tileY, tileX*12, tileY*3, 25);
@@ -351,7 +350,6 @@ void playerIcon() {
 
 void loadBots() {
   imageMode(CENTER);
-
   for (int i = 0; i < imageName.length; i++) {
     botImages[i] = loadImage("images/characters/" + imageName[i] + ".png");
     image(botImages[i], botXPosition[i], botYPosition[i], tileX*3, tileY*3);
@@ -367,7 +365,6 @@ void nameTag(String name, float xPos, float yPos, float h) {
   rect(xPos-tileX*2.25, yPos-tileY*(h*1.2), xPos+tileX*2.25, yPos-tileY*(h*0.8), 50);
   fill(0);
   textAlign(CENTER, CENTER);
-
   text(name, xPos, yPos-tileY*h);
 }
 
@@ -404,8 +401,6 @@ void keyPressed() {
     }
   }
 
-
-
   if (motherload == true) {
     if (Character.isLetter(key) || key == ' ' || Character.isDigit(key)) {
       codeEntered += key;
@@ -419,7 +414,6 @@ void keyPressed() {
       motherload = false;
     }
   }
-
 
   if (start == false) {
     if (key == CODED) {
@@ -510,7 +504,7 @@ void mouseClicked() {
       if (helpOn == true) {
         helpOn = false;
       }
-      lottery();
+      gameEnded = true;
     } else if (mouseX < rightMotherload && mouseX > leftMotherload && mouseY < bottomMotherload && mouseY > topMotherload) {
       motherload = true;
     }
@@ -586,7 +580,6 @@ void mouseClicked() {
   }
 }
 
-
 void startInfo() {
   rectMode(CENTER);
   fill(255, 127, 0, 200);
@@ -641,11 +634,6 @@ void getWinningNumbers() {
   Collections.sort(winningTicketsID);
 }
 
-void lottery() {
-
-  gameEnded = true;
-}
-
 void displayEndScreen() {
   rectMode(CORNERS);
   fill(255, 127, 0, 200);
@@ -682,7 +670,6 @@ void displayEndScreen() {
   endGame = loadImage("images/icons/endGame.png");
   image(endGame, leftEndGame, topEndGame, rightEndGame, bottomEndGame);
 }
-
 
 void wallet() {
   if (motherloadTrue == true) {
@@ -783,6 +770,7 @@ void tent() {
   exit = loadImage("images/icons/exit.png");
   image(exit, tileX*3, tileY*18, tileX*5, tileY*20);
 
+  //Crates a click effect
   loadRoulette(1);
 
   //Wallet
@@ -820,7 +808,6 @@ void tent() {
   textSize(width/12);
   text((int)bet, tileX*6.875, tileY*8.5); //Typecasting just for Jesper
 
-
   arrowDown = loadImage("images/icons/down-arrow.png");
   arrowUp = loadImage("images/icons/up-arrow.png");
   imageMode(CORNERS);
@@ -832,8 +819,6 @@ void tent() {
 
   textSize(width/45);
   text("Pick a bet", tileX*18.625, tileY*6.5);
-
-
 
   fill(0);
   text("Odd or Even", tileX*13.125, tileY*8);
@@ -945,7 +930,6 @@ void roulette() {
   number = 0;
   betOn = false;
 }
-
 
 boolean checkValue(int checkNumber) {
   for (int i = 0; i < redNumbers.length; i++) {
