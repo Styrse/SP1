@@ -238,7 +238,6 @@ SoundFile popcornSound;
 SoundFile rouletteSound;
 SoundFile ticketsSound;
 SoundFile winSound;
-SoundFile LoseSound;
 SoundFile catSound;
 
 void backgroundFunction() {
@@ -934,6 +933,7 @@ void roulette() {
   win = loadImage("images/icons/win.png");
   loss = loadImage("images/icons/loss.png");
 
+  winSound = new SoundFile(this, "sounds/win.wav");
   switch (number) {
   case 0:
     image(loss, centerX, centerY, iconSizeX*2, iconSizeY*2);
@@ -944,11 +944,13 @@ void roulette() {
   case 4:
     player.wallet += bet+bet;
     player.gamble += bet+bet;
+    winSound.play();
     image(win, centerX, centerY, iconSizeX*2, iconSizeY*2);
     break;
   case 5:
     player.wallet += bet*35+bet;
     player.gamble += bet*35+bet;
+    winSound.play();
     image(win, centerX, centerY, iconSizeX*2, iconSizeY*2);
     break;
   }
