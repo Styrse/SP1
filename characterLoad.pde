@@ -1,3 +1,15 @@
+PImage coffee;
+PImage cat;
+PImage[] botImages = new PImage[10];
+
+SoundFile catSound;
+
+boolean catSoundOn = false;
+
+int character = 1;
+
+
+
 void loadPlayer() {
   playerIcon();
   textSize(tileY*0.6);

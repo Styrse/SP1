@@ -1,3 +1,10 @@
+PImage arrows;
+PImage mouse;
+
+String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
+
+boolean boxesTent = false;
+
 void boxes() {
   tileX = width/30;
   tileY = height/30;

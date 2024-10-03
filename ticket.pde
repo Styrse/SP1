@@ -1,3 +1,10 @@
+ArrayList<Integer> ticketsID = new ArrayList<Integer>(totalTickets);
+ArrayList<Integer> winningNumbers = new ArrayList<Integer>();
+ArrayList<Integer> winningTicketsID = new ArrayList<Integer>();
+
+int winRate;
+int remainingTickets = totalTickets;
+
 void fillTicketArray() {
   //This will start the ID at a "round number"
   int startTicketID = ((int) random (10)*100);

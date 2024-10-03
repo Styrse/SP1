@@ -1,4 +1,12 @@
+PImage img;
+
+boolean start = true;
+
+
+
 void draw() {
+  imageMode(CENTER);
+  img = loadImage("data/images/backgrounds/carnival_background.jpg");
   image(img, width/2, height/2, width, height);
 
   menu();

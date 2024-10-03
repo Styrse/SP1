@@ -1,10 +1,14 @@
 PImage noMoney;
 String[] botFirstNames = {"Mette", "Lars", "Helle", "Anders", "Poul", "Anker", "Jens"};
 String[] botLastNames = {"Krag", "Jørgensen", "Hartling", "Schlüter", "Rasmussen", "Thorning-Schmidt", "Frederiksen", "Fogh", "Nyrup", "Løkke"};
-Player[] bots = new Player[amountBots];
+
+
+
 String playerName = "";
 int ticketPrice = 5;
 int ticketCostPrice = 3;
+
+
 
 class Player {
 

@@ -1,3 +1,9 @@
+PImage endGame;
+
+SoundFile endSound;
+
+boolean endSoundOn = false;
+
 void displayEndScreen() {
 
   if (endSoundOn == false) {

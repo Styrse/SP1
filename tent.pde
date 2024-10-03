@@ -1,3 +1,8 @@
+PImage tentBackground;
+PImage exit;
+PImage arrowUp;
+PImage arrowDown;
+
 void tent() {
   imageMode(CENTER);
   tentBackground = loadImage("data/images/backgrounds/tent_background.png");

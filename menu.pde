@@ -1,3 +1,21 @@
+PImage wallet;
+PImage tickets;
+PImage bankIMG;
+PImage raffle;
+PImage help;
+PImage lottery;
+PImage cross;
+
+int motherloadCount = 0;
+int motherloadMoney = 1000;
+int bank = 0;
+
+boolean flagTrue = false;
+boolean skyTrue = false;
+boolean popcornTrue = false;
+boolean gambleTrue = false;
+boolean ofelia = false;
+
 void menu() {
   fill(255, 127, 0, 200);
   rectMode(CENTER);

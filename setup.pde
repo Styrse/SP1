@@ -1,3 +1,191 @@
+Player bot;
+int amountBots = 10;
+int totalTickets = 100;
+int tiles = 30;
+float tileX;
+float tileY;
+Player player;
+PFont myFont;
+
+SoundFile carnivalSound;
+
+float[] botXPosition = new float[amountBots];
+float[] botYPosition = new float[amountBots];
+
+Player[] bots = new Player[amountBots];
+
+boolean soundPlayed = false;
+
+//Bet
+float  bet = 5;
+
+float iconSizeX;
+float iconSizeY;
+
+float playerXPosition;
+float playerYPosition;
+
+//Walkable area
+float leftWalkableEdge;
+float rightWalkableEdge;
+float topWalkableEdge;
+float bottomWalkableEdge;
+
+//Access area ticket booth
+float leftAccesBoxTicketBooth;
+float rightAccessBoxTicketBooth;
+float topAccessBoxTicketBooth;
+float bottomAccessBoxTicketBooth;
+
+//Enter ticket booth area
+float leftClickAreaTicketBooth;
+float rightClickAreaTicketBooth;
+float topClickAreaTicketBooth;
+float bottomClickAreaTicketBooth;
+
+//Access area tent
+float leftAccessBoxTent;
+float rightAccessBoxTent;
+float topAccessBoxTent;
+float bottomAccessBoxTent;
+
+//Enter tent area
+float leftClickAreaTent;
+float rightClickAreaTent;
+float topClickAreaTent;
+float bottomClickAreaTent;
+
+//Menu
+float top;
+float bottom;
+//Wallet
+float leftWallet;
+float rightWallet;
+//Tickets
+float leftTickets;
+float rightTickets;
+//Bank
+float leftBank;
+float rightBank;
+//Raffle
+float leftRaffle;
+float rightRaffle;
+//Help
+float leftHelp;
+float rightHelp;
+//Lottery
+float leftLottery;
+float rightLottery;
+
+//Username box
+float leftUsername;
+float rightUsername;
+float topUsername;
+float bottomUsername;
+
+//Enter box
+float leftEnter;
+float rightEnter;
+float topEnter;
+float bottomEnter;
+
+//Motherload
+float leftMotherload;
+float rightMotherload;
+float topMotherload;
+float bottomMotherload;
+
+//Cross
+float leftCross;
+float rightCross;
+float topCross;
+float bottomCross;
+
+//Exit
+float leftExit;
+float rightExit;
+float topExit;
+float bottomExit;
+
+//Exit access area
+float leftAccessExit;
+float rightAccessExit;
+float topAccessExit;
+float bottomAccessExit;
+
+//End game
+float leftEndGame;
+float rightEndGame;
+float topEndGame;
+float bottomEndGame;
+
+//Roulette
+float leftRoulette;
+float rightRoulette;
+float topRoulette;
+float bottomRoulette;
+
+//Betting arrows
+float leftDownArrow;
+float rightDownArrow;
+float topDownArrow;
+float bottomDownArrow;
+
+float leftUpArrow;
+float rightUpArrow;
+float topUpArrow;
+float bottomUpArrow;
+
+//Odd/Even
+float leftOdd;
+float rightOdd;
+float topOdd;
+float bottomOdd;
+
+float leftEven;
+float rightEven;
+float topEven;
+float bottomEven;
+
+//Red/Green
+float leftRed;
+float rightRed;
+float topRed;
+float bottomRed;
+
+float leftGreen;
+float rightGreen;
+float topGreen;
+float bottomGreen;
+
+//Player pick
+float leftPickANumber;
+float rightPickANumber;
+float topPickANumber;
+float bottomPickANumber;
+
+//Flag
+float leftFlag;
+float rightFlag;
+float topFlag;
+float bottomFlag;
+
+//Sky
+float leftSky;
+float rightSky;
+float topSky;
+float bottomSky;
+
+//Popcorn
+float leftPopcorn;
+float rightPopcorn;
+float topPopcorn;
+float bottomPopcorn;
+
+//Win or loss
+float centerX;
+float centerY;
+
 void setup() {
   windowTitle("Fantasia Fairgrounds");
   size(900, 900);
@@ -5,7 +193,7 @@ void setup() {
   tileY = height/tiles;
 
   //Changes font
-  myFont = loadFont("C:/Users/Styrse/OneDrive/Desktop/GitHub/Projects/SP1/data/fonts/MVBoli-48.vlw");
+  myFont = loadFont("C:/Users/Styrse/OneDrive/Desktop/GitHub/Projects/main/data/fonts/MVBoli-48.vlw");
   textFont(myFont);
 
   iconSizeX = tileX*1.25;
@@ -188,8 +376,7 @@ void setup() {
     botYPosition[i] = random(topWalkableEdge, bottomWalkableEdge);
   }
 
-  imageMode(CENTER);
-  img = loadImage("data/images/backgrounds/carnival_background.jpg");
+  
 
   carnivalSound = new SoundFile(this, "sounds/carnival.wav");
   if (soundPlayed == false) {

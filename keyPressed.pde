@@ -1,3 +1,16 @@
+SoundFile walkSound;
+
+int playerPickInt;
+
+String codeEntered = "";
+String motherloadString = "Motherload";
+String playerPick = "";
+String grade = "";
+String GradeStyr = "A";
+
+boolean moving = false;
+boolean typing = false;
+
 void keyPressed() {
   if (start == true && typing == true) {
     if (key == BACKSPACE && playerName.length() > 0 && playerName.length() < 15) {

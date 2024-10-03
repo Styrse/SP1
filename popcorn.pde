@@ -1,3 +1,12 @@
+PImage popcorn;
+
+SoundFile popcornSound;
+
+int savedTime;
+int passedTime;
+
+boolean popcornOn = false;
+
 void popcorn() {
   popcorn = loadImage("data/images/icons/popcorn.png");
 

@@ -1,3 +1,15 @@
+SoundFile ticketsSound;
+
+boolean motherload = false;
+boolean motherloadTrue = false;
+boolean walletOn = false;
+boolean playerTicketsOn = false;
+boolean bankOn = false;
+boolean raffleOn = false;
+boolean helpOn = false;
+boolean tentOn = false;
+boolean gameEnded = false;
+
 void mouseClicked() {
   if (start == false  && gameEnded == false && tentOn == false) {
     if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth) {
