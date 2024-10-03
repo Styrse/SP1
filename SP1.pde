@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 Player bot;
 int amountBots = 10;
 int totalTickets = 100;
@@ -10,15 +12,17 @@ PFont myFont;
 float[] botXPosition = new float[amountBots];
 float[] botYPosition = new float[amountBots];
 
+SoundFile sound;
+
 
 void setup() {
   windowTitle("Fantasia Fairgrounds");
   size(900, 900);
   tileX = width/tiles;
   tileY = height/tiles;
-  
+
   //Changes font
-  myFont = loadFont("C:/Users/Styrse/OneDrive/Desktop/GitHub/Projects/SP1/data/MVBoli-48.vlw");
+  myFont = loadFont("C:/Users/Styrse/OneDrive/Desktop/GitHub/Projects/SP1/data/fonts/MVBoli-48.vlw");
   textFont(myFont);
 
   iconSizeX = tileX*1.25;
@@ -98,94 +102,94 @@ void setup() {
   rightMotherload = tileX*8.75;
   topMotherload = tileY*14.75;
   bottomMotherload = tileY*16.25;
-  
+
   //Cross
   leftCross = tileX*18.5;
   rightCross = leftCross+tileX;
   topCross = tileY*5.5;
   bottomCross = topCross+tileY;
-  
+
   //Exit
   leftExit = tileX*3;
   rightExit = tileX*5;
   topExit = tileY*18.5;
   bottomExit = tileY*23.5;
-  
+
   //Exit access area
   leftAccessExit = tileX*1;
   rightAccessExit = tileX*7;
   topAccessExit = topWalkableEdge;
   bottomAccessExit = topAccessExit+tileY*3;
-  
+
   //End game
   leftEndGame = tileX*13.5;
   rightEndGame = tileX*16.5;
   topEndGame = tileY*22;
   bottomEndGame = tileY*25;
-  
+
   //Roulette
   leftRoulette = tileX*12.5;
   rightRoulette = tileX*17.5;
   topRoulette = tileY*20;
   bottomRoulette = tileY*24;
-  
+
   //Betting arrows
   leftDownArrow = tileX*4.625;
   rightDownArrow = tileX*6.375;
   topDownArrow = tileY*10.25;
   bottomDownArrow = tileY*12;
-  
+
   leftUpArrow = rightDownArrow+tileX;
   rightUpArrow = leftUpArrow+tileX*1.75;
   topUpArrow = topDownArrow;
   bottomUpArrow = bottomDownArrow;
-  
+
   //Odd/Even
   leftOdd = tileX*11;
   rightOdd = leftOdd+tileX*2;
   topOdd = tileY*9;
   bottomOdd = topOdd+tileY*2;
-  
+
   leftEven = leftOdd+tileX*2.5;
   rightEven = leftEven+tileX*2;
   topEven = topOdd;
   bottomEven = bottomOdd;
-  
+
   //Red/Green
   leftRed = leftOdd+tileX*5.5;
   rightRed = leftRed+tileX*2;
   topRed = topOdd;
   bottomRed = topRed+tileY*2;
-  
+
   leftGreen = leftRed+tileX*2.5;
   rightGreen = leftGreen+tileX*2;
   topGreen = topOdd;
   bottomGreen = bottomOdd;
-  
+
   //Pick a number
   leftPickANumber = rightEven+tileX*7.625;
   rightPickANumber = leftPickANumber+tileX*2;
   topPickANumber = topOdd;
   bottomPickANumber = bottomOdd;
-  
+
   //Flag
   leftFlag = tileX*23;
   rightFlag = tileX*26;
   topFlag = tileY*12;
   bottomFlag = tileY*13.5;
-  
+
   //Sky
   leftSky = tileX*10;
   rightSky = tileX*15.75;
   topSky = tileY*3.5;
   bottomSky = tileY*6;
-  
+
   //Popcorn
   leftPopcorn = tileX*8.5;
   rightPopcorn = tileX*10.25;
   topPopcorn = tileY*20.75;
   bottomPopcorn = tileY*24.75;
-  
+
   //Win or loss
   centerX = tileX*18;
   centerY = tileY*20;
@@ -207,6 +211,8 @@ void setup() {
   fillTicketArray();
   makeBots();
   player = new Player(playerName);
+  
+  
 }
 
 void draw() {
@@ -231,13 +237,14 @@ void draw() {
     raffle();
   } else if (tentOn == true) {
     tent();
-  } 
-  
-  if (popcornOn == true){
+  }
+
+  if (popcornOn == true) {
     passedTime = millis() - savedTime;
     popcorn();
   }
 
   loadPlayer();
   bots[1].movement();
+
 }

@@ -966,7 +966,7 @@ void boxesTent() {
 
 void popcorn() {
   popcorn = loadImage("images/icons/popcorn.png");
-  
+
   //Speed of popcorn vertical movement
   float speed = passedTime/75;
 
@@ -974,9 +974,13 @@ void popcorn() {
   for (int i = 0; i < 300; i ++) {
     image(popcorn, random(width), (random(-1000, 0))+(tileY*speed), random(0.8, 2)*iconSizeX, random(0.8, 2)*iconSizeY);
   }
-
+  sound = new SoundFile(this, "sounds/popcorn.wav");
+  sound.play();
   //Turn off popcorn rain
   if (passedTime > 5000) {
+
+
+    sound.stop();
     popcornOn = false;
   }
 }
