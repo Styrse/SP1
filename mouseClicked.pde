@@ -12,9 +12,11 @@ boolean raffleOn = false;
 boolean helpOn = false;
 boolean tentOn = false;
 boolean gameEnded = false;
+//Fixed a bug when popcorn bucket are raining
+boolean clickPossible = true;
 
 void mouseClicked() {
-  if (start == false  && gameEnded == false && tentOn == false) {
+  if (start == false  && gameEnded == false && tentOn == false && clickPossible == true) {
     if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth) {
       if (mouseX >= leftClickAreaTicketBooth && mouseX <= rightClickAreaTicketBooth && mouseY <= bottomClickAreaTicketBooth && mouseY >= topClickAreaTicketBooth) {
         if (player.wallet > 0) {
@@ -94,6 +96,7 @@ void mouseClicked() {
       bankOn = false;
       raffleOn = false;
     } else if (mouseX < rightPopcorn && mouseX > leftPopcorn && mouseY < bottomPopcorn && mouseY > topPopcorn) {
+      clickPossible = false;
       walletOn = false;
       playerTicketsOn = false;
       bankOn = false;
