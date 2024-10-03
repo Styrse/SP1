@@ -534,7 +534,7 @@ void mouseClicked() {
         tentOn = false;
         boxesTent = false;
       }
-    } 
+    }
     if ( mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
       boxesTent = !boxesTent;
     }
