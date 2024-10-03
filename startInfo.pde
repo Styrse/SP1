@@ -27,6 +27,7 @@ void startInfo() {
   textSize(tileX*1.15);
   text(playerName, width/2, tileY*19.75);
 
+  //Change colour of the "Enter" box to show user they can continue
   if (playerName.length() <= 0) {
     fill(127);
   } else {

@@ -1,7 +1,7 @@
 //Mouse dragged is similar to mouseClicked for an improved user experience. Buying tickets has been left out to prevent buying multiple tickets
 void mouseDragged() {
   if (start == false  && gameEnded == false && tentOn == false) {
-     if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent) {
+    if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent) {
       if ( mouseX >= leftClickAreaTent && mouseX <= rightClickAreaTent && mouseY <= bottomClickAreaTent && mouseY >= topClickAreaTent) {
         if (walletOn == true || playerTicketsOn == true || bankOn == true || raffleOn == true || helpOn == true) {
           walletOn = false;

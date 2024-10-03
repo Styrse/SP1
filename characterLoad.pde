@@ -8,14 +8,13 @@ boolean catSoundOn = false;
 
 int character = 1;
 
-
-
 void loadPlayer() {
   playerIcon();
   textSize(tileY*0.6);
   nameTag(playerName, playerXPosition, playerYPosition, 2.6);
 }
 
+//Sets player icon. Can later be used for multi options of a character
 void playerIcon() {
   imageMode(CENTER);
   if (character == 0) {

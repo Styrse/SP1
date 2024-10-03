@@ -5,6 +5,7 @@ String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut",
 
 boolean boxesTent = false;
 
+//help boxes
 void boxes() {
   tileX = width/30;
   tileY = height/30;

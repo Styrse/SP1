@@ -62,6 +62,7 @@ void roulette() {
   loss = loadImage("data/images/icons/loss.png");
 
   winSound = new SoundFile(this, "sounds/win.wav");
+  //Determine what to do after the roulette is done. Can add more options if needed
   switch (number) {
   case 0:
     image(loss, centerX, centerY, iconSizeX*2, iconSizeY*2);

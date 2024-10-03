@@ -42,6 +42,7 @@ void displayEndScreen() {
       k++;
     }
 
+    //Checks if the player number is winning to determine the colour its displayed with
     boolean isWinningNumber = false;
     for (int h = 0; h < winRate; h++) {
       if (player.boughtTickets[i] == winningTicketsID.get(h)) {

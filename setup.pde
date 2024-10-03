@@ -369,18 +369,15 @@ void setup() {
   centerX = tileX*18;
   centerY = tileY*20;
 
+  //Sets random starting position for the player
   playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
   playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
 
+  //Sets random starting position for bots
   for (int i = 0; i < amountBots; i++) {
     botXPosition[i] = random(leftWalkableEdge, rightWalkableEdge);
-  }
-
-  for (int i = 0; i < amountBots; i++) {
     botYPosition[i] = random(topWalkableEdge, bottomWalkableEdge);
   }
-
-  
 
   carnivalSound = new SoundFile(this, "sounds/carnival.wav");
   if (soundPlayed == false) {

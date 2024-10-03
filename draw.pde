@@ -2,8 +2,6 @@ PImage img;
 
 boolean start = true;
 
-
-
 void draw() {
   imageMode(CENTER);
   img = loadImage("data/images/backgrounds/carnival_background.jpg");
