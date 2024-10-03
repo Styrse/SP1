@@ -623,13 +623,17 @@ void getWinningNumbers() {
   winRate = (totalTickets/100)*20;
 
   for (int i = 0; i < winRate; i++) {
-    winningNumbers.add((int) random(1, 100));
+    int randomTicket = (int) random(0, ticketsID.size());
+    if (!winningNumbers.contains(randomTicket)) {
+      winningNumbers.add(randomTicket);
+    } else {
+      i--;
+    }
   }
 
   for (int i = 0; i < winRate; i++) {
     winningTicketsID.add(ticketsID.get(winningNumbers.get(i)));
   }
-  Collections.sort(winningTicketsID);
 }
 
 void displayEndScreen() {
