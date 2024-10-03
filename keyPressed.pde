@@ -6,7 +6,7 @@ String codeEntered = "";
 String motherloadString = "Motherload";
 String playerPick = "";
 String grade = "";
-String GradeStyr = "A";
+String GradeStyr = "StyrGradeA";
 
 boolean moving = false;
 boolean typing = false;
