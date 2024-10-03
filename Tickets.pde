@@ -10,7 +10,7 @@ void fillTicketArray() {
   for (int i = 0; i < totalTickets; i++) {
     ticketsID.add(startTicketID + i);
   }
-  
+
   //Pick winning numbers
   getWinningNumbers();
 }

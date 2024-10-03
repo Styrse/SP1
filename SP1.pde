@@ -206,7 +206,7 @@ void setup() {
   }
 
   backgroundFunction();
-  
+
   carnivalSound = new SoundFile(this, "sounds/carnival.wav");
   if (soundPlayed == false) {
     carnivalSound.loop();
@@ -220,7 +220,7 @@ void setup() {
 
 void draw() {
   image(img, width/2, height/2, width, height);
-    
+
   menu();
   loadBots();
   if (helpOn == true) {

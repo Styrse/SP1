@@ -215,6 +215,7 @@ boolean boxesTent = false;
 boolean ofelia = false;
 boolean popcornOn = false;
 boolean catSoundOn = false;
+boolean endSoundOn = false;
 
 String codeEntered = "";
 String motherloadString = "Motherload";
@@ -240,10 +241,12 @@ SoundFile rouletteSound;
 SoundFile ticketsSound;
 SoundFile winSound;
 SoundFile catSound;
+SoundFile endSound;
+SoundFile walkSound;
 
 void backgroundFunction() {
   imageMode(CENTER);
-  img = loadImage("images/backgrounds/carnival_background.jpg");
+  img = loadImage("data/images/backgrounds/carnival_background.jpg");
 }
 
 void boxes() {
@@ -285,10 +288,10 @@ void boxes() {
 
   //Arrows
   imageMode(CENTER);
-  arrows = loadImage("images/icons/keyboard.png");
+  arrows = loadImage("data/images/icons/keyboard.png");
   image(arrows, tileX*12, tileY*9.5, tileX*2.5, tileY*2.5);
   //Mouse
-  mouse = loadImage("images/icons/mouse.png");
+  mouse = loadImage("data/images/icons/mouse.png");
   image(mouse, tileX*18, tileY*9.5, tileX*2.5, tileY*2.5);
 
   fill(0);
@@ -308,28 +311,28 @@ void menu() {
 
   //Wallet
   imageMode(CORNERS);
-  wallet = loadImage("images/icons/wallet.png");
+  wallet = loadImage("data/images/icons/wallet.png");
   image(wallet, leftWallet, top, rightWallet, bottom);
   fill(0);
   textSize(tileY);
   textAlign(LEFT, CENTER);
   text(player.wallet, tileX*3.25, tileY*2);
   //Tickets
-  tickets = loadImage("images/icons/tickets.png");
+  tickets = loadImage("data/images/icons/tickets.png");
   image(tickets, leftTickets, top, rightTickets, bottom);
   text(player.tickets, tileX*9.25, tileY*2);
   //Bank
-  bankIMG = loadImage("images/icons/bank.png");
+  bankIMG = loadImage("data/images/icons/bank.png");
   image(bankIMG, leftBank, top, rightBank, bottom);
   text(bank, tileX*15.25, tileY*2);
   //Raffle
-  raffle = loadImage("images/icons/raffle.png");
+  raffle = loadImage("data/images/icons/raffle.png");
   image(raffle, leftRaffle, top, rightRaffle, bottom);
   //Help
-  help = loadImage("images/icons/help.png");
+  help = loadImage("data/images/icons/help.png");
   image(help, leftHelp, top, rightHelp, bottom);
   //Lottery
-  lottery = loadImage("images/icons/lottery.png");
+  lottery = loadImage("data/images/icons/lottery.png");
   image(lottery, leftLottery, top, rightLottery, bottom);
 
   if (motherloadTrue == true && popcornTrue == true && flagTrue == true && skyTrue == true && gambleTrue == true) {
@@ -347,16 +350,16 @@ void loadPlayer() {
 void playerIcon() {
   imageMode(CENTER);
   if (character == 0) {
-    cat = loadImage("images/characters/cat.png");
+    cat = loadImage("data/images/characters/cat.png");
     image(cat, playerXPosition, playerYPosition, tileX*4, tileY*4);
-    
-    if (catSoundOn == false){
-    catSound = new SoundFile(this, "sounds/cat.wav");
-    catSound.play();
-    catSoundOn = true;
+
+    if (catSoundOn == false) {
+      catSound = new SoundFile(this, "sounds/cat.wav");
+      catSound.play();
+      catSoundOn = true;
     }
   } else if (character == 1) {
-    coffee = loadImage("images/characters/coffee.png");
+    coffee = loadImage("data/images/characters/coffee.png");
     image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
   }
 }
@@ -364,7 +367,7 @@ void playerIcon() {
 void loadBots() {
   imageMode(CENTER);
   for (int i = 0; i < imageName.length; i++) {
-    botImages[i] = loadImage("images/characters/" + imageName[i] + ".png");
+    botImages[i] = loadImage("data/images/characters/" + imageName[i] + ".png");
     image(botImages[i], botXPosition[i], botYPosition[i], tileX*3, tileY*3);
     textSize(tileY*0.4);
     nameTag(bots[i].fullName, botXPosition[i], botYPosition[i], 1.8);
@@ -439,6 +442,8 @@ void keyPressed() {
       } else if (keyCode == DOWN && !moving) {
         playerYPosition+= tileY*0.5;
       }
+      walkSound = new SoundFile(this, "sounds/walk.wav");
+      walkSound.play();
     }
   }
 
@@ -529,6 +534,165 @@ void mouseClicked() {
       bankOn = false;
       raffleOn = false;
     } else if (mouseX < rightPopcorn && mouseX > leftPopcorn && mouseY < bottomPopcorn && mouseY > topPopcorn) {
+      walletOn = false;
+      playerTicketsOn = false;
+      bankOn = false;
+      raffleOn = false;
+      helpOn = false;
+      popcornOn = true;
+      savedTime = millis();
+      popcornTrue = true;
+    } else if (mouseX < rightSky && mouseX > leftSky && mouseY < bottomSky && mouseY > topSky) {
+      skyTrue = true;
+    } else if (mouseX < rightFlag && mouseX > leftFlag && mouseY < bottomFlag && mouseY > topFlag) {
+      flagTrue = true;
+    }
+  } else if (start == true) {
+    if (start == true && mouseX < rightUsername && mouseX > leftUsername && mouseY < bottomUsername && mouseY > topUsername) {
+      typing = true;
+    } else if (mouseX < rightEnter && mouseX > leftEnter && mouseY < bottomEnter && mouseY > topEnter && playerName.length() > 0) {
+      start = false;
+    }
+  } else if (gameEnded == true) {
+    if (mouseX < rightEndGame && mouseX > leftEndGame && mouseY < bottomEndGame && mouseY > topEndGame) {
+      exit();
+    }
+  } else if (tentOn == true) {
+    if (playerXPosition <= rightAccessExit && playerXPosition >= leftAccessExit && playerYPosition <= bottomAccessExit && playerYPosition >= topAccessExit) {
+      if (mouseX < rightExit && mouseX > leftExit && mouseY < bottomExit && mouseY > topExit) {
+        playerXPosition = tileX*23;
+        playerYPosition = tileY*23.5;
+        tentOn = false;
+        boxesTent = false;
+      }
+    }
+    if ( mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
+      boxesTent = !boxesTent;
+    }
+    if (mouseX < rightDownArrow && mouseX > leftDownArrow && mouseY < bottomDownArrow && mouseY > topDownArrow) {
+      bet -= 5;
+    } else if (mouseX < rightUpArrow && mouseX > leftUpArrow && mouseY < bottomUpArrow && mouseY > topUpArrow) {
+      bet += 5;
+    }
+    bet = constrain(bet, 0, player.wallet);
+
+    if (mouseX < rightOdd && mouseX > leftOdd && mouseY < bottomOdd && mouseY > topOdd) {
+      number = 1;
+      if (bet > 0) {
+        betOn = true;
+      }
+    } else if (mouseX < rightEven && mouseX > leftEven && mouseY < bottomEven && mouseY > topEven) {
+      number = 2;
+      if (bet > 0) {
+        betOn = true;
+      }
+    } else if (mouseX < rightRed && mouseX > leftRed && mouseY < bottomRed && mouseY > topRed) {
+      number = 3;
+      if (bet > 0) {
+        betOn = true;
+      }
+    } else if (mouseX < rightGreen && mouseX > leftGreen && mouseY < bottomGreen && mouseY > topGreen) {
+      number = 4;
+      if (bet > 0) {
+        betOn = true;
+      }
+    } else if (mouseX < rightPickANumber && mouseX > leftPickANumber && mouseY < bottomPickANumber && mouseY > topPickANumber) {
+      number = 5;
+      if (bet > 0) {
+        betOn = true;
+      }
+    } else if (mouseX < rightRoulette && mouseX > leftRoulette && mouseY < bottomRoulette && mouseY > topRoulette && betOn == true) {
+      player.wallet -= bet;
+      player.gamble -= bet;
+      roulette();
+    }
+  }
+}
+
+void mouseDragged() {
+  if (start == false  && gameEnded == false && tentOn == false) {
+    if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth) {
+      if (mouseX >= leftClickAreaTicketBooth && mouseX <= rightClickAreaTicketBooth && mouseY <= bottomClickAreaTicketBooth && mouseY >= topClickAreaTicketBooth) {
+        if (player.wallet > 0) {
+          image(tickets, tileX*6, tileY*19, tileX*2, tileY*2);
+          ticketsSound = new SoundFile(this, "sounds/tickets.wav");
+          ticketsSound.play();
+        }
+        player.ticket(1);
+      }
+    } else if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent) {
+      if ( mouseX >= leftClickAreaTent && mouseX <= rightClickAreaTent && mouseY <= bottomClickAreaTent && mouseY >= topClickAreaTent) {
+        if (walletOn == true || playerTicketsOn == true || bankOn == true || raffleOn == true || helpOn == true) {
+          walletOn = false;
+          playerTicketsOn = false;
+          bankOn = false;
+          raffleOn = false;
+          helpOn = false;
+        }
+        tentOn = !tentOn;
+      }
+    }
+    if (mouseX < rightWallet && mouseX > leftWallet && mouseY < bottom && mouseY > top) {
+      if (playerTicketsOn == true || bankOn == true || raffleOn == true || helpOn == true) {
+        playerTicketsOn = false;
+        bankOn = false;
+        raffleOn = false;
+        helpOn = false;
+      }
+      walletOn = !walletOn;
+    } else if (mouseX < rightTickets && mouseX > leftTickets && mouseY < bottom && mouseY > top) {
+      if (walletOn == true || bankOn == true || raffleOn == true || helpOn == true) {
+        walletOn = false;
+        bankOn = false;
+        raffleOn = false;
+        helpOn = false;
+      }
+      playerTicketsOn = !playerTicketsOn;
+    } else if (mouseX < rightBank && mouseX > leftBank && mouseY < bottom && mouseY > top) {
+      if (walletOn == true || playerTicketsOn == true || raffleOn == true || helpOn == true) {
+        walletOn = false;
+        playerTicketsOn = false;
+        bankOn = false;
+        raffleOn = false;
+        helpOn = false;
+      }
+      bankOn = !bankOn;
+    } else if (mouseX < rightRaffle && mouseX > leftRaffle && mouseY < bottom && mouseY > top) {
+      if (walletOn == true || playerTicketsOn == true || bankOn == true || helpOn == true) {
+        walletOn = false;
+        playerTicketsOn = false;
+        bankOn = false;
+        raffleOn = false;
+        helpOn = false;
+      }
+      raffleOn = !raffleOn;
+    } else if (mouseX < rightHelp && mouseX > leftHelp && mouseY < bottom && mouseY > top) {
+      if (walletOn == true || playerTicketsOn == true || bankOn == true || raffleOn == true) {
+        walletOn = false;
+        playerTicketsOn = false;
+        bankOn = false;
+        raffleOn = false;
+      }
+      helpOn = !helpOn;
+    } else if (mouseX < rightLottery && mouseX > leftLottery && mouseY < bottom && mouseY > top) {
+      if (helpOn == true) {
+        helpOn = false;
+      }
+      gameEnded = true;
+    } else if (mouseX < rightMotherload && mouseX > leftMotherload && mouseY < bottomMotherload && mouseY > topMotherload) {
+      motherload = true;
+    }
+    if (mouseX < rightCross && mouseX > leftCross && mouseY < bottomCross && mouseY > topCross) {
+      walletOn = false;
+      playerTicketsOn = false;
+      bankOn = false;
+      raffleOn = false;
+    } else if (mouseX < rightPopcorn && mouseX > leftPopcorn && mouseY < bottomPopcorn && mouseY > topPopcorn) {
+      walletOn = false;
+      playerTicketsOn = false;
+      bankOn = false;
+      raffleOn = false;
+      helpOn = false;
       popcornOn = true;
       savedTime = millis();
       popcornTrue = true;
@@ -614,7 +778,7 @@ void startInfo() {
 
   text("To finish the day and see what you won \nclick this icon in the top right corner.", width/2, tileY*12.5);
   imageMode(CENTER);
-  lottery = loadImage("images/icons/lottery.png");
+  lottery = loadImage("data/images/icons/lottery.png");
   image(lottery, width/2, height/2, iconSizeX*2, iconSizeY*2);
 
   //Username
@@ -658,6 +822,13 @@ void getWinningNumbers() {
 }
 
 void displayEndScreen() {
+
+  if (endSoundOn == false) {
+    endSound = new SoundFile(this, "sounds/end.wav");
+    endSound.play();
+    endSoundOn = true;
+  }
+
   rectMode(CORNERS);
   fill(255, 127, 0, 200);
   rect(tileX*7, tileY*5, tileX*23, tileY*25.5, 25);
@@ -702,7 +873,7 @@ void displayEndScreen() {
     text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*13.5+tileY*k);
   }
   imageMode(CORNERS);
-  endGame = loadImage("images/icons/endGame.png");
+  endGame = loadImage("data/images/icons/endGame.png");
   image(endGame, leftEndGame, topEndGame, rightEndGame, bottomEndGame);
 }
 
@@ -785,17 +956,17 @@ void box(String text, int heightBox, int widthBox) {
   text(text, width/2, tileY*6);
 
   imageMode(CORNERS);
-  cross = loadImage("images/icons/cross.png");
+  cross = loadImage("data/images/icons/cross.png");
   image(cross, leftCross, topCross, rightCross, bottomCross);
 }
 
 void tent() {
   imageMode(CENTER);
-  tentBackground = loadImage("images/backgrounds/tent_background.png");
+  tentBackground = loadImage("data/images/backgrounds/tent_background.png");
   image(tentBackground, width/2, height/2, width, height);
 
   imageMode(CORNERS);
-  exit = loadImage("images/icons/exit.png");
+  exit = loadImage("data/images/icons/exit.png");
   image(exit, tileX*3, tileY*18, tileX*5, tileY*20);
 
   //Crates a click effect
@@ -806,7 +977,7 @@ void tent() {
   fill(255, 127, 0, 200);
   rect(tileX, tileY, tileX*7, tileY*3, 25);
   imageMode(CORNERS);
-  wallet = loadImage("images/icons/wallet.png");
+  wallet = loadImage("data/images/icons/wallet.png");
   image(wallet, leftWallet, top, rightWallet, bottom);
   fill(0);
   textSize(tileY);
@@ -821,7 +992,7 @@ void tent() {
   fill(255, 127, 0, 200);
   rect(tileX*23, tileY, tileX*27, tileY*3, 25);
   imageMode(CORNERS);
-  help = loadImage("images/icons/help.png");
+  help = loadImage("data/images/icons/help.png");
   image(help, leftHelp, top, rightHelp, bottom);
 
   //Gambling
@@ -836,8 +1007,8 @@ void tent() {
   textSize(width/12);
   text((int)bet, tileX*6.875, tileY*8.5); //Typecasting just for Jesper
 
-  arrowDown = loadImage("images/icons/down-arrow.png");
-  arrowUp = loadImage("images/icons/up-arrow.png");
+  arrowDown = loadImage("data/images/icons/down-arrow.png");
+  arrowUp = loadImage("data/images/icons/up-arrow.png");
   imageMode(CORNERS);
 
   image(arrowDown, leftDownArrow, topDownArrow, rightDownArrow, bottomDownArrow);
@@ -874,7 +1045,7 @@ void tent() {
   ellipse(leftPickANumber, topPickANumber, rightPickANumber, bottomPickANumber);
 
   fill(0);
-  textSize(width/20);
+  textSize(width/25);
   text("1", leftOdd+tileX, topOdd+tileY);
   text("2", leftEven+tileX, topEven+tileY);
   text(playerPick, leftPickANumber+tileX, topPickANumber+tileY);
@@ -886,7 +1057,7 @@ void tent() {
 
 void loadRoulette(float size) {
   imageMode(CENTER);
-  roulette = loadImage("images/icons/roulette.png");
+  roulette = loadImage("data/images/icons/roulette.png");
   image(roulette, tileX*15, tileY*22, (tileX*6)*size, (tileY*6)*size);
 }
 
@@ -937,8 +1108,8 @@ void roulette() {
     }
   }
   imageMode(CENTER);
-  win = loadImage("images/icons/win.png");
-  loss = loadImage("images/icons/loss.png");
+  win = loadImage("data/images/icons/win.png");
+  loss = loadImage("data/images/icons/loss.png");
 
   winSound = new SoundFile(this, "sounds/win.wav");
   switch (number) {
@@ -986,7 +1157,7 @@ void boxesTent() {
 }
 
 void popcorn() {
-  popcorn = loadImage("images/icons/popcorn.png");
+  popcorn = loadImage("data/images/icons/popcorn.png");
 
   //Speed of popcorn vertical movement
   float speed = passedTime/75;

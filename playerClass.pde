@@ -44,7 +44,7 @@ class Player {
         }
       }
     } else {
-      noMoney = loadImage("images/icons/no-money.png");
+      noMoney = loadImage("data/images/icons/no-money.png");
       image(noMoney, tileX*6, tileY*19, tileX*2, tileY*2);
     }
   }

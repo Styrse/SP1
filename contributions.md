@@ -103,3 +103,9 @@ automatlang2.wav by tomkuhn -- https://freesound.org/s/90365/ -- License: Attrib
 
 Cat:
 Mjau5.wav by Andreas.Mustola -- https://freesound.org/s/338276/ -- License: Creative Commons 0
+
+End:
+winning.wav by unadamlar -- https://freesound.org/s/341984/ -- License: Creative Commons 0
+
+Walk:
+Walking_4 by Unlistenable -- https://freesound.org/s/414329/ -- License: Attribution NonCommercial 4.0
