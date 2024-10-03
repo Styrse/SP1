@@ -212,6 +212,7 @@ boolean gameEnded = false;
 boolean betOn = false;
 boolean boxesTent = false;
 boolean ofelia = false;
+boolean popcornOn = false;
 
 String codeEntered = "";
 String motherloadString = "Motherload";
@@ -226,13 +227,15 @@ int bank = 0;
 int number = 0;
 int playerPickInt;
 int character = 1;
+int savedTime;
+int passedTime;
 
 ArrayList<Integer> winningNumbers = new ArrayList<Integer>();
 ArrayList<Integer> winningTicketsID = new ArrayList<Integer>();
 
 void backgroundFunction() {
   imageMode(CENTER);
-  img = loadImage("images/carnival_background.jpg");
+  img = loadImage("images/backgrounds/carnival_background.jpg");
 }
 
 void boxes() {
@@ -510,6 +513,8 @@ void mouseClicked() {
       bankOn = false;
       raffleOn = false;
     } else if (mouseX < rightPopcorn && mouseX > leftPopcorn && mouseY < bottomPopcorn && mouseY > topPopcorn) {
+      popcornOn = true;
+      savedTime = millis();
       popcornTrue = true;
     } else if (mouseX < rightSky && mouseX > leftSky && mouseY < bottomSky && mouseY > topSky) {
       skyTrue = true;
@@ -623,7 +628,7 @@ void getWinningNumbers() {
   winRate = (totalTickets/100)*20;
 
   for (int i = 0; i < winRate; i++) {
-    int randomTicket = (int) random(1, ticketsID.size()+1);
+    int randomTicket = (int) random(1, ticketsID.size());
     if (!winningNumbers.contains(randomTicket)) {
       winningNumbers.add(randomTicket);
     } else {
@@ -770,7 +775,7 @@ void box(String text, int heightBox, int widthBox) {
 
 void tent() {
   imageMode(CENTER);
-  tentBackground = loadImage("images/tent_background.png");
+  tentBackground = loadImage("images/backgrounds/tent_background.png");
   image(tentBackground, width/2, height/2, width, height);
 
   imageMode(CORNERS);
@@ -865,7 +870,7 @@ void tent() {
 
 void loadRoulette(float size) {
   imageMode(CENTER);
-  roulette = loadImage("images/roulette.png");
+  roulette = loadImage("images/icons/roulette.png");
   image(roulette, tileX*15, tileY*22, (tileX*6)*size, (tileY*6)*size);
 }
 
@@ -956,4 +961,8 @@ void boxesTent() {
   rect(leftAccessExit, topAccessExit, rightAccessExit, bottomAccessExit, 5);
   rect(leftHelp, top, rightHelp, bottom, 5);
   rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge, 5);
+}
+
+void popcorn(){
+  println("Make popcorn rain");
 }

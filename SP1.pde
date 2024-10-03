@@ -232,6 +232,12 @@ void draw() {
   } else if (tentOn == true) {
     tent();
   } 
+  
+  if (popcornOn == true){
+    passedTime = millis() - savedTime;
+    popcorn();
+  println(passedTime);
+  }
 
   loadPlayer();
   bots[1].movement();
