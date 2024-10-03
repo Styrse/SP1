@@ -13,12 +13,15 @@ float[] botXPosition = new float[amountBots];
 float[] botYPosition = new float[amountBots];
 
 SoundFile carnivalSound;
+boolean soundPlayed = false;
 
 void setup() {
   windowTitle("Fantasia Fairgrounds");
   size(900, 900);
   tileX = width/tiles;
   tileY = height/tiles;
+
+
 
   //Changes font
   myFont = loadFont("C:/Users/Styrse/OneDrive/Desktop/GitHub/Projects/SP1/data/fonts/MVBoli-48.vlw");
@@ -205,17 +208,21 @@ void setup() {
   }
 
   backgroundFunction();
+  
+  carnivalSound = new SoundFile(this, "sounds/carnival.wav");
+  if (soundPlayed == false) {
+    carnivalSound.loop();
+    soundPlayed = true;
+  }
 
   fillTicketArray();
   makeBots();
   player = new Player(playerName);
-  
 }
 
 void draw() {
   image(img, width/2, height/2, width, height);
-
-
+    
   menu();
   loadBots();
   if (helpOn == true) {
@@ -243,5 +250,4 @@ void draw() {
 
   loadPlayer();
   bots[1].movement();
-
 }
