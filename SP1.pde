@@ -21,8 +21,6 @@ void setup() {
   tileX = width/tiles;
   tileY = height/tiles;
 
-
-
   //Changes font
   myFont = loadFont("C:/Users/Styrse/OneDrive/Desktop/GitHub/Projects/SP1/data/fonts/MVBoli-48.vlw");
   textFont(myFont);

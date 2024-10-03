@@ -214,6 +214,7 @@ boolean betOn = false;
 boolean boxesTent = false;
 boolean ofelia = false;
 boolean popcornOn = false;
+boolean catSoundOn = false;
 
 String codeEntered = "";
 String motherloadString = "Motherload";
@@ -348,6 +349,12 @@ void playerIcon() {
   if (character == 0) {
     cat = loadImage("images/characters/cat.png");
     image(cat, playerXPosition, playerYPosition, tileX*4, tileY*4);
+    
+    if (catSoundOn == false){
+    catSound = new SoundFile(this, "sounds/cat.wav");
+    catSound.play();
+    catSoundOn = true;
+    }
   } else if (character == 1) {
     coffee = loadImage("images/characters/coffee.png");
     image(coffee, playerXPosition, playerYPosition, tileX*4, tileY*4);
@@ -988,7 +995,7 @@ void popcorn() {
   for (int i = 0; i < 300; i ++) {
     image(popcorn, random(width), (random(-1000, 0))+(tileY*speed), random(0.8, 2)*iconSizeX, random(0.8, 2)*iconSizeY);
   }
-  popcornSound = new SoundFile(this, "sounds/popcorn.mp3");
+  popcornSound = new SoundFile(this, "sounds/popcorn.wav");
   popcornSound.play();
   //Turn off popcorn rain
   if (passedTime > 5000) {

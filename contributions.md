@@ -99,4 +99,7 @@ Win:
 Slot Machine Win Coins Sound MP3 by MarcoConsoli -- https://freesound.org/s/620132/ -- License: Attribution NonCommercial 3.0
 
 Ticket:
-https://sound-effects.bbcrewind.co.uk/
+automatlang2.wav by tomkuhn -- https://freesound.org/s/90365/ -- License: Attribution NonCommercial 4.0
+
+Cat:
+Mjau5.wav by Andreas.Mustola -- https://freesound.org/s/338276/ -- License: Creative Commons 0
