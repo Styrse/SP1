@@ -1,15 +1,7 @@
+//Mouse dragged is similar to mouseClicked for an improved user experience. Buying tickets has been left out to prevent buying multiple tickets
 void mouseDragged() {
   if (start == false  && gameEnded == false && tentOn == false) {
-    if (playerXPosition >= leftAccesBoxTicketBooth && playerXPosition <= rightAccessBoxTicketBooth && playerYPosition <= bottomAccessBoxTicketBooth && playerYPosition >= topAccessBoxTicketBooth) {
-      if (mouseX >= leftClickAreaTicketBooth && mouseX <= rightClickAreaTicketBooth && mouseY <= bottomClickAreaTicketBooth && mouseY >= topClickAreaTicketBooth) {
-        if (player.wallet > 0) {
-          image(tickets, tileX*6, tileY*19, tileX*2, tileY*2);
-          ticketsSound = new SoundFile(this, "sounds/tickets.wav");
-          ticketsSound.play();
-        }
-        player.ticket(1);
-      }
-    } else if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent) {
+     if (playerXPosition >= leftAccessBoxTent && playerXPosition <= rightAccessBoxTent && playerYPosition <= bottomAccessBoxTent && playerYPosition >= topAccessBoxTent) {
       if ( mouseX >= leftClickAreaTent && mouseX <= rightClickAreaTent && mouseY <= bottomClickAreaTent && mouseY >= topClickAreaTent) {
         if (walletOn == true || playerTicketsOn == true || bankOn == true || raffleOn == true || helpOn == true) {
           walletOn = false;
