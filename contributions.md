@@ -91,3 +91,6 @@ https://www.flaticon.com/free-icons/popcorn" title="popcorn icons">Popcorn icons
 Sounds:
 Popcorn:
 popcorn_popping_sfx.mp3 by Jkkarr2020 -- https://freesound.org/s/652638/ -- License: Creative Commons 0
+
+Roulette:
+Roulette Wheel Spin Loop 1_1 by Joao_Janz -- https://freesound.org/s/482663/ -- License: Creative Commons 0

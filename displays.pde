@@ -234,6 +234,9 @@ int passedTime;
 ArrayList<Integer> winningNumbers = new ArrayList<Integer>();
 ArrayList<Integer> winningTicketsID = new ArrayList<Integer>();
 
+SoundFile popcornSound;
+SoundFile rouletteSound;
+
 void backgroundFunction() {
   imageMode(CENTER);
   img = loadImage("images/backgrounds/carnival_background.jpg");
@@ -1025,6 +1028,9 @@ void loadRoulette(float size) {
 void roulette() {
   gambleTrue = true;
   loadRoulette(1.2);
+  
+  rouletteSound = new SoundFile(this, "sounds/roulette.wav");
+  rouletteSound.play();
 
   //Generate a random int number
   int randomNumber = (int) random(0, 36+1);
@@ -1121,11 +1127,11 @@ void popcorn() {
   for (int i = 0; i < 300; i ++) {
     image(popcorn, random(width), (random(-1000, 0))+(tileY*speed), random(0.8, 2)*iconSizeX, random(0.8, 2)*iconSizeY);
   }
-  sound = new SoundFile(this, "sounds/popcorn.mp3");
-  sound.play();
+  popcornSound = new SoundFile(this, "sounds/popcorn.mp3");
+  popcornSound.play();
   //Turn off popcorn rain
   if (passedTime > 5000) {
-    sound.stop();
+    popcornSound.stop();
     popcornOn = false;
   }
 }

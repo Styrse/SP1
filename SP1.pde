@@ -12,9 +12,6 @@ PFont myFont;
 float[] botXPosition = new float[amountBots];
 float[] botYPosition = new float[amountBots];
 
-SoundFile sound;
-
-
 void setup() {
   windowTitle("Fantasia Fairgrounds");
   size(900, 900);
@@ -205,13 +202,11 @@ void setup() {
     botYPosition[i] = random(topWalkableEdge, bottomWalkableEdge);
   }
 
-
   backgroundFunction();
 
   fillTicketArray();
   makeBots();
   player = new Player(playerName);
-  
   
 }
 
