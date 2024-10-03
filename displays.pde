@@ -623,7 +623,7 @@ void getWinningNumbers() {
   winRate = (totalTickets/100)*20;
 
   for (int i = 0; i < winRate; i++) {
-    int randomTicket = (int) random(0, ticketsID.size());
+    int randomTicket = (int) random(1, ticketsID.size()+1);
     if (!winningNumbers.contains(randomTicket)) {
       winningNumbers.add(randomTicket);
     } else {
@@ -665,6 +665,18 @@ void displayEndScreen() {
   for (int i = 0; i < player.tickets; i++) {
     if (i % 5 == 0 && i != 0) {
       k++;
+    }
+    
+    boolean isWinningNumber = false;
+    for (int h = 0; h < winRate; h++){
+      if (player.boughtTickets[i] == winningTicketsID.get(h)){
+        isWinningNumber = true;
+      }
+    }
+    if (isWinningNumber == true){
+      fill(0, 255, 0);
+    } else {
+      fill(255, 0, 0);
     }
     text(player.boughtTickets[i], tileX*11+tileX*2*(i%5), tileY*13.5+tileY*k);
   }
