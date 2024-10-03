@@ -51,3 +51,12 @@ void nameTag(String name, float xPos, float yPos, float h) {
   textAlign(CENTER, CENTER);
   text(name, xPos, yPos-tileY*h);
 }
+
+public void movementBots() {
+  for (int i = 0; i < amountBots; i++) {
+    botXPosition[i] += random(-tileX*0.25, tileX*0.25);
+    botYPosition[i] += random(-tileY*0.25, tileY*0.25);
+    botXPosition[i] = constrain(botXPosition[i], leftWalkableEdge, rightWalkableEdge);
+    botYPosition[i] = constrain(botYPosition[i], topWalkableEdge, bottomWalkableEdge);
+  }
+}

@@ -49,16 +49,6 @@ class Player {
       image(noMoney, tileX*6, tileY*19, tileX*2, tileY*2);
     }
   }
-
-  public void movement() {
-
-    for (int i = 0; i < amountBots; i++) {
-      botXPosition[i] += random(-tileX*0.25, tileX*0.25);
-      botYPosition[i] += random(-tileY*0.25, tileY*0.25);
-      botXPosition[i] = constrain(botXPosition[i], leftWalkableEdge, rightWalkableEdge);
-      botYPosition[i] = constrain(botYPosition[i], topWalkableEdge, bottomWalkableEdge);
-    }
-  }
 }
 
 void makeBots() {

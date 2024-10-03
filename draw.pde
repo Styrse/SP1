@@ -33,5 +33,5 @@ void draw() {
   }
 
   loadPlayer();
-  bots[1].movement();
+  movementBots();
 }
