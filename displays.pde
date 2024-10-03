@@ -20,6 +20,7 @@ PImage arrowDown;
 PImage win;
 PImage loss;
 PImage cat;
+PImage popcorn;
 PImage[] botImages = new PImage[10];
 String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
 int[] redNumbers = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36};
@@ -671,14 +672,14 @@ void displayEndScreen() {
     if (i % 5 == 0 && i != 0) {
       k++;
     }
-    
+
     boolean isWinningNumber = false;
-    for (int h = 0; h < winRate; h++){
-      if (player.boughtTickets[i] == winningTicketsID.get(h)){
+    for (int h = 0; h < winRate; h++) {
+      if (player.boughtTickets[i] == winningTicketsID.get(h)) {
         isWinningNumber = true;
       }
     }
-    if (isWinningNumber == true){
+    if (isWinningNumber == true) {
       fill(0, 255, 0);
     } else {
       fill(255, 0, 0);
@@ -963,6 +964,19 @@ void boxesTent() {
   rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge, 5);
 }
 
-void popcorn(){
-  println("Make popcorn rain");
+void popcorn() {
+  popcorn = loadImage("images/icons/popcorn.png");
+  
+  //Speed of popcorn vertical movement
+  float speed = passedTime/75;
+
+  //Makes 300 popcorn buckets randomly across the screen
+  for (int i = 0; i < 300; i ++) {
+    image(popcorn, random(width), (random(-1000, 0))+(tileY*speed), random(0.8, 2)*iconSizeX, random(0.8, 2)*iconSizeY);
+  }
+
+  //Turn off popcorn rain
+  if (passedTime > 5000) {
+    popcornOn = false;
+  }
 }

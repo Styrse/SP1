@@ -236,7 +236,6 @@ void draw() {
   if (popcornOn == true){
     passedTime = millis() - savedTime;
     popcorn();
-  println(passedTime);
   }
 
   loadPlayer();
