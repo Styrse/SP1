@@ -1,3 +1,7 @@
+import processing.sound.*;
+import java.util.Collections;
+import java.util.ArrayList;
+
 Player bot;
 int amountBots = 10;
 int totalTickets = 100;
