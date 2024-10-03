@@ -20,8 +20,6 @@ void boxes() {
   rect(leftClickAreaTent, topClickAreaTent, rightClickAreaTent, bottomClickAreaTent, 100, 100, 15, 15);
   //Walkable area
   rect(leftWalkableEdge, topWalkableEdge, rightWalkableEdge, bottomWalkableEdge, 15);
-  //Motherload
-  rect(leftMotherload, topMotherload, rightMotherload, bottomMotherload, 15);
 
   //Menu
   //Wallet
