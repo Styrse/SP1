@@ -12,6 +12,8 @@ PFont myFont;
 float[] botXPosition = new float[amountBots];
 float[] botYPosition = new float[amountBots];
 
+SoundFile carnivalSound;
+
 void setup() {
   windowTitle("Fantasia Fairgrounds");
   size(900, 900);
