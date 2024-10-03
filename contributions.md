@@ -111,4 +111,10 @@ Walk:
 Walking_4 by Unlistenable -- https://freesound.org/s/414329/ -- License: Attribution NonCommercial 4.0
 
 Thunder:
-Thunder6.wav by OneSoundToRuleThemAll -- https://freesound.org/s/238807/ -- License: Attribution 4.0
+thunder.mp3 by DragishaRambo21 -- https://freesound.org/s/345920/ -- License: Attribution NonCommercial 3.0
+
+Wind:
+blowing.wav by helhel -- https://freesound.org/s/346237/ -- License: Creative Commons 0
+
+Rollercoaster:
+SCB005_Rollercoaster.wav by tec_studio -- https://freesound.org/s/98181/ -- License: Creative Commons 0

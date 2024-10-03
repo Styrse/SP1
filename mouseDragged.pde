@@ -61,6 +61,8 @@ void mouseDragged() {
       }
       gameEnded = true;
     } else if (mouseX < rightMotherload && mouseX > leftMotherload && mouseY < bottomMotherload && mouseY > topMotherload) {
+      rollercoasterSound = new SoundFile(this, "sounds/rollercoaster.wav");
+      rollercoasterSound.play();
       motherload = true;
     }
     if (mouseX < rightCross && mouseX > leftCross && mouseY < bottomCross && mouseY > topCross) {
@@ -78,8 +80,12 @@ void mouseDragged() {
       savedTime = millis();
       popcornTrue = true;
     } else if (mouseX < rightSky && mouseX > leftSky && mouseY < bottomSky && mouseY > topSky) {
+      thunderSound = new SoundFile(this, "sounds/thunder.wav");
+      thunderSound.play();
       skyTrue = true;
     } else if (mouseX < rightFlag && mouseX > leftFlag && mouseY < bottomFlag && mouseY > topFlag) {
+      windSound = new SoundFile(this, "sounds/wind.wav");
+      windSound.play();
       flagTrue = true;
     }
   } else if (start == true) {
