@@ -1,4 +1,6 @@
 import processing.sound.*;
+import java.util.Collections;
+import java.util.ArrayList;
 
 Player bot;
 int amountBots = 10;
@@ -15,237 +17,250 @@ float[] botYPosition = new float[amountBots];
 SoundFile carnivalSound;
 boolean soundPlayed = false;
 
-void setup() {
-  windowTitle("Fantasia Fairgrounds");
-  size(900, 900);
-  tileX = width/tiles;
-  tileY = height/tiles;
+PImage img;
+PImage tentBackground;
+PImage roulette;
+PImage wallet;
+PImage tickets;
+PImage coffee;
+PImage bankIMG;
+PImage raffle;
+PImage help;
+PImage lottery;
+PImage arrows;
+PImage mouse;
+PImage cross;
+PImage exit;
+PImage endGame;
+PImage arrowUp;
+PImage arrowDown;
+PImage win;
+PImage loss;
+PImage cat;
+PImage popcorn;
+PImage[] botImages = new PImage[10];
+String[] imageName = {"avocado", "bread", "burger", "can", "cookie", "doughnut", "frenchfries", "pineapple", "pizza", "tomato"};
+int[] redNumbers = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36};
 
-  //Changes font
-  myFont = loadFont("C:/Users/Styrse/OneDrive/Desktop/GitHub/Projects/SP1/data/fonts/MVBoli-48.vlw");
-  textFont(myFont);
+float iconSizeX;
+float iconSizeY;
 
-  iconSizeX = tileX*1.25;
-  iconSizeY = tileY*1.25;
+float playerXPosition;
+float playerYPosition;
 
-  //Walkable area
-  leftWalkableEdge = tileX;
-  rightWalkableEdge = width-tileX;
-  topWalkableEdge = tileY*23.5;
-  bottomWalkableEdge = height-tileX;
+float leftWalkableEdge;
+float rightWalkableEdge;
+float topWalkableEdge;
+float bottomWalkableEdge;
 
-  //Access area ticket booth
-  leftAccesBoxTicketBooth = tileX*2;
-  rightAccessBoxTicketBooth = tileX*7;
-  topAccessBoxTicketBooth = tileY*23.5;
-  bottomAccessBoxTicketBooth = tileY*26;
+//Access area ticket booth
+float leftAccesBoxTicketBooth;
+float rightAccessBoxTicketBooth;
+float topAccessBoxTicketBooth;
+float bottomAccessBoxTicketBooth;
 
-  //Enter click area ticket booth
-  leftClickAreaTicketBooth = tileX*3;
-  rightClickAreaTicketBooth = tileX*6;
-  topClickAreaTicketBooth = tileY*20.5;
-  bottomClickAreaTicketBooth = tileY*24.5;
+//Enter ticket booth area
+float leftClickAreaTicketBooth;
+float rightClickAreaTicketBooth;
+float topClickAreaTicketBooth;
+float bottomClickAreaTicketBooth;
 
-  //Access area tent
-  leftAccessBoxTent = tileX*20;
-  rightAccessBoxTent = tileX*26;
-  topAccessBoxTent = tileY*23.5;
-  bottomAccessBoxTent = tileY*26;
+//Access area tent
+float leftAccessBoxTent;
+float rightAccessBoxTent;
+float topAccessBoxTent;
+float bottomAccessBoxTent;
 
-  //Enter click area tent
-  leftClickAreaTent = tileX*21.25;
-  rightClickAreaTent = tileX*24.65;
-  topClickAreaTent = tileY*21.5;
-  bottomClickAreaTent = tileY*24.75;
+//Enter tent area
+float leftClickAreaTent;
+float rightClickAreaTent;
+float topClickAreaTent;
+float bottomClickAreaTent;
 
-  //Menu
-  top = tileY*1.3;
-  bottom = top+iconSizeY;
-  //Wallet
-  leftWallet = tileX*1.75;
-  rightWallet = leftWallet+iconSizeX;
+//Menu
+float top;
+float bottom;
+//Wallet
+float leftWallet;
+float rightWallet;
+//Tickets
+float leftTickets;
+float rightTickets;
+//Bank
+float leftBank;
+float rightBank;
+//Raffle
+float leftRaffle;
+float rightRaffle;
+//Help
+float leftHelp;
+float rightHelp;
+//Lottery
+float leftLottery;
+float rightLottery;
 
-  //Tickets
-  leftTickets = tileX*7.75;
-  rightTickets = leftTickets+iconSizeX;
+//Username box
+float leftUsername;
+float rightUsername;
+float topUsername;
+float bottomUsername;
 
-  //Bank
-  leftBank = tileX*13.75;
-  rightBank = leftBank+iconSizeX;
+//Enter box
+float leftEnter;
+float rightEnter;
+float topEnter;
+float bottomEnter;
 
-  //Raffle
-  leftRaffle = tileX*19.75;
-  rightRaffle = leftRaffle+iconSizeX;
+//Motherload
+float leftMotherload;
+float rightMotherload;
+float topMotherload;
+float bottomMotherload;
 
-  //Help
-  leftHelp = tileX*24.25;
-  rightHelp = leftHelp+iconSizeX;
+//Cross
+float leftCross;
+float rightCross;
+float topCross;
+float bottomCross;
 
-  //Lottery
-  leftLottery = tileX*26.75;
-  rightLottery = leftLottery+iconSizeX;
+//Exit
+float leftExit;
+float rightExit;
+float topExit;
+float bottomExit;
 
-  //Username box
-  leftUsername = tileX*10;
-  rightUsername = tileX*20;
-  topUsername = tileY*19;
-  bottomUsername = tileY*20.5;
+//Exit access area
+float leftAccessExit;
+float rightAccessExit;
+float topAccessExit;
+float bottomAccessExit;
 
-  //Enter box
-  leftEnter = tileX*13;
-  rightEnter = tileX*17;
-  topEnter = tileY*21;
-  bottomEnter = tileY*22;
+//End game
+float leftEndGame;
+float rightEndGame;
+float topEndGame;
+float bottomEndGame;
 
-  //Motherload
-  leftMotherload = tileX*5.5;
-  rightMotherload = tileX*8.75;
-  topMotherload = tileY*14.75;
-  bottomMotherload = tileY*16.25;
+//Roulette
+float leftRoulette;
+float rightRoulette;
+float topRoulette;
+float bottomRoulette;
 
-  //Cross
-  leftCross = tileX*18.5;
-  rightCross = leftCross+tileX;
-  topCross = tileY*5.5;
-  bottomCross = topCross+tileY;
+//Bet
+float  bet = 5;
 
-  //Exit
-  leftExit = tileX*3;
-  rightExit = tileX*5;
-  topExit = tileY*18.5;
-  bottomExit = tileY*23.5;
+//Betting arrows
+float leftDownArrow;
+float rightDownArrow;
+float topDownArrow;
+float bottomDownArrow;
 
-  //Exit access area
-  leftAccessExit = tileX*1;
-  rightAccessExit = tileX*7;
-  topAccessExit = topWalkableEdge;
-  bottomAccessExit = topAccessExit+tileY*3;
+float leftUpArrow;
+float rightUpArrow;
+float topUpArrow;
+float bottomUpArrow;
 
-  //End game
-  leftEndGame = tileX*13.5;
-  rightEndGame = tileX*16.5;
-  topEndGame = tileY*22;
-  bottomEndGame = tileY*25;
+//Odd/Even
+float leftOdd;
+float rightOdd;
+float topOdd;
+float bottomOdd;
 
-  //Roulette
-  leftRoulette = tileX*12.5;
-  rightRoulette = tileX*17.5;
-  topRoulette = tileY*20;
-  bottomRoulette = tileY*24;
+float leftEven;
+float rightEven;
+float topEven;
+float bottomEven;
 
-  //Betting arrows
-  leftDownArrow = tileX*4.625;
-  rightDownArrow = tileX*6.375;
-  topDownArrow = tileY*10.25;
-  bottomDownArrow = tileY*12;
+//Red/Green
+float leftRed;
+float rightRed;
+float topRed;
+float bottomRed;
 
-  leftUpArrow = rightDownArrow+tileX;
-  rightUpArrow = leftUpArrow+tileX*1.75;
-  topUpArrow = topDownArrow;
-  bottomUpArrow = bottomDownArrow;
+float leftGreen;
+float rightGreen;
+float topGreen;
+float bottomGreen;
 
-  //Odd/Even
-  leftOdd = tileX*11;
-  rightOdd = leftOdd+tileX*2;
-  topOdd = tileY*9;
-  bottomOdd = topOdd+tileY*2;
+//Player pick
+float leftPickANumber;
+float rightPickANumber;
+float topPickANumber;
+float bottomPickANumber;
 
-  leftEven = leftOdd+tileX*2.5;
-  rightEven = leftEven+tileX*2;
-  topEven = topOdd;
-  bottomEven = bottomOdd;
+//Flag
+float leftFlag;
+float rightFlag;
+float topFlag;
+float bottomFlag;
 
-  //Red/Green
-  leftRed = leftOdd+tileX*5.5;
-  rightRed = leftRed+tileX*2;
-  topRed = topOdd;
-  bottomRed = topRed+tileY*2;
+//Sky
+float leftSky;
+float rightSky;
+float topSky;
+float bottomSky;
 
-  leftGreen = leftRed+tileX*2.5;
-  rightGreen = leftGreen+tileX*2;
-  topGreen = topOdd;
-  bottomGreen = bottomOdd;
+//Popcorn
+float leftPopcorn;
+float rightPopcorn;
+float topPopcorn;
+float bottomPopcorn;
 
-  //Pick a number
-  leftPickANumber = rightEven+tileX*7.625;
-  rightPickANumber = leftPickANumber+tileX*2;
-  topPickANumber = topOdd;
-  bottomPickANumber = bottomOdd;
+//Win or loss
+float centerX;
+float centerY;
 
-  //Flag
-  leftFlag = tileX*23;
-  rightFlag = tileX*26;
-  topFlag = tileY*12;
-  bottomFlag = tileY*13.5;
+boolean moving = false;
+boolean flagTrue = false;
+boolean walletOn = false;
+boolean motherload = false;
+boolean motherloadTrue = false;
+boolean playerTicketsOn = false;
+boolean bankOn = false;
+boolean raffleOn = false;
+boolean helpOn = false;
+boolean gambleTrue = false;
+boolean tentOn = false;
+boolean popcornTrue = false;
+boolean start = true;
+boolean typing = false;
+boolean skyTrue = false;
+boolean gameEnded = false;
+boolean betOn = false;
+boolean boxesTent = false;
+boolean ofelia = false;
+boolean popcornOn = false;
+boolean catSoundOn = false;
+boolean endSoundOn = false;
 
-  //Sky
-  leftSky = tileX*10;
-  rightSky = tileX*15.75;
-  topSky = tileY*3.5;
-  bottomSky = tileY*6;
+String codeEntered = "";
+String motherloadString = "Motherload";
+String playerPick = "";
+String grade = "";
+String GradeStyr = "A";
 
-  //Popcorn
-  leftPopcorn = tileX*8.5;
-  rightPopcorn = tileX*10.25;
-  topPopcorn = tileY*20.75;
-  bottomPopcorn = tileY*24.75;
+int winRate;
+int motherloadCount = 0;
+int motherloadMoney = 1000;
+int bank = 0;
+int number = 0;
+int playerPickInt;
+int character = 1;
+int savedTime;
+int passedTime;
 
-  //Win or loss
-  centerX = tileX*18;
-  centerY = tileY*20;
+ArrayList<Integer> winningNumbers = new ArrayList<Integer>();
+ArrayList<Integer> winningTicketsID = new ArrayList<Integer>();
 
-  playerXPosition = random(leftWalkableEdge, rightWalkableEdge);
-  playerYPosition = random(topWalkableEdge, bottomWalkableEdge);
+SoundFile popcornSound;
+SoundFile rouletteSound;
+SoundFile ticketsSound;
+SoundFile winSound;
+SoundFile catSound;
+SoundFile endSound;
+SoundFile walkSound;
 
-  for (int i = 0; i < amountBots; i++) {
-    botXPosition[i] = random(leftWalkableEdge, rightWalkableEdge);
-  }
+int remainingTickets = totalTickets;
 
-  for (int i = 0; i < amountBots; i++) {
-    botYPosition[i] = random(topWalkableEdge, bottomWalkableEdge);
-  }
-
-  backgroundFunction();
-
-  carnivalSound = new SoundFile(this, "sounds/carnival.wav");
-  if (soundPlayed == false) {
-    carnivalSound.loop();
-    soundPlayed = true;
-  }
-
-  fillTicketArray();
-  makeBots();
-  player = new Player(playerName);
-}
-
-void draw() {
-  image(img, width/2, height/2, width, height);
-
-  menu();
-  loadBots();
-  if (helpOn == true) {
-    boxes();
-  } else if (start == true) {
-    startInfo();
-  } else if (gameEnded == true) {
-    displayEndScreen();
-  } else if (walletOn == true) {
-    wallet();
-  } else if (playerTicketsOn == true) {
-    playerTickets();
-  } else if (bankOn == true) {
-    bank();
-  } else if (raffleOn == true) {
-    raffle();
-  } else if (tentOn == true) {
-    tent();
-  }
-
-  if (popcornOn == true) {
-    passedTime = millis() - savedTime;
-    popcorn();
-  }
-
-  loadPlayer();
-  bots[1].movement();
-}
+ArrayList<Integer> ticketsID = new ArrayList<Integer>(totalTickets);
