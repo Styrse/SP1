@@ -109,3 +109,6 @@ winning.wav by unadamlar -- https://freesound.org/s/341984/ -- License: Creative
 
 Walk:
 Walking_4 by Unlistenable -- https://freesound.org/s/414329/ -- License: Attribution NonCommercial 4.0
+
+Thunder:
+Thunder6.wav by OneSoundToRuleThemAll -- https://freesound.org/s/238807/ -- License: Attribution 4.0
