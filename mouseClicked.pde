@@ -1,4 +1,5 @@
 SoundFile ticketsSound;
+SoundFile thunderSound;
 
 boolean motherload = false;
 boolean motherloadTrue = false;
@@ -98,6 +99,8 @@ void mouseClicked() {
       savedTime = millis();
       popcornTrue = true;
     } else if (mouseX < rightSky && mouseX > leftSky && mouseY < bottomSky && mouseY > topSky) {
+      thunderSound = new SoundFile(this, "sounds/thunder.wav");
+      thunderSound.play();
       skyTrue = true;
     } else if (mouseX < rightFlag && mouseX > leftFlag && mouseY < bottomFlag && mouseY > topFlag) {
       flagTrue = true;
